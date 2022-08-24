@@ -79,12 +79,17 @@ sub {
     z-index: 313;
 }
 
-.Top_Bar>.Team_A>.Logo_Team_A_BG img {
+.Top_Bar>.Team_A>.Logo_Team_A_BG>.Logo_Team_A {
+    background-image: url("../../files/img/Team_Logo_A.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 85px;
     position: absolute;
-    left: 15px;
-    top: 15px;
-    width: 70px;
-    height: 70px;
+    left: 0px;
+    top: 0px;
+    width: 100px;
+    height: 100px;
+    z-index: 313;
 }
 
 .Top_Bar>.Team_A>.Score_Team_A_BG {
@@ -102,7 +107,7 @@ sub {
     font-family: "Anybody UltraCondensed";
     font-weight: 600;
     color: rgb(236, 236, 236);
-    line-height: 1.5;
+    line-height: 1.45;
     letter-spacing: 4;
     text-align: center;
     position: absolute;
@@ -198,12 +203,17 @@ sub {
     z-index: 298;
 }
 
-.Top_Bar>.Team_B>.Logo_Team_B_BG img {
+.Top_Bar>.Team_B>.Logo_Team_B_BG>.Logo_Team_B {
+    background-image: url("../../files/img/Team_Logo_B.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 85px;
     position: absolute;
-    left: 15px;
-    top: 15px;
-    width: 70px;
-    height: 70px;
+    left: 0px;
+    top: 0px;
+    width: 100px;
+    height: 100px;
+    z-index: 313;
 }
 
 .Top_Bar>.Team_B>.Score_Team_B_BG {
@@ -221,7 +231,7 @@ sub {
     font-family: "Anybody UltraCondensed";
     font-weight: 600;
     color: rgb(236, 236, 236);
-    line-height: 1.5;
+    line-height: 1.45;
     letter-spacing: 4;
     text-align: center;
     position: absolute;
@@ -290,7 +300,9 @@ sub {
     color: rgb(44, 43, 48);
     line-height: 1.8;
     text-align: center;
+    letter-spacing: 1;
     position: absolute;
+    text-transform: uppercase;
     left: 5%;
     top: 0px;
     width: 90%;
@@ -311,7 +323,7 @@ sub {
 .Top_Bar>.Timer_BG>.Timer {
     font-size: 60px;
     font-family: "Anybody UltraCondensed";
-    font-weight: bold;
+    font-weight: 600;
     color: rgb(236, 236, 236);
     letter-spacing: 3;
     line-height: 1.3;
@@ -350,6 +362,9 @@ sub {
 }
 
 .Sponsors_Bar>.Sponsors_BG>.back {
+    background-image: url("../../files/img/hud_elements/Sponsors_Background.png");
+    background-position: center;
+    background-repeat: no-repeat;
     position: absolute;
     left: 0px;
     top: 0px;
@@ -358,31 +373,16 @@ sub {
     z-index: 11;
 }
 
-.Sponsors_Bar>.Sponsors_BG>.back img {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: 12;
-}
-
 .Sponsors_Bar>.Sponsors_BG>.sponsors {
+    background-image: url("../../files/img/hud_elements/Sponsors.png");
+    background-position: center;
+    background-repeat: no-repeat;
     position: absolute;
     left: 0%;
     top: 0%;
     width: 100%;
     height: 100%;
     z-index: 13;
-}
-
-.Sponsors_Bar>.Sponsors_BG>.sponsors img {
-    position: absolute;
-    left: 5%;
-    top: 15%;
-    width: 90%;
-    height: 70%;
-    z-index: 14;
 }
 
 
@@ -411,23 +411,29 @@ sub {
     z-index: 55;
 }
 
+
+/*
 .Spectate_Container>.Spectate_Bar>.Country_Spectate {
     position: absolute;
     right: 211px;
     top: 18px;
-    width: 35px;
+    width: 27px;
     height: 27px;
     z-index: 54;
 }
 
-.Spectate_Container>.Spectate_Bar>.Country_Spectate img {
+.Spectate_Container>.Spectate_Bar>.Country_Spectate>.Country_image {
+    background-image: url("../../files/img/Team_Logo_A.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 27px;
     position: absolute;
     left: 0px;
-    top: -3px;
-    width: 33px;
-    height: 33px;
+    top: 0px;
+    width: 27px;
+    height: 27px;
     z-index: 54;
-}
+} */
 
 .Spectate_Container>.Spectate_Bar>.Name_Spectate {
     font-size: 30px;
@@ -464,7 +470,11 @@ sub {
     z-index: 46;
 }
 
-.Spectate_Container>.Spectate_Bar>.Health_Icon_Spectate img {
+.Spectate_Container>.Spectate_Bar>.Health_Icon_Spectate>.Health_icon {
+    background-image: url("../../files/img/Icons/Icons/Player_Health.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 21px;
     position: absolute;
     left: 3px;
     top: 3px;
@@ -535,24 +545,28 @@ sub {
 
 .Spectate_Container>.Spectate_Bar>.Ammo_Icon_Spectate {
     position: absolute;
-    left: 20px;
-    top: 65px;
+    left: 21px;
+    bottom: 17px;
     width: 27px;
     height: 27px;
     z-index: 46;
 }
 
-.Spectate_Container>.Spectate_Bar>.Ammo_Icon_Spectate img {
+.Spectate_Container>.Spectate_Bar>.Ammo_Icon_Spectate>.Ammo_icon {
+    background-image: url("../../files/img/Icons/Icons/Player_Ammo.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 22px;
     position: absolute;
-    left: 3px;
-    top: 3px;
-    width: 21px;
-    height: 21px;
+    left: 2px;
+    top: 2px;
+    width: 22px;
+    height: 22px;
     z-index: 45;
 }
 
 .Spectate_Container>.Spectate_Bar>.Photo_AREA {
-    /*background-color: rgb(236, 236, 236);*/
+    background-color: rgb(236, 236, 236);
     position: absolute;
     left: 253px;
     top: -90px;
@@ -582,17 +596,21 @@ sub {
 .Spectate_Container>.Spectate_Bar>.defuse {
     position: absolute;
     right: 221px;
-    top: 66.5px;
+    bottom: 20px;
     width: 24px;
     height: 23px;
     z-index: 46;
 }
 
-.Spectate_Container>.Spectate_Bar>.defuse img {
+.Spectate_Container>.Spectate_Bar>.defuse>.defuse_icon {
+    background-image: url("../../files/img/defuse.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 25px;
     position: absolute;
     right: 0px;
     top: 0px;
-    width: 24px;
+    width: 23px;
     height: 23px;
     z-index: 46;
 }
@@ -600,43 +618,50 @@ sub {
 .Spectate_Container>.Spectate_Bar>.shield {
     position: absolute;
     right: 188px;
-    top: 66.5px;
+    bottom: 20px;
     width: 24px;
     height: 23px;
     z-index: 46;
 }
 
-.Spectate_Container>.Spectate_Bar>.shield img {
+.Spectate_Container>.Spectate_Bar>.shield>.shield_icon {
+    background-image: url("../../files/img/shield.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 19px;
     position: absolute;
     right: 0px;
     top: 0px;
-    width: 24px;
-    height: 24px;
+    width: 23px;
+    height: 23px;
     z-index: 46;
 }
 
 .Spectate_Container>.Spectate_Bar>.helmet {
     position: absolute;
     right: 155px;
-    top: 66.5px;
-    width: 24px;
+    bottom: 20px;
     height: 23px;
     z-index: 46;
 }
 
-Z .Spectate_Container>.Spectate_Bar>.helmet img {
+.Spectate_Container>.Spectate_Bar>.helmet>.helmet_icon {
+    background-image: url("../../files/img/Icons/Icons/Equipment_Helmet.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 22px;
     position: absolute;
     right: 0px;
     top: 0px;
-    width: 24px;
+    width: 23px;
     height: 23px;
-    z-index: 46;
+    z-index: 45;
 }
 
 .Spectate_Container>.Spectate_Bar>#utility {
     position: absolute;
     right: 0px;
-    top: 65.5px;
+    bottom: 20px;
     width: 135px;
     height: 25px;
     z-index: 46;
@@ -646,10 +671,9 @@ Z .Spectate_Container>.Spectate_Bar>.helmet img {
 }
 
 .Spectate_Container>.Spectate_Bar>#utility img {
-    position: absolute;
     height: 25px;
     max-height: 25px;
     width: auto;
-    margin-right: 11px;
+    margin-left: 11px;
     display: inline-flex;
 }
