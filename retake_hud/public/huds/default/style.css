@@ -4,8 +4,7 @@ body {
     padding: 0;
     color: #fff;
     overflow: hidden;
-    /*background: blanchedalmond;
-    */
+    background: rgb(255, 153, 0);
     border-radius: 0px !important;
     font-family: "";
     font-weight: 500;
@@ -43,6 +42,8 @@ sub {
     z-index: 318;
 }
 
+
+
 .Top_Bar>.Team_A>.Top_BG {
     background-image: url("../../files/img/hud_elements/Texture_Dirt_A.png");
     position: absolute;
@@ -51,6 +52,33 @@ sub {
     width: 270.5px;
     height: 100px;
     z-index: 282;
+}
+
+.Top_Bar>.Team_A>.Top_BG>.Pause{
+    position: absolute;
+    background-color: rgb(236, 236, 236);
+    left: 0px;
+    top: 0px;
+    width: 270.5px;
+    height: 100px;
+    z-index: 351;
+}
+
+.Top_Bar>.Team_A>.Top_BG>.Pause>.Pause_Text{
+    font-size: 70px;
+    font-family: "Anybody UltraCondensed";
+    color: rgb(44, 43, 48);
+    line-height: 1.6;
+    font-weight: 500;
+    letter-spacing: 1;
+    text-transform: uppercase;
+    text-align: center;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 270.5px;
+    height: 100px;
+    z-index: 350;
 }
 
 .Top_Bar>.Team_A>.Top_BG>.Team_A_Name {
@@ -175,6 +203,33 @@ sub {
     width: 270.5px;
     height: 100px;
     z-index: 282;
+}
+
+.Top_Bar>.Team_B>.Top_BG>.Pause{
+    position: absolute;
+    background-color: rgb(236, 236, 236);
+    left: 0px;
+    top: 0px;
+    width: 270.5px;
+    height: 100px;
+    z-index: 351;
+}
+
+.Top_Bar>.Team_B>.Top_BG>.Pause>.Pause_Text{
+    font-size: 70px;
+    font-family: "Anybody UltraCondensed";
+    color: rgb(44, 43, 48);
+    line-height: 1.6;
+    font-weight: 500;
+    letter-spacing: 1;
+    text-transform: uppercase;
+    text-align: center;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 270.5px;
+    height: 100px;
+    z-index: 350;
 }
 
 .Top_Bar>.Team_B>.Top_BG>.Team_B_Name {
@@ -1258,3 +1313,821 @@ sub {
     z-index: 160;
     -webkit-filter: invert(100%);
 }
+
+.Game_History {
+    position: absolute;
+    left: 781px;
+    top: 112px;
+    width: 359px;
+    height: 125px;
+    z-index: 401;
+}
+
+.Game_History>.History_Text {
+    background-color: rgb(236, 236, 236);
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 359px;
+    height: 25px;
+    z-index: 400;
+}
+
+.Game_History>.History_Text>.Text {
+    font-size: 20px;
+    font-family: "Anybody Condensed";
+    color: rgb(44, 43, 48);
+    font-weight: bold;
+    line-height: 1.6;
+    text-align: center;
+    position: absolute;
+    text-transform: uppercase;
+    left: 0px;
+    top: 0px;
+    height: 25px;
+    width: 359px;
+    z-index: 399;
+}
+
+.Game_History>.History_Bar {
+    background-color: rgb(44, 43, 48);
+    position: absolute;
+    left: 0px;
+    top: 25px;
+    width: 359px;
+    height: 100px;
+    z-index: 400;
+}
+
+.Game_History>.History_Bar>.Defuse_Bar_copy {
+    background-color: rgb(236, 236, 236);
+    position: absolute;
+    left: 37px;
+    bottom: 49px;
+    width: 284px;
+    height: 2px;
+    z-index: 399;
+}
+
+.Game_History>.History_Bar>.Left_Team {
+    position:absolute;
+    left: 37px;
+    width: 284px;
+    top: 19px;
+    height: 21px;
+    z-index:398;
+}
+
+.Game_History>.History_Bar>.Left_Team>.Round_n1 {
+    position:absolute;
+    left: 4.5px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Left_Team>.Round_n1>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/ct_death.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+
+
+.Game_History>.History_Bar>.Left_Team>.Round_n2 {
+    position:absolute;
+    left: 22.9px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Left_Team>.Round_n2>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/ct_time.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+
+
+.Game_History>.History_Bar>.Left_Team>.Round_n3 {
+    position:absolute;
+    left: 41.3px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Left_Team>.Round_n3>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/ct_defuse.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+
+.Game_History>.History_Bar>.Left_Team>.Round_n4 {
+    position:absolute;
+    left: 59.7px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Left_Team>.Round_n4>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/ct_bomb.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+
+.Game_History>.History_Bar>.Left_Team>.Round_n5 {
+    position:absolute;
+    left: 78.1px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Left_Team>.Round_n5>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/dot.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+
+.Game_History>.History_Bar>.Left_Team>.Round_n6 {
+    position:absolute;
+    left: 96.5px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Left_Team>.Round_n6>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/dot.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+
+.Game_History>.History_Bar>.Left_Team>.Round_n7 {
+    position:absolute;
+    left: 114.9px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Left_Team>.Round_n7>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/dot.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+
+.Game_History>.History_Bar>.Left_Team>.Round_n8 {
+    position:absolute;
+    left: 133.3px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Left_Team>.Round_n8>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/dot.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+
+.Game_History>.History_Bar>.Left_Team>.Round_n9 {
+    position:absolute;
+    left: 151.7px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Left_Team>.Round_n9>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/dot.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+.Game_History>.History_Bar>.Left_Team>.Round_n10 {
+    position:absolute;
+    left: 170.1px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+.Game_History>.History_Bar>.Left_Team>.Round_n10>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/dot.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+.Game_History>.History_Bar>.Left_Team>.Round_n11 {
+    position:absolute;
+    left: 188.5px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Left_Team>.Round_n11>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/dot.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+
+.Game_History>.History_Bar>.Left_Team>.Round_n12 {
+    position:absolute;
+    left: 206.9px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Left_Team>.Round_n12>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/dot.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+
+.Game_History>.History_Bar>.Left_Team>.Round_n13 {
+    position:absolute;
+    left: 225.3px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Left_Team>.Round_n13>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/dot.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+
+.Game_History>.History_Bar>.Left_Team>.Round_n14 {
+    position:absolute;
+    left: 243.7px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Left_Team>.Round_n14>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/dot.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+
+.Game_History>.History_Bar>.Left_Team>.Round_n15 {
+    position:absolute;
+    left: 262.1px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Left_Team>.Round_n15>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/dot.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;s
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index: 396;
+}
+
+.Game_History>.History_Bar>.Right_Team {
+    position:absolute;
+    left: 37px;
+    width: 284px;
+    bottom: 19px;
+    height: 21px;
+}
+
+.Game_History>.History_Bar>.Right_Team>.Round_n1 {
+    position:absolute;
+    left: 4.5px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Right_Team>.Round_n1>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/t_death.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+
+
+.Game_History>.History_Bar>.Right_Team>.Round_n2 {
+    position:absolute;
+    left: 22.9px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Right_Team>.Round_n2>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/t_time.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+
+
+.Game_History>.History_Bar>.Right_Team>.Round_n3 {
+    position:absolute;
+    left: 41.3px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Right_Team>.Round_n3>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/t_defuse.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+
+.Game_History>.History_Bar>.Right_Team>.Round_n4 {
+    position:absolute;
+    left: 59.7px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Right_Team>.Round_n4>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/t_bomb.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+
+.Game_History>.History_Bar>.Right_Team>.Round_n5 {
+    position:absolute;
+    left: 78.1px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Right_Team>.Round_n5>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/dot.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+
+.Game_History>.History_Bar>.Right_Team>.Round_n6 {
+    position:absolute;
+    left: 96.5px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Right_Team>.Round_n6>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/dot.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+
+.Game_History>.History_Bar>.Right_Team>.Round_n7 {
+    position:absolute;
+    left: 114.9px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Right_Team>.Round_n7>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/dot.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+
+.Game_History>.History_Bar>.Right_Team>.Round_n8 {
+    position:absolute;
+    left: 133.3px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Right_Team>.Round_n8>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/dot.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+
+.Game_History>.History_Bar>.Right_Team>.Round_n9 {
+    position:absolute;
+    left: 151.7px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Right_Team>.Round_n9>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/dot.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+.Game_History>.History_Bar>.Right_Team>.Round_n10 {
+    position:absolute;
+    left: 170.1px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+.Game_History>.History_Bar>.Right_Team>.Round_n10>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/dot.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+.Game_History>.History_Bar>.Right_Team>.Round_n11 {
+    position:absolute;
+    left: 188.5px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Right_Team>.Round_n11>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/dot.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+
+.Game_History>.History_Bar>.Right_Team>.Round_n12 {
+    position:absolute;
+    left: 206.9px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Right_Team>.Round_n12>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/dot.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+
+.Game_History>.History_Bar>.Right_Team>.Round_n13 {
+    position:absolute;
+    left: 225.3px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Right_Team>.Round_n13>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/dot.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+
+.Game_History>.History_Bar>.Right_Team>.Round_n14 {
+    position:absolute;
+    left: 243.7px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Right_Team>.Round_n14>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/dot.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+
+.Game_History>.History_Bar>.Right_Team>.Round_n15 {
+    position:absolute;
+    left: 262.1px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:397;
+}
+
+.Game_History>.History_Bar>.Right_Team>.Round_n15>.Result {
+    position:absolute;
+    background-image: url("../../files/img/History/dot.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    left: 0px;
+    width: 17.4px;
+    bottom: 0px;
+    height: 17.4px;
+    z-index:396;
+}
+
+
+.Progress_Bar {
+    position: absolute;
+    left: 510px;
+    top: 113px;
+    width: 900px;
+    height: 25px;
+    z-index: 323;
+}
+
+.Progress_Bar>.Left_Team {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 346px;
+    height: 25px;
+    z-index: 324;
+    background-color: rgb(44, 43, 48);
+}
+
+.Progress_Bar>.Left_Team>.Background {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 346px;
+    height: 25px;
+    z-index: 325;
+    background-color: rgb(99, 64, 243);
+    opacity: 0.3;
+}
+
+.Progress_Bar>.Left_Team>.Progress {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 20%;
+    height: 25px;
+    z-index: 326;
+    background-color: rgb(99, 64, 243);
+}
+
+.Progress_Bar>.Right_Team {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 346px;
+    height: 25px;
+    z-index: 324;
+    background-color: rgb(44, 43, 48);
+}
+
+.Progress_Bar>.Right_Team>.Background {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 346px;
+    height: 25px;
+    z-index: 325;
+    background-color: rgb(255, 77, 64);
+    opacity: 0.3;
+}
+
+.Progress_Bar>.Right_Team>.Progress {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 80%;
+    height: 25px;
+    z-index: 326;
+    background-color: rgb(255, 77, 64);
+}
+
+.Progress_Bar>.Center_Bar {
+    position: absolute;
+    left: 345.5px;
+    top: 0px;
+    width: 209px;
+    height: 25px;
+    z-index: 324;
+    background-color:rgb(44, 43, 48);
+}
+  
+
+
+  
