@@ -34,20 +34,14 @@ var bo = 1;
 
 var flag_replays = 1;
 
-var t_color = "229, 16, 27";
-var ct_color = "0, 199, 209";
-var dark_ct_color = "0, 0, 0";
-var dark_t_color = "0, 0, 0";
+var t_color = "255, 77, 64";
+var ct_color = "99, 64, 243";
 
-//var t_color = "254, 160, 47";
-//var ct_color = "0, 172, 230";
-//var dark_ct_color = "0, 38, 51";
-//var dark_t_color = "51, 28, 0";
-var warning = "229, 16, 27";
-/*var warning = "219, 53, 55";*/
-//var dark_t_color = "26, 14, 0";
-//var dark_ct_color = "0, 28, 38";
+var dark_ct_color = "44, 43, 48";
+var dark_t_color = "44, 43, 48";
 
+var black_color = "44, 43, 48";
+var white_color = "236, 236, 236";
 
 
 /* -------------------------------- */
@@ -76,6 +70,7 @@ $(document).ready(
 
 /******************************** */
 
+/*
 if (pick !== "") {
     if (pick == "DECIDER") {
 
@@ -112,6 +107,7 @@ if (!(map4 == "" && map5 == "")) {
     }
 
 }
+*/
 
 function fillObserved(player) {
     let statistics = player.getStats();
@@ -123,21 +119,10 @@ function fillObserved(player) {
 
 
     if (player.observer_slot >= 1 && player.observer_slot <= 5) {
-        right = true;
-    }
-    let flag = player.country_code || (right ?
-        (teams.left.flag || "") :
-        (teams.right.flag || ""));
-
-    if (right == true) {
-        $("#obsplayer_logo").css("background-image", 'url("/teams/' + teams.left.logo + '")');
         $sideactive = "left";
     } else {
-        $("#obsplayer_logo").css("background-image", 'url("/teams/' + teams.right.logo + '")');
         $sideactive = "right";
     }
-
-
 
     if (player.observer_slot >= 1 && player.observer_slot <= 5)
         pslot = player.observer_slot;
@@ -145,133 +130,125 @@ function fillObserved(player) {
         pslot = player.observer_slot - 5;
     }
 
-    let $playeractive = $(".players_" + $sideactive + "_container").find("#player" + pslot);
-
-    $("#obsplayer_flag").css("background-image", "url('/files/img/flags/" + flag + ".png')")
-    $(".observed_container>.observed_bar>.kda_container>.kills>.k").html("K <font color='#fff'>" + statistics.kills + "</font>");
-    $(".observed_container>.observed_bar>.kda_container>.assists>.a").html("A <font color='#fff'>" + statistics.assists + "</font>");
-    $(".observed_container>.observed_bar>.kda_container>.deaths>.d").html("D <font color='#fff'>" + statistics.deaths + "</font>");
+    let $playeractive = $(".players_" + $sideactive + "_container").find("#Player" + pslot);
 
     obs_player_name = player.name;
     if (obs_player_name.length > 13) obs_player_name = obs_player_name.substring(0, 13);
-    $(".observed_container>.name").html(obs_player_name);
+    $(".Spectate_Container>.Spectate_Bar>.Name_Spectate").html(obs_player_name);
 
-    $("#nades").html("");
+    $(".Spectate_Container>.Spectate_Bar>#utility").html("");
 
-    $playeractive.find(".separator").removeClass("observed").addClass("observed");
-    $playeractive.find(".number").removeClass("observed").addClass("observed");
+    $playeractive.find(".separator").css("opacity", "1");
 
     if (player.team == "CT" && teams.left.side == "ct") {
+        $(".Spectate_Container>.Spectate_Bar").css("background-image", "url(../../files/img/hud_elements/Texture_Fluid_CT.png)")
+        $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate_Background").css("background-color", "rgba(" + ct_color + ",0.2)");
+        $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate").css("background-color", "rgb(" + ct_color + ")");
 
-        $(".observed_container>.observed_bar>.kda_container>.kills>.k").css("color", "rgb(" + ct_color + ")");
-        $(".observed_container>.observed_bar>.kda_container>.assists>.a").css("color", "rgb(" + ct_color + ")");
-        $(".observed_container>.observed_bar>.kda_container>.deaths>.d").css("color", "rgb(" + ct_color + ")");
-        $(".observed_container>.health").css("color", "rgb(" + ct_color + ")");
-        $(".observed_container>.life_container>.life_bar").css("background", "linear-gradient(90deg, rgb(25, 25, 25, 0.4) 0%, rgba(" + ct_color + ",0.8) 75px, rgb(" + ct_color + ") 100%");
-        $(".observed_container>.life_container>.life_bar").css("width", statistics.health + "%");
-        $(".observed_container>.bomb_defuse").html(statistics.defusekit ? $("<img width='25px' />").attr("src", "/files/img/elements/defuse.png") : "");
-        //$(".observed_container>.name").css("color", "rgb(" + ct_color + ")");
-        $(".observed_container").css("border", "solid 2px rgb(" + ct_color + ")");
-        $(".observed_container").css("box-shadow", "inset 0px 0px 20px 5px rgb(" + ct_color + ")");
-        $(".sponsor").css("border", "solid 2px rgb(" + ct_color + ")");
-        $(".sponsor").css("box-shadow", "inset 0px 0px 20px 5px rgb(" + ct_color + ")");
-        //$(".observed_container>.observed_bar").css("background", "linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgb(" + ct_color + ") 35%, rgb(" + ct_color + ") 65%, rgba(0, 0, 0, 0) 100%)");
-        $(".observed_container").css("background-image", "url(../../files/img/hud_elements/back.png)");
-        //$(".observed_container>.observed_bar>.kda_container").css("background", "rgba(" + dark_ct_color + ", 0.7)");
+        $(".Spectate_Container > .Spectate_Bar > .Health_Spectate_BG > .Health_Spectate").html("" + statistics.health + "")
+        $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate").css("width", ((97 * statistics.health) / 100) + "%");
+        if (statistics.defusekit) {
+            $(".Spectate_Container>.Spectate_Bar>.defuse>.defuse_icon").css("opacity", "1");
+        } else {
+            $(".Spectate_Container>.Spectate_Bar>.defuse>.defuse_icon").css("opacity", "0");
+        }
+        if (statistics.armor) {
+            $(".Spectate_Container>.Spectate_Bar>.shield>.shield_icon").css("opacity", "1");
+        }
+        if (statistics.armor && statistics.helmet) {
+            $(".Spectate_Container>.Spectate_Bar>.helmet>.helmet_icon").css("opacity", "1");
+        }
+        $(".Spectate_Container>.Spectate_Bar>.Ammo_Spectate_BG>.Ammo_Bar_Spectate_Background").css("background-color", "rgba(" + ct_color + ",0.2)");
 
-        $(".observed_container>.bullets_icon").css("background-image", "url(/files/img/bullets_ct.png)");
-        $(".armor_icon").html(statistics.helmet ? $("<img  width='23px' />").attr("src", "/files/img/helmet_ct.png") : statistics.armor >= 0 ? $("<img  width='23px' />").attr("src", "/files/img/shield_ct.png") : "");
 
     } else if (player.team == "CT" && teams.right.side == "ct") {
+        $(".Spectate_Container>.Spectate_Bar").css("background-image", "url(../../files/img/hud_elements/Texture_Fluid_CT.png)")
+        $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate_Background").css("background-color", "rgb(" + ct_color + ",0.2)");
+        $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate ").css("background-color", "rgb(" + ct_color + ")");
 
-        $(".observed_container>.observed_bar>.kda_container>.kills>.k").css("color", "rgb(" + ct_color + ")");
-        $(".observed_container>.observed_bar>.kda_container>.assists>.a").css("color", "rgb(" + ct_color + ")");
-        $(".observed_container>.observed_bar>.kda_container>.deaths>.d").css("color", "rgb(" + ct_color + ")");
-        $(".observed_container>.health").css("color", "rgb(" + ct_color + ")");
-        $(".observed_container>.life_container>.life_bar").css("background", "linear-gradient(90deg, rgb(25, 25, 25, 0.4) 0%, rgba(" + ct_color + ",0.8) 75px, rgb(" + ct_color + ") 100%");
-        $(".observed_container>.life_container>.life_bar").css("width", statistics.health + "%");
-        $(".observed_container>.bomb_defuse").html(statistics.defusekit ? $("<img width='25px' />").attr("src", "/files/img/elements/defuse.png") : "");
-        //$(".observed_container>.name").css("color", "rgb(" + ct_color + ")");
-        $(".observed_container").css("border", "solid 2px rgb(" + ct_color + ")");
-        $(".observed_container").css("box-shadow", "inset 0px 0px 20px 5px rgb(" + ct_color + ")");
-        $(".sponsor").css("border", "solid 2px rgb(" + ct_color + ")");
-        $(".sponsor").css("box-shadow", "inset 0px 0px 20px 5px rgb(" + ct_color + ")");
-        //$(".observed_container>.observed_bar").css("background", "linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgb(" + ct_color + ") 35%, rgb(" + ct_color + ") 65%, rgba(0, 0, 0, 0) 100%)");
-        $(".observed_container").css("background-image", "url(../../files/img/hud_elements/back.png)");
-        //$(".observed_container>.observed_bar>.kda_container").css("background", "rgba(" + dark_ct_color + ", 0.7)");
+        $(".Spectate_Container > .Spectate_Bar > .Health_Spectate_BG > .Health_Spectate").html("" + statistics.health + "")
+        $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate").css("width", ((97 * statistics.health) / 100) + "%");
+        if (statistics.defusekit) {
+            $(".Spectate_Container>.Spectate_Bar>.defuse>.defuse_icon").css("opacity", "1");
+        } else {
+            $(".Spectate_Container>.Spectate_Bar>.defuse>.defuse_icon").css("opacity", "0");
+        }
+        if (statistics.armor) {
+            $(".Spectate_Container>.Spectate_Bar>.shield>.shield_icon").css("opacity", "1");
+        }
+        if (statistics.armor && statistics.helmet) {
+            $(".Spectate_Container>.Spectate_Bar>.helmet>.helmet_icon").css("opacity", "1");
+        }
+        $(".Spectate_Container>.Spectate_Bar>.Ammo_Spectate_BG>.Ammo_Bar_Spectate_Background").css("background-color", "rgb(" + ct_color + ",0.2)");
 
-        $(".observed_container>.bullets_icon").css("background-image", "url(/files/img/bullets_ct.png)");
-        $(".armor_icon").html(statistics.helmet ? $("<img  width='23px' />").attr("src", "/files/img/helmet_ct.png") : statistics.armor >= 0 ? $("<img  width='23px' />").attr("src", "/files/img/shield_ct.png") : "");
 
     } else if (player.team == "T" && teams.left.side == "t") {
+        $(".Spectate_Container>.Spectate_Bar").css("background-image", "url(../../files/img/hud_elements/Texture_Fluid_T.png)")
+        $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate_Background").css("background-color", "rgba(" + t_color + ",0.2)");
+        $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate").css("background-color", "rgb(" + t_color + ")");
 
-        $(".observed_container>.observed_bar>.kda_container>.kills>.k").css("color", "rgb(" + t_color + ")");
-        $(".observed_container>.observed_bar>.kda_container>.assists>.a").css("color", "rgb(" + t_color + ")");
-        $(".observed_container>.observed_bar>.kda_container>.deaths>.d").css("color", "rgb(" + t_color + ")");
-        $(".observed_container>.life_container>.life_bar").css("background", "linear-gradient(90deg, rgb(25, 25, 25, 0.4) 0%, rgba(" + t_color + ",0.8) 75px, rgb(" + t_color + ") 100%");
-        $(".observed_container>.life_container>.life_bar").css("width", statistics.health + "%");
-        //$(".observed_container>.name").css("color", "rgb(" + t_color + ")");
-        $(".observed_container>.health").css("color", "rgb(" + t_color + ")");
-        $(".observed_container").css("border", "solid 2px rgb(" + t_color + ")");
-        $(".observed_container").css("box-shadow", "inset 0px 0px 20px 5px rgb(" + t_color + ")");
-        $(".sponsor").css("border", "solid 2px rgb(" + t_color + ")");
-        $(".sponsor").css("box-shadow", "inset 0px 0px 20px 5px rgb(" + t_color + ")");
-        //$(".observed_container>.observed_bar").css("background", "linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgb(" + t_color + ") 35%, rgb(" + t_color + ") 65%, rgba(0, 0, 0, 0) 100%)");
-        $(".observed_container").css("background-image", "url(../../files/img/hud_elements/back_left.png)");
-        //$(".observed_container>.observed_bar>.kda_container").css("background", "rgba(" + dark_t_color + ", 0.7)");
+        $(".Spectate_Container > .Spectate_Bar > .Health_Spectate_BG > .Health_Spectate").html("" + statistics.health + "")
+        $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate").css("width", ((97 * statistics.health) / 100) + "%");
+        if (statistics.defusekit) {
+            $(".Spectate_Container>.Spectate_Bar>.defuse>.defuse_icon").css("opacity", "1");
+        } else {
+            $(".Spectate_Container>.Spectate_Bar>.defuse>.defuse_icon").css("opacity", "0");
+        }
+        if (statistics.armor) {
+            $(".Spectate_Container>.Spectate_Bar>.shield>.shield_icon").css("opacity", "1");
+        }
+        if (statistics.armor && statistics.helmet) {
+            $(".Spectate_Container>.Spectate_Bar>.helmet>.helmet_icon").css("opacity", "1");
+        }
+        $(".Spectate_Container>.Spectate_Bar>.Ammo_Spectate_BG>.Ammo_Bar_Spectate_Background").css("background-color", "rgba(" + t_color + ",0.2)");
 
-        $(".observed_container>.bullets_icon").css("background-image", "url(/files/img/bullets_t.png)");
-        $(".armor_icon").html(statistics.helmet ? $("<img  width='23px' />").attr("src", "/files/img/helmet_t.png") : statistics.armor >= 0 ? $("<img  width='23px' />").attr("src", "/files/img/shield_t.png") : "");
 
     } else if (player.team == "T" && teams.right.side == "t") {
+        $(".Spectate_Container>.Spectate_Bar").css("background-image", "url(../../files/img/hud_elements/Texture_Fluid_T.png)")
+        $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate_Background").css("background-color", "rgba(" + t_color + ",0.2)");
+        $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate ").css("background-color", "rgb(" + t_color + ")");
 
-        $(".observed_container>.observed_bar>.kda_container>.kills>.k").css("color", "rgb(" + t_color + ")");
-        $(".observed_container>.observed_bar>.kda_container>.assists>.a").css("color", "rgb(" + t_color + ")");
-        $(".observed_container>.observed_bar>.kda_container>.deaths>.d").css("color", "rgb(" + t_color + ")");
-        $(".observed_container>.life_container>.life_bar").css("background", "linear-gradient(90deg, rgb(25, 25, 25, 0.4) 0%, rgba(" + t_color + ",0.8) 75px, rgb(" + t_color + ") 100%");
-        $(".observed_container>.life_container>.life_bar").css("width", statistics.health + "%");
-        $(".observed_container>.bomb_defuse").html(statistics.bomb ? $("<img width='25px' />").attr("src", "/files/img/elements/defuse.png") : "");
-        $(".observed_container>.health").css("color", "rgb(" + t_color + ")");
-        //$(".observed_container>.name").css("color", "rgb(" + t_color + ")");
-        $(".observed_container").css("border", "solid 2px rgb(" + t_color + ")");
-        $(".observed_container").css("box-shadow", "inset 0px 0px 20px 5px rgb(" + t_color + ")");
-        $(".sponsor").css("border", "solid 2px rgb(" + t_color + ")");
-        $(".sponsor").css("box-shadow", "inset 0px 0px 20px 5px rgb(" + t_color + ")");
-        //$(".observed_container>.observed_bar").css("background", "linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgb(" + t_color + ") 35%, rgb(" + t_color + ") 65%, rgba(0, 0, 0, 0) 100%)");
-        $(".observed_container").css("background-image", "url(../../files/img/hud_elements/back.png)");
-        //$(".observed_container>.observed_bar>.kda_container").css("background", "rgba(" + dark_t_color + ", 0.7)");
-
-        $(".observed_container>.bullets_icon").css("background-image", "url(/files/img/bullets_t.png)");
-        $(".armor_icon").html(statistics.helmet ? $("<img  width='23px' />").attr("src", "/files/img/helmet_t.png") : statistics.armor >= 0 ? $("<img  width='23px' />").attr("src", "/files/img/shield_t.png") : "");
+        $(".Spectate_Container > .Spectate_Bar > .Health_Spectate_BG > .Health_Spectate").html("" + statistics.health + "")
+        $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate").css("width", ((97 * statistics.health) / 100) + "%");
+        if (statistics.defusekit) {
+            $(".Spectate_Container>.Spectate_Bar>.defuse>.defuse_icon").css("opacity", "1");
+        } else {
+            $(".Spectate_Container>.Spectate_Bar>.defuse>.defuse_icon").css("opacity", "0");
+        }
+        if (statistics.armor) {
+            $(".Spectate_Container>.Spectate_Bar>.shield>.shield_icon").css("opacity", "1");
+        }
+        if (statistics.armor && statistics.helmet) {
+            $(".Spectate_Container>.Spectate_Bar>.helmet>.helmet_icon").css("opacity", "1");
+        }
+        $(".Spectate_Container>.Spectate_Bar>.Ammo_Spectate_BG>.Ammo_Bar_Spectate_Background").css("background-color", "rgba(" + t_color + ",0.2)");
 
     }
 
-    $("#nades").html("");
+    $(".Spectate_Container>.Spectate_Bar>#utility").html("");
 
     for (let key in weapons) {
         let weapon = weapons[key];
         if (weapon.type == "Grenade") {
             for (let x = 0; x < weapon.ammo_reserve; x++) {
                 if (weapon.name == "weapon_flashbang" || weapon.name == "weapon_decoy") {
-                    $("#nades").append($("<img style='margin-right: 8px '/>").attr("src", "/files/img/grenades/" + weapon.name + ".png"));
+                    $(".Spectate_Container>.Spectate_Bar>#utility").append($("<img style='margin-right: 8px '/>").attr("src", "/files/img/grenades/" + weapon.name + ".png"));
                 } else {
-                    $("#nades").append($("<img />").attr("src", "/files/img/grenades/" + weapon.name + ".png"));
+                    $(".Spectate_Container>.Spectate_Bar>#utility").append($("<img />").attr("src", "/files/img/grenades/" + weapon.name + ".png"));
                 }
             }
         }
         if (weapon.state == "active" || weapon.state == "reloading") {
             if (weapon.type == "Grenade" || weapon.type == "C4" || weapon.type == "Knife" || statistics.health == 0) {
-                $(".observed_container>.bullets").html("");
+                $(".Spectate_Container>.Spectate_Bar>.Ammo_Spectate_BG>.Ammo_Spectate").html("");
             } else {
-                $(".observed_container>.bullets").html(weapon.ammo_clip + "<sub>/ " + weapon.ammo_reserve + "</sub>");
+                $(".Spectate_Container>.Spectate_Bar>.Ammo_Spectate_BG>.Ammo_Spectate").html(weapon.ammo_clip + "/" + weapon.ammo_reserve + "");
+            }
+            if (weapon.type == "C4") {
+                // fazer aqui para aparecer a bomba no observer container
             }
         }
     }
-    $(".observed_container > .armor").html(statistics.armor);
-    $(".observed_container > .health").html(statistics.health);
-
-
-
 
     loadAvatar(player.steamid, function() {
         $(".picture").html($("<img width='130px' height='130px'  />").attr("src", "/av/" + player.steamid));
@@ -539,29 +516,18 @@ function fillPlayer(player, nr, side, max) {
 
     let health_color;
 
-    let $player = $(".players_" + side + "_container").find("#player" + (nr + 1));
-
-    let $bottom = $player.find(".bottom_bar");
-    let $top = $player.find(".top_bar");
+    let $player = $(".players_" + side + "_container").find("#Player" + (nr + 1));
 
 
-
-
-
-    // PLAYER IMAGE HIDE - $player.find(".playerpic_img").html($("<img width='90px' height='90px'/>").attr("src", "/av/" + steamid));
-
-    let gradient = "linear-gradient(to " + side + ", rgba(25,25,25,0)" + (100 - statistics.health) + "%, " + health_color + " " + (100 - statistics.health) + "%)";
-
+    $player.find(".separator").css("opacity", "0");
 
     if (side == "right") {
         if (team == "ct") {
-            health_color = "linear-gradient(-90deg, rgba(" + ct_color + ", 0.3) 0px, rgba(" + ct_color + ", 0.9) 143px, rgba(" + ct_color + ", 1) 330px)";
             $(".right_series").find(".block").css("border-color", "rgba(" + dark_ct_color + " ,1)");
             $(".right_series").find(".win").css("background", "rgba(" + ct_color + " ,1)");
             $(".right_series").find(".win").css("box-shadow", "rgba(" + dark_ct_color + ",1) 0px 0px 15px 3px");
             $(".players_right_container>.player_container").css("background-image", "url(../../files/img/hud_elements/back.png)");
         } else {
-            health_color = "linear-gradient(-90deg, rgba(" + t_color + ", 0.3) 0px, rgba(" + t_color + ", 0.9) 143px, rgba(" + t_color + ", 1) 330px)";
             $(".right_series").find(".block").css("border-color", "rgba(" + dark_t_color + ",1)");
             $(".right_series").find(".win").css("background", "rgba(" + t_color + ",1)");
             $(".right_series").find(".win").css("box-shadow", "rgba(" + dark_t_color + ",1) 0px 0px 15px 3px");
@@ -586,22 +552,22 @@ function fillPlayer(player, nr, side, max) {
     }
 
     //PLAYER KILLS AND DEATHS
-
+    /*
     if (statistics.round_kills > 0) {
         $bottom.find(".k").html(statistics.kills + "<sup> (" + statistics.round_kills + ")</sup>");
     } else {
         $bottom.find(".k").html(statistics.kills);
     }
+    */
 
-    $bottom.find(".d").text(statistics.deaths);
+    $player.find(".Kills").html(statistics.kills);
+    $player.find(".Deaths").html(statistics.deaths);
 
 
     //OBSERVED
 
     $player.find(".separator").removeClass("observed");
     $player.find(".number").removeClass("observed");
-    //$top.find(".image").removeClass("dead_img").removeClass(statistics.health == 0 ? "dead_img" : "").addClass(statistics.health == 0 ? "dead_img" : "");
-
 
     /*################################################# CHANGING WHEN A PLAYERS DIES #################################################### */
 
@@ -623,65 +589,49 @@ function fillPlayer(player, nr, side, max) {
     // SIDE COLORS
 
     if (team == "ct") {
-        $top.find(".health_bar").css("background", health_color);
-        $player.find(".number").css("background", "rgb(" + ct_color + ")");
-        //$player.css("border", "solid 2.5px rgb(" + ct_color + ")");
-        $player.find(".separator").css("background", "rgb(" + ct_color + ")");
-        $top.find(".health_text").css("color", "rgb(" + ct_color + ")");
+        $player.find(".Health_Bar>.Health_Bar_Color").css("background-color", "rgb(" + ct_color + ")");
     } else if (team == "t") {
-        $top.find(".health_bar").css("background", health_color);
-        $player.find(".number").css("background", "rgb(" + t_color + ")");
-        //$player.css("border", "solid 2.5px rgb(" + t_color + ")");
-        $player.find(".separator").css("background", "rgb(" + t_color + ")");
-        $top.find(".health_text").css("color", "rgb(" + t_color + ")");
+        $player.find(".Health_Bar>.Health_Bar_Color").css("background-color", "rgb(" + t_color + ")");
     }
 
     if (player.observer_slot <= 5) {
 
         player_name = player.name;
         if (player_name.length > 13) player_name = player_name.substring(0, 13);
-        $top.find(".player_name").html(player_name.split(" ").join(""));
+        $player.find(".Name").html(player_name.split(" ").join(""));
 
         $player.find(".number").html(player.observer_slot);
 
-        $top.find(".health_bar").css("width", statistics.health + "%");
-        $top.find(".player_bar_shadow").css("width", statistics.health + "%");
-
-        if (statistics.health == 0) {
-            var flash_amount = 0;
-        } else {
-            var flash_amount = (statistics.flashed * 0.9 / 255);
-        }
-        $player.find(".flash").css("background", "rgba(255,255,255," + flash_amount + ")");
-
+        $player.find(".Health_Bar>.Health_Bar_Color").css("width", statistics.health + "%");
+        /* Para fazer flash
+                if (statistics.health == 0) {
+                    var flash_amount = 0;
+                } else {
+                    var flash_amount = (statistics.flashed * 0.9 / 255);
+                }
+                $player.find(".flash").css("background", "rgba(255,255,255," + flash_amount + ")");
+        */
         l_team_value = l_team_value + statistics.money;
 
+        /*
         if (statistics.health == 0) {
             gradient = "linear-gradient(to " + side + ", rgb(25,25,25)" + (100 - statistics.health) + "%, " + health_color + " " + (100 - statistics.health) + "%)";
-            if ($top.find(".player_bar").hasClass("test")) {} else {
-                $top.find(".player_bar").addClass('test');
+            if ($player.find(".player_bar").hasClass("test")) {} else {
+                $player.find(".player_bar").addClass('test');
             }
         } else {
             $top.find(".player_bar").removeClass('test');
-        }
-
-        if (statistics.health <= 98) {
-            $top.find(".health_bar").css("border-radius", "0px 0px 0px 0px")
-            $top.find(".player_bar_shadow").css("border-radius", "0px 0px 0px 0px")
-        } else {
-            $top.find(".health_bar").css("border-radius", "0px 0px 0px 0px")
-            $top.find(".player_bar_shadow").css("border-radius", "0px 0px 0px 0px")
-        }
+        } */
 
     } else if (player.observer_slot < 10) {
         player_name = player.name;
         if (player_name.length > 13) player_name = player_name.substring(0, 13);
-        $top.find(".player_name").html(player_name.split(" ").join(""));
+        $player.find(".Name").html(player_name.split(" ").join(""));
 
         $player.find(".number").html(player.observer_slot);
 
-        $top.find(".health_bar").css("width", statistics.health + "%");
-        $top.find(".player_bar_shadow").css("width", statistics.health + "%");
+        $player.find(".Health_Bar>.Health_Bar_Color").css("width", statistics.health + "%");
+        /*
         if (statistics.health == 0) {
             var flash_amount = 0;
         } else {
@@ -705,19 +655,20 @@ function fillPlayer(player, nr, side, max) {
             $top.find(".health_bar").css("border-radius", " 0px 0px 0px 0px")
             $top.find(".player_bar_shadow").css("border-radius", "0px 0px 0px 0px")
         }
-
+        */
         r_team_value = r_team_value + statistics.money;
 
     } else if (player.observer_slot == 10) {
 
         player_name = player.name;
         if (player_name.length > 13) player_name = player_name.substring(0, 13);
-        $top.find(".player_name").html(player_name.split(" ").join(""));
+        $player.find(".Name").html(player_name.split(" ").join(""));
 
         $player.find(".number").html("0");
 
-        $top.find(".health_bar").css("width", statistics.health + "%");
-        $top.find(".player_bar_shadow").css("width", statistics.health + "%");
+        $player.find(".Health_Bar>.Health_Bar_Color").css("width", statistics.health + "%");
+
+        /*
         if (statistics.health == 0) {
             var flash_amount = 0;
             0
@@ -742,29 +693,38 @@ function fillPlayer(player, nr, side, max) {
             $top.find(".health_bar").css("border-radius", " 0px 0px 0px 0px")
             $top.find(".player_bar_shadow").css("border-radius", "0px 0px 0px 0px")
         }
-
+        */
         r_team_value = r_team_value + statistics.money;
     }
 
 
-    $top.find(".health_text").text(statistics.health);
+    $player.find(".Health_Bar>.Health").html(statistics.health);
 
 
-    $top.find(".kad_bar").text(statistics.kills + " K / " + statistics.assists + " A / " + statistics.deaths + " D");
-
-
-
-    $top.find(".armor").html(statistics.helmet ? $("<img width='18px' />").attr("src", "/files/img/helmet.png") : statistics.armor > 0 ? $("<img width='18px' />").attr("src", "/files/img/armor.png") : "");
-    $top.find(".bomb_defuse").html(statistics.defusekit ? $("<img width='18px' />").attr("src", "/files/img/elements/defuse.png") : "");
+    $player.find(".Kills").html(statistics.kills);
+    $player.find(".Deaths").html(statistics.deaths);
 
 
 
-    $bottom.find(".moneys").text("$" + statistics.money);
+    if (statistics.defusekit) {
+        $player.find(".defuse_bomb_icon").css("opacity", "1");
+    } else {
+        $player.find(".defuse_bomb_icon").css("opacity", "0");
+    }
+    if (statistics.armor) {
+        $player.find(".Health_Bar>.Shield_Icon").css("opacity", "1");
+    }
+    if (statistics.armor && statistics.helmet) {
+        $player.find(".Health_Bar>.Helmet_Icon").css("opacity", "1");
+    } else {
+        $player.find(".Health_Bar>.Helmet_Icon").css("opacity", "0");
+    }
 
-    $bottom.find(".weapon_icon").html("");
-    $bottom.find(".grenades").html("");
-    $top.find(".weapon_icon").html("");
-    $bottom.find("#deaths_pp").html("");
+
+    $player.find(".Money").html("$" + statistics.money);
+
+    $player.find(".Weapon>.Weapon_Icon").css("opacity", "0");
+    $player.find("#utility").html("");
 
 
     for (let key in weapons) {
@@ -773,37 +733,42 @@ function fillPlayer(player, nr, side, max) {
         let state = weapon.state;
         let view = "";
         let type = weapon.type;
-
         if (type != "C4" && type != "Knife") {
             view += weapon.state == "active" ? "checked" : "";
             if (type == "Grenade") {
                 for (let x = 0; x < weapon.ammo_reserve; x++) {
-                    $bottom.find(".grenades").append($("<img />").attr("src", "/files/img/grenades/weapon_" + name + ".png").addClass(view));
+                    $player.find("#utility").append($("<img />").attr("src", "/files/img/grenades/weapon_" + name + ".png"));
                 }
             } else if (type) {
                 view += side == "right" ? " img-hor" : "";
-                if (type == "Pistol") {
+                if (weapon.state == "active") {
+                    if (type == "Pistol") {
+                        if (side == "right") {
+                            $player.find(".Weapon>.Weapon_Icon").css("background-image", " url(../../files/img/weapons/" + name + ".png)")
+                            $player.find(".Weapon>.Weapon_Icon").css("opacity", "1");
+                        } else {
+                            $player.find(".Weapon>.Weapon_Icon").css("background-image", " url(../../files/img/weapons/" + name + ".png)")
+                            $player.find(".Weapon>.Weapon_Icon").css("opacity", "1");
+                        }
 
-                    if (side == "right") {
-                        $top.find(".weapon_icon").prepend($("<img />").attr("src", "/files/img/weapons/" + name + ".png").addClass("invert").addClass(view));
                     } else {
-                        $top.find(".weapon_icon").prepend($("<img align='right' />").attr("src", "/files/img/weapons/" + name + ".png").addClass("invert").addClass(view));
+
+                        if (side == "right") {
+                            $player.find(".Weapon>.Weapon_Icon").css("background-image", " url(../../files/img/weapons/" + name + ".png)")
+                            $player.find(".Weapon>.Weapon_Icon").css("opacity", "1");
+                        } else {
+                            $player.find(".Weapon>.Weapon_Icon").css("background-image", " url(../../files/img/weapons/" + name + ".png)")
+                            $player.find(".Weapon>.Weapon_Icon").css("opacity", "1");
+                        }
+
                     }
-
-                } else {
-
-                    if (side == "right") {
-                        $bottom.find(".weapon_icon").prepend($("<img />").attr("src", "/files/img/weapons/" + name + ".png").addClass("invert").addClass(view));
-                    } else {
-                        $bottom.find(".weapon_icon").prepend($("<img align='right' />").attr("src", "/files/img/weapons/" + name + ".png").addClass("invert").addClass(view));
-                    }
-
                 }
             }
         }
         if (type == "C4") {
-            $top.find(".bomb_defuse").html($("<img width='16px' />").attr("src", "/files/img/elements/bomb.png").addClass("invert_brightness"));
+            $player.find(".defuse_bomb_icon").css("background-image", "url(../../files/img/Icons/Icons/Equipment_Bomb.png)");
         }
+
     }
 
 

@@ -454,7 +454,7 @@ sub {
 }
 
 .Spectate_Container>.Spectate_Bar {
-    background-image: url(../../files/img/hud_elements/Texture_Fluid.png);
+    background-image: url(../../files/img/hud_elements/Texture_Fluid_CT.png);
     /* opacity: 1; */
     position: absolute;
     left: 0px;
@@ -579,6 +579,11 @@ sub {
     width: 48%;
     height: 80%;
     z-index: 43;
+    transition: all 0.4s ease-in-out 0s;
+    -webkit-transition: all 0.4s ease-in-out 0s;
+    -moz-transition: all 0.4s ease-in-out 0s;
+    -ms-transition: all 0.4s ease-in-out 0s;
+    -o-transition: all 0.4s ease-in-out 0s;
 }
 
 .Spectate_Container>.Spectate_Bar>.Ammo_Spectate_BG {
@@ -686,6 +691,7 @@ sub {
     width: 23px;
     height: 23px;
     z-index: 46;
+    opacity: 0;
 }
 
 .Spectate_Container>.Spectate_Bar>.shield {
@@ -708,6 +714,7 @@ sub {
     width: 23px;
     height: 23px;
     z-index: 46;
+    opacity: 0;
 }
 
 .Spectate_Container>.Spectate_Bar>.helmet {
@@ -734,6 +741,7 @@ sub {
     -moz-transform: scaleX(-1);
     -ms-transform: scaleX(-1);
     -o-transform: scaleX(-1);
+    opacity: 0;
 }
 
 .Spectate_Container>.Spectate_Bar>#utility {
@@ -831,10 +839,10 @@ sub {
     top: 0px;
     width: 100%;
     height: 100%;
-    z-index: 172;
+    z-index: 185;
 }
 
-.players_left_container>.Player>.selected_player {
+.players_left_container>.Player>.separator {
     position: absolute;
     left: -9px;
     top: 18px;
@@ -842,6 +850,7 @@ sub {
     height: 55px;
     background-color: rgb(236, 236, 236);
     z-index: 173;
+    opacity: 0;
 }
 
 .players_left_container>.Player>.Health_Bar {
@@ -863,6 +872,11 @@ sub {
     width: 281px;
     height: 18px;
     z-index: 161;
+    transition: all 0.4s ease-in-out 0s;
+    -webkit-transition: all 0.4s ease-in-out 0s;
+    -moz-transition: all 0.4s ease-in-out 0s;
+    -ms-transition: all 0.4s ease-in-out 0s;
+    -o-transition: all 0.4s ease-in-out 0s;
 }
 
 .players_left_container>.Player>.Health_Bar>.Health {
@@ -904,6 +918,7 @@ sub {
     left: 80px;
     top: 1px;
     z-index: 172;
+    opacity: 0;
 }
 
 .players_left_container>.Player>.Health_Bar>.Shield_Icon {
@@ -917,6 +932,7 @@ sub {
     left: 60px;
     top: 1px;
     z-index: 172;
+    opacity: 0;
 }
 
 .players_left_container>.Player>.Name {
@@ -1044,6 +1060,7 @@ sub {
     width: 18px;
     height: 18px;
     z-index: 172;
+    opacity: 0;
 }
 
 .players_left_container>.Player>.Weapon {
@@ -1145,7 +1162,7 @@ sub {
     z-index: 172;
 }
 
-.players_right_container>.Player>.selected_player {
+.players_right_container>.Player>.separator {
     position: absolute;
     right: -9px;
     top: 18px;
@@ -1153,6 +1170,7 @@ sub {
     height: 55px;
     background-color: rgb(236, 236, 236);
     z-index: 173;
+    opacity: 0;
 }
 
 .players_right_container>.Player>.Health_Bar {
@@ -1174,6 +1192,11 @@ sub {
     width: 281px;
     height: 18px;
     z-index: 161;
+    transition: all 0.4s ease-in-out 0s;
+    -webkit-transition: all 0.4s ease-in-out 0s;
+    -moz-transition: all 0.4s ease-in-out 0s;
+    -ms-transition: all 0.4s ease-in-out 0s;
+    -o-transition: all 0.4s ease-in-out 0s;
 }
 
 .players_right_container>.Player>.Health_Bar>.Health {
@@ -1215,6 +1238,7 @@ sub {
     right: 60px;
     top: 1px;
     z-index: 172;
+    opacity: 0;
 }
 
 .players_right_container>.Player>.Health_Bar>.Shield_Icon {
@@ -1228,6 +1252,7 @@ sub {
     right: 80px;
     top: 1px;
     z-index: 172;
+    opacity: 0;
 }
 
 .players_right_container>.Player>.Name {
@@ -1355,6 +1380,7 @@ sub {
     width: 18px;
     height: 18px;
     z-index: 172;
+    opacity: 0;
 }
 
 .players_right_container>.Player>.Weapon {
@@ -1380,6 +1406,7 @@ sub {
     height: 25px;
     z-index: 160;
     -webkit-filter: invert(100%);
+    opacity: 0;
 }
 
 .Game_History {
