@@ -502,9 +502,9 @@ sub {
     /* line-height: 1; */
     letter-spacing: 1.15;
     text-transform: uppercase;
-    text-align: center;
+    text-align: left;
     position: absolute;
-    right: 0px;
+    right: 7px;
     top: 18px;
     width: 240px;
     height: 27px;
@@ -677,94 +677,19 @@ sub {
     z-index: 38;
 }
 
-
-/*
-.Spectate_Container>.Spectate_Bar>.defuse {
+.Spectate_Container>.Spectate_Bar>#armor {
     position: absolute;
-    right: 205px;
-    bottom: 20px;
-    width: 24px;
-    height: 23px;
-    z-index: 46;
-}
-
-.Spectate_Container>.Spectate_Bar>.defuse>.defuse_icon {
-    background-image: url("../../files/img/defuse.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 25px;
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    width: 23px;
-    height: 23px;
-    z-index: 46;
-    opacity: 0;
-}
-
-.Spectate_Container>.Spectate_Bar>.shield {
-    position: absolute;
-    right: 172px;
-    bottom: 20px;
-    width: 24px;
-    height: 23px;
-    z-index: 46;
-}
-
-.Spectate_Container>.Spectate_Bar>.shield>.shield_icon {
-    background-image: url("../../files/img/shield.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 19px;
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    width: 23px;
-    height: 23px;
-    z-index: 46;
-    opacity: 0;
-}
-
-.Spectate_Container>.Spectate_Bar>.helmet {
-    position: absolute;
-    right: 139px;
-    bottom: 20px;
-    height: 23px;
-    z-index: 46;
-}
-
-.Spectate_Container>.Spectate_Bar>.helmet>.helmet_icon {
-    background-image: url("../../files/img/Icons/Icons/Equipment_Helmet.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 22px;
-    transform: scaleX(-1);
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    width: 23px;
-    height: 23px;
-    z-index: 45;
-    -webkit-transform: scaleX(-1);
-    -moz-transform: scaleX(-1);
-    -ms-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    opacity: 0;
-} */
-
-.Spectate_Container>.Spectate_Bar>#other {
-    position: absolute;
-    right: 148px;
+    right: 128px;
     bottom: 20px;
     width: 128px;
     height: 25px;
     z-index: 46;
     float: left;
-    justify-content: flex-end;
+    justify-content: flex-start;
     display: inline-flex;
 }
 
-.Spectate_Container>.Spectate_Bar>#other img {
+.Spectate_Container>.Spectate_Bar>#armor img {
     height: 25px;
     max-height: 25px;
     width: auto;
@@ -1088,6 +1013,7 @@ sub {
     width: 15px;
     height: 15px;
     z-index: 172;
+    opacity: 0;
 }
 
 .players_left_container>.Player>.Weapon {
@@ -1407,6 +1333,7 @@ sub {
     width: 15px;
     height: 15px;
     z-index: 172;
+    opacity: 0;
 }
 
 .players_right_container>.Player>.Weapon {
@@ -1467,6 +1394,10 @@ sub {
     height: 25px;
     width: 359px;
     z-index: 399;
+}
+
+.Game_History>.History_Text>.Text sup {
+    font-size: 10px;
 }
 
 .Game_History>.History_Bar {
@@ -2173,6 +2104,7 @@ sub {
     width: 900px;
     height: 25px;
     z-index: 323;
+    overflow: hidden;
 }
 
 .Progress_Bar>.Left_Team {
@@ -2183,7 +2115,7 @@ sub {
     height: 25px;
     z-index: 324;
     background-color: rgb(44, 43, 48);
-    transform: translateY(-50px);
+    transform: translateY(-40px);
 }
 
 .Progress_Bar>.Left_Team>.Background {
@@ -2215,7 +2147,7 @@ sub {
     height: 25px;
     z-index: 324;
     background-color: rgb(44, 43, 48);
-    transform: translateY(-50px);
+    transform: translateY(-40px);
 }
 
 .Progress_Bar>.Right_Team>.Background {

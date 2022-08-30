@@ -139,6 +139,7 @@ function fillObserved(player) {
     $(".Spectate_Container>.Spectate_Bar>.Name_Spectate").html(obs_player_name);
 
     $(".Spectate_Container>.Spectate_Bar>#utility").html("");
+    $(".Spectate_Container>.Spectare_Bar>#armor").html("");
 
     $playeractive.find(".separator").css("opacity", "1");
 
@@ -149,17 +150,6 @@ function fillObserved(player) {
 
         $(".Spectate_Container > .Spectate_Bar > .Health_Spectate_BG > .Health_Spectate").html("" + statistics.health + "")
         $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate").css("width", ((97 * statistics.health) / 100) + "%");
-        if (statistics.defusekit) {
-            $(".Spectate_Container>.Spectate_Bar>.defuse>.defuse_icon").css("opacity", "1");
-        } else {
-            $(".Spectate_Container>.Spectate_Bar>.defuse>.defuse_icon").css("opacity", "0");
-        }
-        if (statistics.armor) {
-            $(".Spectate_Container>.Spectate_Bar>.shield>.shield_icon").css("opacity", "1");
-        }
-        if (statistics.armor && statistics.helmet) {
-            $(".Spectate_Container>.Spectate_Bar>.helmet>.helmet_icon").css("opacity", "1");
-        }
         $(".Spectate_Container>.Spectate_Bar>.Ammo_Spectate_BG>.Ammo_Bar_Spectate_Background").css("background-color", "rgba(" + ct_color + ",0.2)");
 
 
@@ -171,17 +161,6 @@ function fillObserved(player) {
 
         $(".Spectate_Container > .Spectate_Bar > .Health_Spectate_BG > .Health_Spectate").html("" + statistics.health + "")
         $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate").css("width", ((97 * statistics.health) / 100) + "%");
-        if (statistics.defusekit) {
-            $(".Spectate_Container>.Spectate_Bar>.defuse>.defuse_icon").css("opacity", "1");
-        } else {
-            $(".Spectate_Container>.Spectate_Bar>.defuse>.defuse_icon").css("opacity", "0");
-        }
-        if (statistics.armor) {
-            $(".Spectate_Container>.Spectate_Bar>.shield>.shield_icon").css("opacity", "1");
-        }
-        if (statistics.armor && statistics.helmet) {
-            $(".Spectate_Container>.Spectate_Bar>.helmet>.helmet_icon").css("opacity", "1");
-        }
         $(".Spectate_Container>.Spectate_Bar>.Ammo_Spectate_BG>.Ammo_Bar_Spectate_Background").css("background-color", "rgb(" + ct_color + ",0.2)");
 
 
@@ -192,17 +171,6 @@ function fillObserved(player) {
 
         $(".Spectate_Container > .Spectate_Bar > .Health_Spectate_BG > .Health_Spectate").html("" + statistics.health + "")
         $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate").css("width", ((97 * statistics.health) / 100) + "%");
-        if (statistics.defusekit) {
-            $(".Spectate_Container>.Spectate_Bar>.defuse>.defuse_icon").css("opacity", "1");
-        } else {
-            $(".Spectate_Container>.Spectate_Bar>.defuse>.defuse_icon").css("opacity", "0");
-        }
-        if (statistics.armor) {
-            $(".Spectate_Container>.Spectate_Bar>.shield>.shield_icon").css("opacity", "1");
-        }
-        if (statistics.armor && statistics.helmet) {
-            $(".Spectate_Container>.Spectate_Bar>.helmet>.helmet_icon").css("opacity", "1");
-        }
         $(".Spectate_Container>.Spectate_Bar>.Ammo_Spectate_BG>.Ammo_Bar_Spectate_Background").css("background-color", "rgba(" + t_color + ",0.2)");
 
 
@@ -213,32 +181,29 @@ function fillObserved(player) {
 
         $(".Spectate_Container > .Spectate_Bar > .Health_Spectate_BG > .Health_Spectate").html("" + statistics.health + "")
         $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate").css("width", ((97 * statistics.health) / 100) + "%");
-        if (statistics.defusekit) {
-            $(".Spectate_Container>.Spectate_Bar>.defuse>.defuse_icon").css("opacity", "1");
-        } else {
-            $(".Spectate_Container>.Spectate_Bar>.defuse>.defuse_icon").css("opacity", "0");
-        }
-        if (statistics.armor) {
-            $(".Spectate_Container>.Spectate_Bar>.shield>.shield_icon").css("opacity", "1");
-        }
-        if (statistics.armor && statistics.helmet) {
-            $(".Spectate_Container>.Spectate_Bar>.helmet>.helmet_icon").css("opacity", "1");
-        }
         $(".Spectate_Container>.Spectate_Bar>.Ammo_Spectate_BG>.Ammo_Bar_Spectate_Background").css("background-color", "rgba(" + t_color + ",0.2)");
 
     }
 
     $(".Spectate_Container>.Spectate_Bar>#utility").html("");
+    $(".Spectate_Container>.Spectate_Bar>#armor").html("");
+
+
+    if (statistics.defusekit) {
+        $(".Spectate_Container>.Spectate_Bar>#armor").append($("<img />").attr("src", "../../files/img/defuse.png"));
+    }
+    if (statistics.armor) {
+        $(".Spectate_Container>.Spectate_Bar>#armor").append($("<img />").attr("src", "../../files/img/shield.png"));
+    }
+    if (statistics.armor && statistics.helmet) {
+        $(".Spectate_Container>.Spectate_Bar>#armor").append($("<img style='transform: scaleX(-1)'/>").attr("src", "../../files/img/Icons/Icons/Equipment_Helmet.png"));
+    }
 
     for (let key in weapons) {
         let weapon = weapons[key];
         if (weapon.type == "Grenade") {
             for (let x = 0; x < weapon.ammo_reserve; x++) {
-                if (weapon.name == "weapon_flashbang" || weapon.name == "weapon_decoy") {
-                    $(".Spectate_Container>.Spectate_Bar>#utility").append($("<img style='margin-right: 8px '/>").attr("src", "/files/img/grenades/" + weapon.name + ".png"));
-                } else {
-                    $(".Spectate_Container>.Spectate_Bar>#utility").append($("<img />").attr("src", "/files/img/grenades/" + weapon.name + ".png"));
-                }
+                $(".Spectate_Container>.Spectate_Bar>#utility").append($("<img />").attr("src", "/files/img/grenades/" + weapon.name + ".png"));
             }
         }
         if (weapon.state == "active" || weapon.state == "reloading") {
@@ -251,6 +216,7 @@ function fillObserved(player) {
                 // fazer aqui para aparecer a bomba no observer container
             }
         }
+
     }
 
     loadAvatar(player.steamid, function() {
@@ -718,6 +684,8 @@ function fillPlayer(player, nr, side, max) {
     }
     if (statistics.armor) {
         $player.find(".Health_Bar>.Shield_Icon").css("opacity", "1");
+    } else {
+        $player.find(".Health_Bar>.Shield_Icon").css("opacity", "0");
     }
     if (statistics.armor && statistics.helmet) {
         $player.find(".Health_Bar>.Helmet_Icon").css("opacity", "1");
@@ -738,6 +706,7 @@ function fillPlayer(player, nr, side, max) {
         let state = weapon.state;
         let view = "";
         let type = weapon.type;
+
         if (type != "C4" && type != "Knife") {
             view += weapon.state == "active" ? "checked" : "";
             if (type == "Grenade") {
@@ -746,28 +715,27 @@ function fillPlayer(player, nr, side, max) {
                 }
             } else if (type) {
                 view += side == "right" ? " img-hor" : "";
-                if (weapon.state == "active") {
-                    if (type == "Pistol") {
-                        if (side == "right") {
-                            $player.find(".Weapon>.Weapon_Icon").css("background-image", " url(../../files/img/weapons/" + name + ".png)")
-                            $player.find(".Weapon>.Weapon_Icon").css("opacity", "1");
-                        } else {
-                            $player.find(".Weapon>.Weapon_Icon").css("background-image", " url(../../files/img/weapons/" + name + ".png)")
-                            $player.find(".Weapon>.Weapon_Icon").css("opacity", "1");
-                        }
-
+                if (type == "Pistol") {
+                    if (side == "right") {
+                        $player.find(".Weapon>.Weapon_Icon").css("background-image", " url(../../files/img/weapons/" + name + ".png)")
+                        $player.find(".Weapon>.Weapon_Icon").css("opacity", "1");
                     } else {
-
-                        if (side == "right") {
-                            $player.find(".Weapon>.Weapon_Icon").css("background-image", " url(../../files/img/weapons/" + name + ".png)")
-                            $player.find(".Weapon>.Weapon_Icon").css("opacity", "1");
-                        } else {
-                            $player.find(".Weapon>.Weapon_Icon").css("background-image", " url(../../files/img/weapons/" + name + ".png)")
-                            $player.find(".Weapon>.Weapon_Icon").css("opacity", "1");
-                        }
-
+                        $player.find(".Weapon>.Weapon_Icon").css("background-image", " url(../../files/img/weapons/" + name + ".png)")
+                        $player.find(".Weapon>.Weapon_Icon").css("opacity", "1");
                     }
+
+                } else {
+
+                    if (side == "right") {
+                        $player.find(".Weapon>.Weapon_Icon").css("background-image", " url(../../files/img/weapons/" + name + ".png)")
+                        $player.find(".Weapon>.Weapon_Icon").css("opacity", "1");
+                    } else {
+                        $player.find(".Weapon>.Weapon_Icon").css("background-image", " url(../../files/img/weapons/" + name + ".png)")
+                        $player.find(".Weapon>.Weapon_Icon").css("opacity", "1");
+                    }
+
                 }
+
             }
         }
         if (type == "C4") {
@@ -1441,99 +1409,71 @@ function updatePage(data) {
 
 
     /* EQUIPMENT MONEY FINITO*/
-    for (i = 0; i <= 30; i++) {
-        $(".round_winner>.team_right_" + i + ">.result ").css("background-image", "none");
-        $(".round_winner>.team_left_" + i + ">.result ").css("background-image", "none");
-        $(".round_winner>.rounds_" + i).css("background-color", "rgba(0,0,0,0)");
-        $(".round_winner>.team_right_" + i).css("height", "32px");
-        $(".round_winner>.team_left_" + i).css("height", "32px");
+    for (i = 0; i <= 15; i++) {
+        $(".Game_History>.History_Bar>.Left_Team>.Round_n" + i + ">.Result").css("background-image", "url(../../files/img/History/dot.png)");
+        $(".Game_History>.History_Bar>.Right_Team>.Round_n" + i + ">.Result").css("background-image", "url(../../files/img/History/dot.png)");
     }
 
     var total_rounds = teams.left.score + teams.right.score;
-    if (total_rounds < 15) {
-        $(".round_winner>.left_side_2").css("box-shadow", "inset 0px 0px 25px 3px rgb(" + t_color + ")");
-        $(".round_winner>.left_side_1").css("box-shadow", "inset 0px 0px 25px 3px rgb(" + ct_color + ")");
+    if (result.length < 15) {
+        $(".Game_History>.History_Text>.Text").html("GAME HISTORY - 1<sup>ST</sup> HALF");
     } else {
-        $(".round_winner>.left_side_1").css("box-shadow", "inset 0px 0px 25px 3px rgb(" + t_color + ")");
-        $(".round_winner>.left_side_2").css("box-shadow", "inset 0px 0px 25px 3px rgb(" + ct_color + ")");
+        $(".Game_History>.History_Text>.Text").html("GAME HISTORY - 2<sup>ND</sup> HALF");
     }
 
     var flag = 0;
+    var z = 0;
     for (i = 0; i < result.length; i++) {
         if (total_rounds < 15) {
             nr = i + 1;
-            $(".round_winner>.rounds_" + nr).html(nr);
-            $(".round_winner>.rounds_" + nr).css("font-size", "10px");
-            $(".round_winner>.rounds_" + nr).css("line-height", "1.4");
-            $(".round_winner>.rounds_" + i).css("background-color", "rgba(0,0,0,0)");
-
             if (nr < 15) {
                 if (round_wins[nr].startsWith('ct_')) {
-                    $(".round_winner>.team_left_" + nr).css("box-shadow", "inset 0 -15px 13px  rgba(" + ct_color + ",0.8)");
                     if (round_wins[nr].startsWith('ct_win_elimination')) {
-                        $(".round_winner>.team_left_" + nr + ">.result ").css("background-image", "url(../../files/img/deaths.png)");
+                        $(".Game_History>.History_Bar>.Left_Team>.Round_n" + nr + ">.Result").css("background-image", "url(../../files/img/History/ct_death.png)");
                     } else if (round_wins[nr].startsWith('ct_win_defuse')) {
-                        $(".round_winner>.team_left_" + nr + ">.result ").css("background-image", "url(/files/img/hud_elements/defuse.png)");
+                        $(".Game_History>.History_Bar>.Left_Team>.Round_n" + nr + ">.Result").css("background-image", "url(../../files/img/History/ct_defuse.png)");
                     } else if (round_wins[nr].startsWith('ct_win_time')) {
-                        $(".round_winner>.team_left_" + nr + ">.result ").css("background-image", "url(/files/img/hud_elements/ampulheta.png)");
+                        $(".Game_History>.History_Bar>.Left_Team>.Round_n" + nr + ">.Result").css("background-image", "url(../../files/img/History/ct_time.png)");
                     }
                 } else {
-                    $(".round_winner>.team_left_" + nr + "").css("box-shadow", "inset 0 -15px 10px  rgba(0,0,0,0.15)");
-                    $(".round_winner>.team_left_" + nr + ">.result ").css("background-image", "none");
+                    $(".Game_History>.History_Bar>.Left_Team>.Round_n" + nr + ">.Result").css("background-image", "none");
                 }
 
                 if (round_wins[nr].startsWith('t_')) {
-                    $(".round_winner>.team_right_" + nr).css("box-shadow", "inset 0 10px 15px  rgba(" + t_color + ",0.8)");
                     if (round_wins[nr].startsWith('t_win_elimination')) {
-                        $(".round_winner>.team_right_" + nr + ">.result ").css("background-image", "url(../../files/img/deaths.png)");
+                        $(".Game_History>.History_Bar>.Right_Team>.Round_n" + nr + ">.Result").css("background-image", "url(../../files/img/History/t_death.png)");
                     } else if (round_wins[nr].startsWith('t_win_bomb')) {
-                        $(".round_winner>.team_right_" + nr + ">.result ").css("background-image", "url(/files/img/elements/bomb.png");
+                        $(".Game_History>.History_Bar>.Right_Team>.Round_n" + nr + ">.Result").css("background-image", "url(../../files/img/History/t_bomb.png)");
                     }
                 } else {
-                    $(".round_winner>.team_right_" + nr + "").css("box-shadow", "inset 0 15px 10px  rgba(0,0,0,0.15)");
-                    $(".round_winner>.team_right_" + nr + ">.result ").css("background-image", "none");
+                    $(".Game_History>.History_Bar>.Right_Team>.Round_n" + nr + ">.Result").css("background-image", "none");
                 }
             }
         } else if (total_rounds <= 30) {
             nr = i + 1;
-            real_round = i + 16;
-            if (total_rounds < 16) {
-                for (j = 0; j < 16; j++) {
-                    $(".round_winner>.team_left_" + j + "").css("box-shadow", "inset 0 0px 0px  rgba(" + ct_color + "0)");
-                    $(".round_winner>.team_right_" + j + "").css("box-shadow", "inset 0 0px 0px  rgba(" + t_color + "0)");
-                }
-            }
-
-            $(".round_winner>.rounds_" + nr).html(real_round);
-            $(".round_winner>.rounds_" + nr).css("font-size", "10px");
-            $(".round_winner>.rounds_" + nr).css("line-height", "1.4");
-            $(".round_winner>.rounds_" + i).css("background-color", "rgba(0,0,0,0)");
-
-            if (nr < 15) {
+            z = nr - 16;
+            if (nr > 15) {
                 if (round_wins[nr].startsWith('ct_')) {
-                    $(".round_winner>.team_right_" + nr).css("box-shadow", "inset 0 10px 15px  rgba(" + ct_color + ",0.8)");
                     if (round_wins[nr].startsWith('ct_win_elimination')) {
-                        $(".round_winner>.team_right_" + nr + ">.result ").css("background-image", "url(../../files/img/deaths.png)");
+                        $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_death.png)");
                     } else if (round_wins[nr].startsWith('ct_win_defuse')) {
-                        $(".round_winner>.team_right_" + nr + ">.result ").css("background-image", "url(/files/img/hud_elements/defuse.png)");
+                        $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_defuse.png)");
                     } else if (round_wins[nr].startsWith('ct_win_time')) {
-                        $(".round_winner>.team_right_" + nr + ">.result ").css("background-image", "url(/files/img/hud_elements/ampulheta.png)");
+                        $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_time.png)");
                     }
                 } else {
-                    $(".round_winner>.team_right_" + nr + "").css("box-shadow", "inset 0 -15px 10px  rgba(0,0,0,0.15)");
-                    $(".round_winner>.team_right_" + nr + ">.result ").css("background-image", "none");
+                    $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "none");
                 }
 
                 if (round_wins[nr].startsWith('t_')) {
                     $(".round_winner>.team_left_" + nr).css("box-shadow", "inset 0 -15px 13px  rgba(" + t_color + ",0.8)");
                     if (round_wins[nr].startsWith('t_win_elimination')) {
-                        $(".round_winner>.team_left_" + nr + ">.result ").css("background-image", "url(../../files/img/deaths.png)");
+                        $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/t_death.png)");
                     } else if (round_wins[nr].startsWith('t_win_bomb')) {
-                        $(".round_winner>.team_left_" + nr + ">.result ").css("background-image", "url(/files/img/elements/bomb.png");
+                        $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/t_bomb.png)");
                     }
                 } else {
-                    $(".round_winner>.team_left_" + nr + "").css("box-shadow", "inset 0 15px 10px  rgba(0,0,0,0.15)");
-                    $(".round_winner>.team_left_" + nr + ">.result ").css("background-image", "none");
+                    $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "none");
                 }
             }
         } else {
@@ -1546,10 +1486,8 @@ function updatePage(data) {
     for (i = 0; i < result.length; i++) {
         if (map.round <= 30) {
             nr = i + 1;
-            $(".round_winner>.rounds_" + nr).html(nr);
-            $(".round_winner>.rounds_" + nr).css("font-size", "10px");
-            $(".round_winner>.rounds_" + nr).css("line-height", "1.4");
-            $(".round_winner>.rounds_" + i).css("background-color", "rgba(0,0,0,0)");
+            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + nr + ">.Result").css("background-image", "url(../../files/img/History/dot.png)");
+            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + nr + ">.Result").css("background-image", "url(../../files/img/History/dot.png)");
 
             if (nr <= 15) {
                 if (round_wins[nr].startsWith('ct_')) {
@@ -1746,7 +1684,7 @@ function updatePage(data) {
 
     //PHASESc
     if (phase) {
-        $("Top_Bar>.Timer_BG>.Timer").css("color", (phase.phase == "live" || phase.phase == "over" || phase.phase == "warmup" || (phase.phase == "freezetime" && phase.phase_ends_in > 10)) ?
+        $(".Top_Bar>.Timer_BG>.Timer").css("color", (phase.phase == "live" || phase.phase == "over" || phase.phase == "warmup" || (phase.phase == "freezetime" && phase.phase_ends_in > 10)) ?
             "rgb(255, 255, 255)" :
             "rgb(" + warning + ")");
 
@@ -1785,18 +1723,18 @@ function updatePage(data) {
         }
 
 
-        function stopAnimationDefuse(side) {
+        function stopAnimationDefuse() {
 
             $(".Progress_Bar").hasClass("longd");
 
             setTimeout(function() {
                 if ($(".Progress_Bar>.Center_Bar>.Center_Txt").text() == "DEFUSING BOMB") {
-                    if (side == "left") {
+                    if (teams.left.side == "ct") {
                         $(".Progress_Bar>.Center_Bar>.Center_Txt").html("BOMB PLANTED");
                         $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(-40px)");
                         $(".Progress_Bar>.Left_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px,0px)");
                         $(".Progress_Bar>.Left_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(-40px)");
-                    } else {
+                    } else if (teams.right.side == "ct") {
                         $(".Progress_Bar>.Center_Bar>.Center_Txt").html("BOMB PLANTED");
                         $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(-40px)");
                         $(".Progress_Bar>.Right_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px,0px)");
@@ -1818,6 +1756,7 @@ function updatePage(data) {
                 $(".Progress_Bar>.Left_Team>.Progress").css("width", progress_width).css("transition", "all 0.5s ease-out 0s");
                 $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
                 $(".Progress_Bar>.Left_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
+
             } else {
                 $(".Progress_Bar>.Center_Bar>.Center_Txt").html("PLANTING BOMB");
                 $(".Progress_Bar>.Right_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
@@ -1827,15 +1766,15 @@ function updatePage(data) {
             }
         }
 
-        function stopAnimationPlanting(side) {
+        function stopAnimationPlanting() {
 
             setTimeout(function() {
                 if ($(".Progress_Bar>.Center_Bar>.Center_Txt").text() == "PLANTING BOMB") {
-                    if (side == "left") {
+                    if (teams.left.side == "t") {
                         $(".Progress_Bar>.Center_Bar>.Center_Txt").html(" ");
                         $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(-40px)");
                         $(".Progress_Bar>.Left_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(-40px)");
-                    } else {
+                    } else if (teams.right.side == "t") {
                         $(".Progress_Bar>.Center_Bar>.Center_Txt").html(" ");
                         $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(-40px)");
                         $(".Progress_Bar>.Right_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(-40px)");
@@ -1846,6 +1785,7 @@ function updatePage(data) {
         }
 
         if (data.info.bomb.state == "planting") {
+
 
             var plantador;
 
@@ -1868,11 +1808,7 @@ function updatePage(data) {
 
 
         } else {
-            if (teams.left.side == "t") {
-                stopAnimationPlanting("left");
-            } else if (teams.right.side == "t") {
-                stopAnimationPlanting("right");
-            }
+            stopAnimationPlanting();
         }
 
 
@@ -2185,7 +2121,6 @@ function updatePage(data) {
             //
             if (phase.phase == "bomb" && bomb_time > "9" || phase.phase == "defuse") {
                 $(".Top_Bar>.Timer_BG>.Timer").html("<font size='20px'>BOMB </font>" + Math.round(bomb_time, -2));
-                $(".Progress_Bar>.Center_Bar>.Center_Txt").html("BOMB PLANTED");
                 var progressbomb_time = bomb_time * 100 / 40 + "%";
                 if (teams.left.side == "t") {
                     $(".Progress_Bar>.Left_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
@@ -2205,7 +2140,6 @@ function updatePage(data) {
                 $(".Progress_Bar>.Right_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
                 $(".Top_Bar>.Timer_BG>.Timer").html("<font size='20px'>BOMB </font>" + Math.round(bomb_time, -2));
                 var progressbomb_time = bomb_time * 100 / 40 + "%";
-                $(".Progress_Bar>.Center_Bar>.Center_Txt").html("BOMB PLANTED");
                 if (teams.left.side == "t") {
                     $(".Progress_Bar>.Left_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
                     $(".Progress_Bar>.Left_Team>.Progress").css("width", progressbomb_time).css("transition", "all 0.5s ease-out 0s");
@@ -2244,17 +2178,15 @@ function updatePage(data) {
                     showGiveaway();
                 }
             } else {
-
                 $(".Top_Bar>.Timer_BG>.Timer").text(count_minute + ":" + count_seconds).css("font-size", "60px");
-                $(".Top_Bar>.Timer_BG>.Timer").css("color", "rgb(236,236,236)");
 
-                if (phase.phase != "bomb" || !data.info.bomb.state == "planting") {
+                if (data.info.bomb.state !== "planting") {
                     $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(-40px)");
                     $(".Progress_Bar>.Left_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(-40px)");
                     $(".Progress_Bar>.Right_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(-40px)");
                 }
 
-                if (phase.phase != "bomb" || !data.info.bomb.state == "planting") {
+                if (data.info.bomb.state !== "planting") {
                     if (teams.left.side == "t") {
                         $(".Progress_Bar>.Left_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
                         $(".Progress_Bar>.Left_Team>.Progress").css("width", "0%").css("transition", "all 0.5s ease-out 0s");
