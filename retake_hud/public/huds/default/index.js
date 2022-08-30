@@ -43,6 +43,8 @@ var dark_t_color = "44, 43, 48";
 var black_color = "44, 43, 48";
 var white_color = "236, 236, 236";
 
+var warning = "229, 16, 27";
+
 
 /* -------------------------------- */
 var count = 1;
@@ -165,6 +167,7 @@ function fillObserved(player) {
         $(".Spectate_Container>.Spectate_Bar").css("background-image", "url(../../files/img/hud_elements/Texture_Fluid_CT.png)")
         $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate_Background").css("background-color", "rgb(" + ct_color + ",0.2)");
         $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate ").css("background-color", "rgb(" + ct_color + ")");
+
 
         $(".Spectate_Container > .Spectate_Bar > .Health_Spectate_BG > .Health_Spectate").html("" + statistics.health + "")
         $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate").css("width", ((97 * statistics.health) / 100) + "%");
@@ -590,8 +593,10 @@ function fillPlayer(player, nr, side, max) {
 
     if (team == "ct") {
         $player.find(".Health_Bar>.Health_Bar_Color").css("background-color", "rgb(" + ct_color + ")");
+        $player.find(".Health_Bar").css("background-color", "rgba(" + ct_color + ",0.2)");
     } else if (team == "t") {
         $player.find(".Health_Bar>.Health_Bar_Color").css("background-color", "rgb(" + t_color + ")");
+        $player.find(".Health_Bar").css("background-color", "rgb(" + t_color + ",0.2)");
     }
 
     if (player.observer_slot <= 5) {
@@ -1619,7 +1624,8 @@ function updatePage(data) {
 
 
     $(".Progress_Bar>.Left_Team>.Background").css("background-color", "rgb(" + left_color + ")");
-    $(".Progress_Bar>.Left_Team>.Progess").css("background-color", "rgb(" + left_color + ")");
+    $(".Progress_Bar>.Left_Team>.Progress").css("background-color", "rgb(" + left_color + ")");
+
     $(".Progress_Bar>.Right_Team>.Background").css("background-color", "rgb(" + right_color + ")");
     $(".Progress_Bar>.Right_Team>.Progress").css("background-color", "rgb(" + right_color + ")");
 
@@ -1740,7 +1746,7 @@ function updatePage(data) {
 
     //PHASESc
     if (phase) {
-        $(".time").css("color", (phase.phase == "live" || phase.phase == "over" || phase.phase == "warmup" || (phase.phase == "freezetime" && phase.phase_ends_in > 10)) ?
+        $("Top_Bar>.Timer_BG>.Timer").css("color", (phase.phase == "live" || phase.phase == "over" || phase.phase == "warmup" || (phase.phase == "freezetime" && phase.phase_ends_in > 10)) ?
             "rgb(255, 255, 255)" :
             "rgb(" + warning + ")");
 
@@ -1754,70 +1760,86 @@ function updatePage(data) {
 
             var progress_width;
 
-            if ($(".alerts_container").hasClass("longd")) {
+            if ($(".Progress_Bar").hasClass("longd")) {
                 progress_width = defuse_countdown * 100 / 10 + "%";
             } else {
                 progress_width = defuse_countdown * 100 / 5 + "%";
             }
 
 
-            $(".Progress_Bar > ." + side + "_Team > .Progress").html(name);
-            $(".alerts_container > ." + side + " > .text").html("DEFUSING THE BOMB");
-            $(".alerts_container > ." + side).css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
-            $(".alerts_container > ." + side + " > .progress").css("width", progress_width).css("transition", "all 0.5s ease-out 0s");
-            $(".alerts_container > ." + side + " > .progress_2").css("width", progress_width).css("transition", "all 0.5s ease-out 0s");
-            $(".alerts_container > ." + side + " > .icon").css('background-image', 'url("/files/img/hud_elements/alerts/defuse.png")');
+
+            if (side == "left") {
+                $(".Progress_Bar>.Center_Bar>.Center_Txt").html("DEFUSING BOMB");
+                $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
+                $(".Progress_Bar>.Left_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px,0px)");
+                $(".Progress_Bar>.Left_Team>.Progress").css("width", progress_width).css("transition", "all 0.5s ease-out 0s");
+                $(".Progress_Bar>.Left_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
+            } else {
+                $(".Progress_Bar>.Center_Bar>.Center_Txt").html("DEFUSING BOMB");
+                $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
+                $(".Progress_Bar>.Right_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px,0px)");
+                $(".Progress_Bar>.Right_Team>.Progress").css("width", progress_width).css("transition", "all 0.5s ease-out 0s");
+                $(".Progress_Bar>.Right_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
+            }
 
         }
 
 
-        function stopAnimationDefuse() {
+        function stopAnimationDefuse(side) {
 
-            $(".alerts_container").hasClass("longd");
+            $(".Progress_Bar").hasClass("longd");
 
             setTimeout(function() {
-                if ($(".alerts_container > .left > .text").text() == "DEFUSING THE BOMB") {
-                    $(".alerts_container > .left").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, -70px)");
-                    $(".alerts_container > .left > .progress").css("transition", "all 0.0s ease-out 0.5s").css("width", "0%");
-                    $(".alerts_container > .left > .progress_2").css("transition", "all 0.0s ease-out 0.5s").css("width", "0%");
-                }
-                if ($(".alerts_container > .right > .text").text() == "DEFUSING THE BOMB") {
-                    $(".alerts_container > .right").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, -70px)");
-                    $(".alerts_container > .right > .progress").css("transition", "all 0.0s ease-out 0.5s").css("width", "0%");
-                    $(".alerts_container > .right > .progress_2").css("transition", "all 0.0s ease-out 0.5s").css("width", "0%");
+                if ($(".Progress_Bar>.Center_Bar>.Center_Txt").text() == "DEFUSING BOMB") {
+                    if (side == "left") {
+                        $(".Progress_Bar>.Center_Bar>.Center_Txt").html("BOMB PLANTED");
+                        $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(-40px)");
+                        $(".Progress_Bar>.Left_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px,0px)");
+                        $(".Progress_Bar>.Left_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(-40px)");
+                    } else {
+                        $(".Progress_Bar>.Center_Bar>.Center_Txt").html("BOMB PLANTED");
+                        $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(-40px)");
+                        $(".Progress_Bar>.Right_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px,0px)");
+                        $(".Progress_Bar>.Right_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(-40px)");
+                    }
                 }
             }, 500);
         }
 
-        function startAnimationPlanting(name, side) {
+        function startAnimationPlanting(name, side, long) {
 
             var countdown = parseFloat(3.2) - parseFloat(data.info.bomb.countdown);
             countdown = countdown.toFixed(1);
             var progress_width = countdown * 100 / 3 + "%";
 
             if (side == "left") {
-                $(".Progress_Bar>.Center_Bar>.Center_Txt").html("Planting Bomb");
+                $(".Progress_Bar>.Center_Bar>.Center_Txt").html("PLANTING BOMB");
                 $(".Progress_Bar>.Left_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
                 $(".Progress_Bar>.Left_Team>.Progress").css("width", progress_width).css("transition", "all 0.5s ease-out 0s");
+                $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
+                $(".Progress_Bar>.Left_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
             } else {
-                $(".Progress_Bar>.Center_Bar>.Center_Txt").html("Planting Bomb");
+                $(".Progress_Bar>.Center_Bar>.Center_Txt").html("PLANTING BOMB");
                 $(".Progress_Bar>.Right_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
                 $(".Progress_Bar>.Right_Team>.Progress").css("width", progress_width).css("transition", "all 0.5s ease-out 0s");
+                $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
+                $(".Progress_Bar>.Right_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
             }
         }
 
-        function stopAnimationPlanting() {
+        function stopAnimationPlanting(side) {
 
             setTimeout(function() {
-                if ($(".alerts_container > .left > .text").text() == "PLANTING THE BOMB") {
-                    $(".alerts_container > .left").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, -70px)");
-                    $(".alerts_container > .left > .progress").css("transition", "all 0.0s ease-out 0.5s").css("width", "0%");
-                    $(".alerts_container > .left > .progress_2").css("transition", "all 0.0s ease-out 0.5s").css("width", "0%");
-                }
-                if ($(".alerts_container > .right > .text").text() == "PLANTING THE BOMB") {
-                    $(".alerts_container > .right").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, -70px)");
-                    $(".alerts_container > .right > .progress").css("transition", "all 0.0s ease-out 0.5s").css("width", "0%");
-                    $(".alerts_container > .right > .progress_2").css("transition", "all 0.0s ease-out 0.5s").css("width", "0%");
+                if ($(".Progress_Bar>.Center_Bar>.Center_Txt").text() == "PLANTING BOMB") {
+                    if (side == "left") {
+                        $(".Progress_Bar>.Center_Bar>.Center_Txt").html(" ");
+                        $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(-40px)");
+                        $(".Progress_Bar>.Left_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(-40px)");
+                    } else {
+                        $(".Progress_Bar>.Center_Bar>.Center_Txt").html(" ");
+                        $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(-40px)");
+                        $(".Progress_Bar>.Right_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(-40px)");
+                    }
                 }
             }, 200);
 
@@ -1846,7 +1868,11 @@ function updatePage(data) {
 
 
         } else {
-            stopAnimationPlanting();
+            if (teams.left.side == "t") {
+                stopAnimationPlanting("left");
+            } else if (teams.right.side == "t") {
+                stopAnimationPlanting("right");
+            }
         }
 
 
@@ -1873,7 +1899,7 @@ function updatePage(data) {
 
 
                 if (data.info.bomb.countdown > 5) {
-                    $(".alerts_container").addClass("longd");
+                    $(".Progress_Bar").addClass("longd");
                 }
 
 
@@ -1881,16 +1907,18 @@ function updatePage(data) {
                     startAnimationDefuse(defuser, "left");
                 } else if (teams.right.side == "ct") {
                     startAnimationDefuse(defuser, "right");
-
                 }
 
             } else {
-                stopAnimationDefuse();
+                if (teams.left.side == "ct") {
+                    stopAnimationDefuse("left");
+                } else if (teams.right.side == "ct") {
+                    stopAnimationDefuse("right");
+                }
             }
 
         } else {
             resetBomb();
-            stopAnimationDefuse();
             stopAnimationDefuse();
         }
 
@@ -1915,13 +1943,13 @@ function updatePage(data) {
                 $(".win_container > .chicken").css("background-image", "url(../../files/img/round_win/ct.png)");
                 $(".win_container>.bg_container>.bg").css("border", "solid 3px rgb(" + ct_color + ")");
                 $(".win_container>.bg_container>.bg").css("box-shadow", "inset 0px 0px 60px 5px rgba(" + ct_color + ",0.8)");
-                $(".win_container>.bg_container>.text").css("color", " rgb(255,255,255)")
+                $(".win_container>.bg_container>.text").css("color", " rgb(255,255,255)");
             } else if (gameside == "t") {
                 //$(".win_container > .chicken").css("background-image", "url(/files/img/hud_elements/win_t_chicken.png)");
                 $(".win_container > .chicken").css("background-image", "url(../../files/img/round_win/t.png)");
                 $(".win_container>.bg_container>.bg").css("border", "solid 3px rgb(" + t_color + ")");
-                $(".win_container>.bg_container>.bg").css("box-shadow", "inset 0px 0px 60px 5px  rgba(" + t_color + ",0.8)")
-                $(".win_container>.bg_container>.text").css("color", " rgb(255,255,255)")
+                $(".win_container>.bg_container>.bg").css("box-shadow", "inset 0px 0px 60px 5px  rgba(" + t_color + ",0.8)");
+                $(".win_container>.bg_container>.text").css("color", " rgb(255,255,255)");
             }
 
             $(".win_container > .chicken").css("display", "block").css("animation", "chickenIn 0.4s ease-out forwards");
@@ -2154,11 +2182,42 @@ function updatePage(data) {
             if (count_seconds < 10) {
                 count_seconds = "0" + count_seconds;
             }
-
+            //
             if (phase.phase == "bomb" && bomb_time > "9" || phase.phase == "defuse") {
-                $(".time").html("<font size='2px'>BOMB </font>" + Math.round(bomb_time, -2));
+                $(".Top_Bar>.Timer_BG>.Timer").html("<font size='20px'>BOMB </font>" + Math.round(bomb_time, -2));
+                $(".Progress_Bar>.Center_Bar>.Center_Txt").html("BOMB PLANTED");
+                var progressbomb_time = bomb_time * 100 / 40 + "%";
+                if (teams.left.side == "t") {
+                    $(".Progress_Bar>.Left_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
+                    $(".Progress_Bar>.Left_Team>.Progress").css("width", progressbomb_time).css("transition", "all 0.5s ease-out 0s");
+                    $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
+                    $(".Progress_Bar>.Left_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
+                } else {
+                    $(".Progress_Bar>.Right_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
+                    $(".Progress_Bar>.Right_Team>.Progress").css("width", progressbomb_time).css("transition", "all 0.5s ease-out 0s");
+                    $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
+                    $(".Progress_Bar>.Right_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
+                }
+
             } else if (phase.phase == "bomb" && bomb_time <= "9.99999" && bomb_time >= "0") {
-                $(".time").html("<font size='2px'>BOMB </font>" + Math.round(bomb_time, -2));
+                $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
+                $(".Progress_Bar>.Left_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
+                $(".Progress_Bar>.Right_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
+                $(".Top_Bar>.Timer_BG>.Timer").html("<font size='20px'>BOMB </font>" + Math.round(bomb_time, -2));
+                var progressbomb_time = bomb_time * 100 / 40 + "%";
+                $(".Progress_Bar>.Center_Bar>.Center_Txt").html("BOMB PLANTED");
+                if (teams.left.side == "t") {
+                    $(".Progress_Bar>.Left_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
+                    $(".Progress_Bar>.Left_Team>.Progress").css("width", progressbomb_time).css("transition", "all 0.5s ease-out 0s");
+                    $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
+                    $(".Progress_Bar>.Left_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
+                } else {
+                    $(".Progress_Bar>.Right_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
+                    $(".Progress_Bar>.Right_Team>.Progress").css("width", progressbomb_time).css("transition", "all 0.5s ease-out 0s");
+                    $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
+                    $(".Progress_Bar>.Right_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
+                }
+
             } else if (phase.phase == "paused" || phase.phase == "timeout_ct" || phase.phase == "timeout_t") {
                 stopAnimationWinner();
                 if (phase.phase == "timeout_ct" || phase.phase == "timeout_t") {
@@ -2176,7 +2235,8 @@ function updatePage(data) {
                         }
                     }
                 } else {
-                    $(".time").text("PAUSE").css("font-size", "24px");
+                    $(".Top_Bar>.Timer_BG>.Timer").text("PAUSE").css("font-size", "60px");
+                    $(".Top_Bar>.Timer_BG>.Timer").css("color", "rgb(" + warning + ")");
                     stopAnimationPause();
                     stopAnimationWinner();
                     //hideFirePower();
@@ -2185,11 +2245,35 @@ function updatePage(data) {
                 }
             } else {
 
-                $(".time").text(count_minute + ":" + count_seconds).css("font-size", "32px");
+                $(".Top_Bar>.Timer_BG>.Timer").text(count_minute + ":" + count_seconds).css("font-size", "60px");
+                $(".Top_Bar>.Timer_BG>.Timer").css("color", "rgb(236,236,236)");
+
+                if (phase.phase != "bomb" || !data.info.bomb.state == "planting") {
+                    $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(-40px)");
+                    $(".Progress_Bar>.Left_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(-40px)");
+                    $(".Progress_Bar>.Right_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(-40px)");
+                }
+
+                if (phase.phase != "bomb" || !data.info.bomb.state == "planting") {
+                    if (teams.left.side == "t") {
+                        $(".Progress_Bar>.Left_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
+                        $(".Progress_Bar>.Left_Team>.Progress").css("width", "0%").css("transition", "all 0.5s ease-out 0s");
+                    } else {
+                        $(".Progress_Bar>.Right_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
+                        $(".Progress_Bar>.Right_Team>.Progress").css("width", "0%").css("transition", "all 0.5s ease-out 0s");
+                    }
+                    if (teams.left.side == "ct") {
+                        $(".Progress_Bar>.Left_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
+                        $(".Progress_Bar>.Left_Team>.Progress").css("width", "0%").css("transition", "all 0.5s ease-out 0s");
+                    } else {
+                        $(".Progress_Bar>.Right_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
+                        $(".Progress_Bar>.Right_Team>.Progress").css("width", "0%").css("transition", "all 0.5s ease-out 0s");
+                    }
+                }
 
                 if (map.phase == "warmup") {
-                    $(".time").css("font-size", "16px");
-                    $(".time").text("WARMUP");
+                    $(".Top_Bar>.Timer_BG>.Timer").css("font-size", "60px");
+                    $(".Top_Bar>.Timer_BG>.Timer").text("WARMUP");
                     stopAnimationPause();
                     stopAnimationWinner();
                 }

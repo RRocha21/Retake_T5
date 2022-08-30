@@ -8,15 +8,15 @@
     "osztenkurden <osztenkurden@gmail.com>"
   ],
   "dependencies": {
-    "request": "latest",
-    "fs": "latest",
-    "ip": "latest",
-    "express": "^4.13.3",
-    "pug": "latest",
-    "http": "latest",
-    "socket.io": "^1.3.7",
     "body-parser": "latest",
+    "express": "^4.18.1",
+    "fs": "latest",
+    "http": "latest",
+    "ip": "latest",
+    "multer": "latest",
     "nedb": "latest",
-    "multer": "latest"
+    "pug": "latest",
+    "request": "latest",
+    "socket.io": "^1.3.7"
   }
 }
