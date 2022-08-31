@@ -188,17 +188,6 @@ function fillObserved(player) {
     $(".Spectate_Container>.Spectate_Bar>#utility").html("");
     $(".Spectate_Container>.Spectate_Bar>#armor").html("");
 
-
-    if (statistics.defusekit) {
-        $(".Spectate_Container>.Spectate_Bar>#armor").append($("<img />").attr("src", "../../files/img/defuse.png"));
-    }
-    if (statistics.armor) {
-        $(".Spectate_Container>.Spectate_Bar>#armor").append($("<img />").attr("src", "../../files/img/shield.png"));
-    }
-    if (statistics.armor && statistics.helmet) {
-        $(".Spectate_Container>.Spectate_Bar>#armor").append($("<img style='transform: scaleX(-1)'/>").attr("src", "../../files/img/Icons/Icons/Equipment_Helmet.png"));
-    }
-
     for (let key in weapons) {
         let weapon = weapons[key];
         if (weapon.type == "Grenade") {
@@ -212,12 +201,23 @@ function fillObserved(player) {
             } else {
                 $(".Spectate_Container>.Spectate_Bar>.Ammo_Spectate_BG>.Ammo_Spectate").html(weapon.ammo_clip + "/" + weapon.ammo_reserve + "");
             }
-            if (weapon.type == "C4") {
-                // fazer aqui para aparecer a bomba no observer container
-            }
+        }
+        if (weapon.type == "C4") {
+            $(".Spectate_Container>.Spectate_Bar>#armor").append($("<img />").attr("src", "../../files/img/Icons/Icons/Equipment_Bomb.png"));
         }
 
+
     }
+    if (statistics.defusekit) {
+        $(".Spectate_Container>.Spectate_Bar>#armor").append($("<img />").attr("src", "../../files/img/Icons/Icons/Equipment_Defuse.png"));
+    }
+    if (statistics.armor) {
+        $(".Spectate_Container>.Spectate_Bar>#armor").append($("<img />").attr("src", "../../files/img/Icons/Icons/Equipment_Shield.png"));
+    }
+    if (statistics.armor && statistics.helmet) {
+        $(".Spectate_Container>.Spectate_Bar>#armor").append($("<img style='transform: scaleX(-1)'/>").attr("src", "../../files/img/Icons/Icons/Equipment_Helmet.png"));
+    }
+
 
     loadAvatar(player.steamid, function() {
         $(".picture").html($("<img width='130px' height='130px'  />").attr("src", "/av/" + player.steamid));
@@ -546,12 +546,6 @@ function fillPlayer(player, nr, side, max) {
         $player.addClass("replays");
     }
 
-    if (player.observer_slot <= 5) {
-        $player.find(".player_name").removeClass("dead_name_left").addClass("alive_name").removeClass(statistics.health == 0 ? "alive_namet" : "").addClass(statistics.health == 0 ? "dead_name_left" : "");
-    } else {
-        $player.find(".player_name").removeClass("dead_name_right").addClass("alive_name").removeClass(statistics.health == 0 ? "alive_name" : "").addClass(statistics.health == 0 ? "dead_name_right" : "");
-
-    }
 
     /* ################################################################################################################################### */
 
@@ -678,9 +672,10 @@ function fillPlayer(player, nr, side, max) {
 
 
     if (statistics.defusekit) {
-        $player.find(".defuse_bomb_icon").css("opacity", "1");
+        $player.find(".Defuse_Bomb_Icon").css("opacity", "1");
+        $player.find(".Defuse_Bomb_Icon").css("background-image", "url(../../files/img/Icons/Icons/Equipment_Defuse.png)");
     } else {
-        $player.find(".defuse_bomb_icon").css("opacity", "0");
+        $player.find(".Defuse_Bomb_Icon").css("opacity", "0");
     }
     if (statistics.armor) {
         $player.find(".Health_Bar>.Shield_Icon").css("opacity", "1");
@@ -739,6 +734,7 @@ function fillPlayer(player, nr, side, max) {
             }
         }
         if (type == "C4") {
+            $player.find(".defuse_bomb_icon").css("opacity", "1");
             $player.find(".defuse_bomb_icon").css("background-image", "url(../../files/img/Icons/Icons/Equipment_Bomb.png)");
         }
 
@@ -1046,8 +1042,8 @@ function updatePage(data) {
         var left_percentage = left.equip_value / total_money * 100;
         var right_percentage = right.equip_value / total_money * 100;
 
-        $(".firepower > .left").css("width", left_percentage + "%");
-        $(".firepower > .right").css("width", right_percentage + "%");
+        $(".Firepower>.Firepower_BG>.Bar_Firepower_A ").css("width", left_percentage + "%");
+        $(".Firepower>.Firepower_BG>.Bar_Firepower_B").css("width", right_percentage + "%");
 
         /*$("#Money_Team_A").html("$" + left.team_money + "<br>$" + left.equip_value + "<br>$" + crl_value_left + " [x" + crl_x_left + "]");
         $("#Money_Team_B").html(right.team_money + "$<br>" + right.equip_value + "$<br>[x" + crl_x_right + "] " + crl_value_right + "$");*/
@@ -1567,7 +1563,8 @@ function updatePage(data) {
     $(".Progress_Bar>.Right_Team>.Background").css("background-color", "rgb(" + right_color + ")");
     $(".Progress_Bar>.Right_Team>.Progress").css("background-color", "rgb(" + right_color + ")");
 
-
+    $(".Firepower > .Firepower_BG>.Bar_Firepower_A").css("background-color", "rgba(" + left_color + ")");
+    $(".firepower > .Firepower_BG>.Bar_Firepower_B").css("background-color", "rgba(" + right_color + ")");
 
     // LEFT
     //$(".header_container > .left_logo_container > .logo_bg").css("background-color", "rgb(" + left_color + ")");
@@ -1585,8 +1582,6 @@ function updatePage(data) {
     $(".player_count_left").css("border", "solid 2px rgb(" + left_color + ")");
     $(".player_count_left").css("box-shadow", "inset 0px 0px 20px 5px rgb(" + left_color + ")");
 
-    $(".firepower > .left").css("background-color", "rgba(0, 0, 0 ,0.6)");
-    $(".firepower > .left").css("box-shadow", "inset 0px 0px 13px 5px  rgba(" + left_color + ", 1)");
 
     $(".spam > .left_container").css("border", "2.5px solid rgb(" + left_color + ")");
     $(".spam > .left_container").css("background-image", "url(../../files/img/hud_elements/back_left.png)");
@@ -1607,8 +1602,7 @@ function updatePage(data) {
 
 
     $(".spam > .right_container").css("background-image", "url(../../files/img/hud_elements/back.png)");
-    $(".firepower > .right").css("background-color", "rgba(0, 0, 0 ,0.6)");
-    $(".firepower > .right").css("box-shadow", "inset 0px 0px 13px 5px  rgba(" + right_color + ", 0.9)");
+
 
     $(".spam > .right_container").css("border", "2.5px solid rgb(" + right_color + ")");
     $(".spam > .right_container > .flash_container").css("background", right_gradient_spam);
@@ -1961,23 +1955,23 @@ function updatePage(data) {
         }
 
         function showFirePower() {
-            $(".firepower").removeClass("hide_firepower").addClass("show_firepower");
-            $(".firepower_money_right").removeClass("hide_firepower_money").addClass("show_firepower_money");
-            $(".firepower_money_left").removeClass("hide_firepower_money").addClass("show_firepower_money");
+            $(".Firepower>.Firepower_BG").removeClass("hide_firepower").addClass("show_firepower");
+            $(".Equipment_A>.Equipment_BG").removeClass("hide_equipment_money").addClass("show_equipment_money");
+            $(".Equipment_B>.Equipment_BG").removeClass("hide_equipment_money").addClass("show_equipment_money");
             if (flag == 0) {
                 $(".round_winner").removeClass("hide_round_winner").addClass("show_round_winner");
             }
-            $(".round_history").removeClass("hide_history").addClass("show_history");
+            $(".Game_History").removeClass("hide_history").addClass("show_history");
         }
 
         function hideFirePower() {
-            $(".firepower").removeClass("show_firepower").addClass("hide_firepower");
-            $(".firepower_money_right").removeClass("show_firepower_money").addClass("hide_firepower_money");
-            $(".firepower_money_left").removeClass("show_firepower_money").addClass("hide_firepower_money");
+            $(".Firepower>.Firepower_BG").removeClass("show_firepower").addClass("hide_firepower");
+            $(".Equipment_A>.Equipment_BG").removeClass("show_equipment_money").addClass("hide_equipment_money");
+            $(".Equipment_B>.Equipment_BG").removeClass("show_equipment_money").addClass("hide_equipment_money");
             if (flag == 0) {
                 $(".round_winner").removeClass("show_round_winner").addClass("hide_round_winner");
             }
-            $(".round_history").addClass("hide_history").removeClass("show_history");
+            $(".Game_History").addClass("hide_history").removeClass("show_history");
         }
 
 
@@ -2122,12 +2116,15 @@ function updatePage(data) {
             if (phase.phase == "bomb" && bomb_time > "9" || phase.phase == "defuse") {
                 $(".Top_Bar>.Timer_BG>.Timer").html("<font size='20px'>BOMB </font>" + Math.round(bomb_time, -2));
                 var progressbomb_time = bomb_time * 100 / 40 + "%";
+                if (phase.phase !== "defuse") {
+                    $(".Progress_Bar>.Center_Bar>.Center_Txt").html("BOMB PLANTED");
+                }
                 if (teams.left.side == "t") {
                     $(".Progress_Bar>.Left_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
                     $(".Progress_Bar>.Left_Team>.Progress").css("width", progressbomb_time).css("transition", "all 0.5s ease-out 0s");
                     $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
                     $(".Progress_Bar>.Left_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
-                } else {
+                } else if (teams.right.side == "t") {
                     $(".Progress_Bar>.Right_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
                     $(".Progress_Bar>.Right_Team>.Progress").css("width", progressbomb_time).css("transition", "all 0.5s ease-out 0s");
                     $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
@@ -2135,17 +2132,18 @@ function updatePage(data) {
                 }
 
             } else if (phase.phase == "bomb" && bomb_time <= "9.99999" && bomb_time >= "0") {
-                $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
-                $(".Progress_Bar>.Left_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
-                $(".Progress_Bar>.Right_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
                 $(".Top_Bar>.Timer_BG>.Timer").html("<font size='20px'>BOMB </font>" + Math.round(bomb_time, -2));
+                if (phase.phase !== "defuse") {
+                    $(".Progress_Bar>.Center_Bar>.Center_Txt").html("BOMB PLANTED");
+                }
                 var progressbomb_time = bomb_time * 100 / 40 + "%";
                 if (teams.left.side == "t") {
+                    console.log("passie");
                     $(".Progress_Bar>.Left_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
                     $(".Progress_Bar>.Left_Team>.Progress").css("width", progressbomb_time).css("transition", "all 0.5s ease-out 0s");
                     $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
                     $(".Progress_Bar>.Left_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
-                } else {
+                } else if (teams.right.side == "t") {
                     $(".Progress_Bar>.Right_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
                     $(".Progress_Bar>.Right_Team>.Progress").css("width", progressbomb_time).css("transition", "all 0.5s ease-out 0s");
                     $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
