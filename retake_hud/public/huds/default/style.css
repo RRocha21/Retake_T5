@@ -40,6 +40,7 @@ sub {
     width: 445.5px;
     height: 100px;
     z-index: 318;
+    overflow: hidden;
 }
 
 .Top_Bar>.Team_A>.Top_BG {
@@ -60,6 +61,11 @@ sub {
     width: 270.5px;
     height: 100px;
     z-index: 351;
+    transform: translateX(300px);
+    -webkit-transform: translateX(300px);
+    -moz-transform: translateX(300px);
+    -ms-transform: translateX(300px);
+    -o-transform: translateX(300px);
 }
 
 .Top_Bar>.Team_A>.Top_BG>.Pause>.Pause_Text {
@@ -94,10 +100,6 @@ sub {
     width: 100%;
     height: 100%;
     z-index: 316;
-    -webkit-transform: ;
-    -moz-transform: ;
-    -ms-transform: ;
-    -o-transform: ;
 }
 
 .Top_Bar>.Team_A>.Logo_Team_A_BG {
@@ -196,6 +198,7 @@ sub {
     width: 445.5px;
     height: 100px;
     z-index: 303;
+    overflow: hidden;
 }
 
 .Top_Bar>.Team_B>.Top_BG {
@@ -216,6 +219,11 @@ sub {
     width: 270.5px;
     height: 100px;
     z-index: 351;
+    transform: translateX(-300px);
+    -webkit-transform: translateX(-300px);
+    -moz-transform: translateX(-300px);
+    -ms-transform: translateX(-300px);
+    -o-transform: translateX(-300px);
 }
 
 .Top_Bar>.Team_B>.Top_BG>.Pause>.Pause_Text {
@@ -407,7 +415,7 @@ sub {
     top: 1001px;
     width: 660px;
     height: 79px;
-    z-index: 6;
+    z-index: 490;
 }
 
 .Sponsors_Bar>.Sponsors_BG {
@@ -417,7 +425,7 @@ sub {
     top: 0px;
     width: 100%;
     height: 100%;
-    z-index: 10;
+    z-index: 491;
 }
 
 .Sponsors_Bar>.Sponsors_BG>.back {
@@ -429,7 +437,7 @@ sub {
     top: 0px;
     width: 100%;
     height: 100%;
-    z-index: 11;
+    z-index: 492;
 }
 
 .Sponsors_Bar>.Sponsors_BG>.sponsors {
@@ -441,7 +449,7 @@ sub {
     top: 0%;
     width: 100%;
     height: 100%;
-    z-index: 13;
+    z-index: 493;
 }
 
 
@@ -467,7 +475,7 @@ sub {
     top: 0px;
     width: 100%;
     height: 100%;
-    z-index: 55;
+    z-index: 57;
 }
 
 
@@ -508,7 +516,7 @@ sub {
     top: 18px;
     width: 240px;
     height: 27px;
-    z-index: 54;
+    z-index: 58;
 }
 
 .Spectate_Container>.Spectate_Bar>.Infos {
@@ -517,7 +525,7 @@ sub {
     top: 0px;
     width: 0px;
     height: 0px;
-    z-index: 53;
+    z-index: 57;
 }
 
 .Spectate_Container>.Spectate_Bar>.Health_Icon_Spectate {
@@ -526,7 +534,7 @@ sub {
     top: 18px;
     width: 27px;
     height: 27px;
-    z-index: 46;
+    z-index: 58;
 }
 
 .Spectate_Container>.Spectate_Bar>.Health_Icon_Spectate>.Health_icon {
@@ -2243,6 +2251,7 @@ sub {
     width: 100%;
     height: 100%;
     z-index: 447;
+    transition: all 0.5s ease 0s;
 }
 
 .Firepower>.Firepower_BG>.Bar_Firepower_B {
@@ -2253,6 +2262,7 @@ sub {
     width: 100%;
     height: 100%;
     z-index: 447;
+    transition: all 0.5s ease 0s;
 }
 
 .Equipment_A {
@@ -2968,6 +2978,7 @@ sub {
     height: 100%;
     z-index: 209;
     background-color: rgb(44, 43, 48);
+    opacity: 0;
 }
 
 .Loss_Bonus_A>.Loss_Bonus_BG>.Top_Loss {
@@ -2981,10 +2992,10 @@ sub {
 }
 
 .Loss_Bonus_A>.Loss_Bonus_BG>.Top_Loss>.Loss_Txt {
-    font-size: 16px;
+    font-size: 17px;
     font-family: "Anybody Condensed";
     color: rgb(236, 236, 236);
-    font-weight: bold;
+    font-weight: 600;
     line-height: 1.4;
     text-align: center;
     letter-spacing: 1.5;
@@ -3010,7 +3021,7 @@ sub {
     top: 15%;
     left: 4%;
     height: 20%;
-    width: 20%;
+    width: 18%;
     background-color: rgb(255, 77, 64);
     z-index: 211;
 }
@@ -3020,7 +3031,7 @@ sub {
     top: 15%;
     left: 28%;
     height: 20%;
-    width: 20%;
+    width: 18%;
     background-color: rgb(255, 77, 64);
     z-index: 211;
 }
@@ -3030,7 +3041,7 @@ sub {
     top: 15%;
     left: 52%;
     height: 20%;
-    width: 20%;
+    width: 18%;
     background-color: rgb(255, 77, 64);
     z-index: 211;
 }
@@ -3040,7 +3051,7 @@ sub {
     top: 15%;
     left: 76%;
     height: 20%;
-    width: 20%;
+    width: 18%;
     background-color: rgb(255, 77, 64);
     z-index: 211;
 }
@@ -3079,6 +3090,7 @@ sub {
     height: 100%;
     z-index: 209;
     background-color: rgb(44, 43, 48);
+    opacity: 0;
 }
 
 .Loss_Bonus_B>.Loss_Bonus_BG>.Top_Loss {
@@ -3092,10 +3104,10 @@ sub {
 }
 
 .Loss_Bonus_B>.Loss_Bonus_BG>.Top_Loss>.Loss_Txt {
-    font-size: 16px;
+    font-size: 17px;
     font-family: "Anybody Condensed";
     color: rgb(236, 236, 236);
-    font-weight: bold;
+    font-weight: 600;
     line-height: 1.4;
     text-align: center;
     letter-spacing: 1.5;
@@ -3121,7 +3133,7 @@ sub {
     top: 15%;
     left: 4%;
     height: 20%;
-    width: 20%;
+    width: 18%;
     background-color: rgb(99, 64, 243);
     z-index: 211;
 }
@@ -3131,7 +3143,7 @@ sub {
     top: 15%;
     left: 28%;
     height: 20%;
-    width: 20%;
+    width: 18%;
     background-color: rgb(99, 64, 243);
     z-index: 211;
 }
@@ -3141,7 +3153,7 @@ sub {
     top: 15%;
     left: 52%;
     height: 20%;
-    width: 20%;
+    width: 18%;
     background-color: rgb(99, 64, 243);
     z-index: 211;
 }
@@ -3151,7 +3163,7 @@ sub {
     top: 15%;
     left: 76%;
     height: 20%;
-    width: 20%;
+    width: 18%;
     background-color: rgb(99, 64, 243);
     z-index: 211;
 }
@@ -3170,6 +3182,187 @@ sub {
     width: 100%;
     height: 55%;
     z-index: 211;
+}
+
+.win_container {
+    position: absolute;
+    left: 511px;
+    top: 202px;
+    width: 899px;
+    height: 473px;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.win_container>.win_BG {
+    position: absolute;
+    left: 150px;
+    top: 200px;
+    width: 599px;
+    height: 240px;
+    z-index: 11;
+}
+
+.win_container>.win_BG>.background {
+    background-image: url(../../files/img/hud_elements/winner_t.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    /* background-size: 85px; */
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 13;
+}
+
+.win_container>.win_BG>.txt {
+    font-size: 120px;
+    font-family: "Anybody UltraCondensed";
+    color: rgb(236, 236, 236);
+    font-weight: 500;
+    line-height: 2.6;
+    text-align: center;
+    font-style: italic;
+    letter-spacing: 1;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 13;
+}
+
+.win_container>.team_BG {
+    position: absolute;
+    left: 300px;
+    top: 60px;
+    width: 299px;
+    height: 220px;
+    z-index: 12;
+}
+
+.win_container>.team_BG>.background {
+    background-image: url(../../files/img/hud_elements/paper.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    /* background-size: 85px; */
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 13;
+}
+
+.win_container>.team_BG>.icon {
+    background-image: url(../../files/img/Team_Logo_A.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 140px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 14;
+}
+
+.topbar_i_counter {
+    /*background: url("/files/img/snow.gif");*/
+    position: absolute;
+    right: 135px;
+    top: 0px;
+    width: 140px;
+    height: 86px;
+    z-index: 27;
+    opacity: 1;
+    overflow: hidden;
+}
+
+.topbar_i_counter>.title {
+    font-size: 23px;
+    font-family: "Bebas Neue Pro";
+    color: #fff;
+    font-weight: 800;
+    text-transform: uppercase;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 42;
+    width: 140px;
+    height: 30px;
+    text-align: center;
+    line-height: 1.3;
+    background-image: url(../../files/img/hud_elements/back.png);
+    /*border-top-right-radius: 10px;
+    border-top-left-radius: 10px; */
+}
+
+.topbar_i_counter>.player_count_left {
+    font-size: 40px;
+    font-family: "Bebas Neue Pro";
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.2;
+    position: absolute;
+    left: 0px;
+    width: 66px;
+    text-align: center;
+    bottom: 0px;
+    z-index: 43;
+    height: 52px;
+    text-shadow: 0px 0px 10px rgb(0 0 0 / 30%), 0px -5px 35px rgb(0 0 0 / 30%);
+    background: blue;
+    /*rder-bottom-right-radius: 10px;*/
+    /* border-bottom-left-radius: 10px; */
+}
+
+.topbar_i_counter>.player_count_vs {
+    font-size: 30px;
+    font-family: "Bebas Neue Pro";
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 1.95;
+    letter-spacing: 2;
+    position: absolute;
+    left: 58px;
+    z-index: 43;
+    text-align: center;
+    height: 56px;
+    width: 41px;
+    bottom: 0px;
+}
+
+.topbar_i_counter>.player_count_right {
+    font-size: 40px;
+    font-family: "Bebas Neue Pro";
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.2;
+    position: absolute;
+    right: 0px;
+    width: 66px;
+    text-align: center;
+    bottom: 0px;
+    z-index: 43;
+    height: 52px;
+    /* border-bottom-right-radius: 10px; */
+    /*border-bottom-left-radius: 35px; */
+    background: y;
+}
+
+.observed_tr {
+    transform: translate(0, 0px);
+    transition: transform 300ms ease 0s;
+}
+
+.not_observed_tr {
+    transform: translate(0px, 500px);
+    transition: transform 300ms ease 0s;
 }
 
 .show_history {
@@ -3293,4 +3486,42 @@ sub {
     -moz-transform: translate(-100px, 0px) !important;
     -ms-transform: translate(-100px, 0px) !important;
     -o-transform: translate(-100px, 0px) !important;
+}
+
+.show_bonus {
+    transition: all 1s ease 0s !important;
+    opacity: 1 !important;
+    transform: translate(0px, 0px) !important;
+    -webkit-transition: all 1s ease 0s !important;
+    -moz-transition: all 1s ease 0s !important;
+    -ms-transition: all 1s ease 0s !important;
+    -o-transition: all 1s ease 0s !important;
+}
+
+.hide_bonus_right {
+    transition: all 1s ease 0s !important;
+    opacity: 0 !important;
+    transform: translate(100px, 0px) !important;
+    -webkit-transform: translate(100px, 0px) !important;
+    -moz-transform: translate(100px, 0px) !important;
+    -ms-transform: translate(100px, 0px) !important;
+    -o-transform: translate(100px, 0px) !important;
+    -webkit-transition: all 1s ease 0s !important;
+    -moz-transition: all 1s ease 0s !important;
+    -ms-transition: all 1s ease 0s !important;
+    -o-transition: all 1s ease 0s !important;
+}
+
+.hide_bonus_left {
+    transition: all 1s ease 0s !important;
+    opacity: 0 !important;
+    transform: translate(-100px, 0px) !important;
+    -webkit-transform: translate(-100px, 0px) !important;
+    -moz-transform: translate(-100px, 0px) !important;
+    -ms-transform: translate(-100px, 0px) !important;
+    -o-transform: translate(-100px, 0px) !important;
+    -webkit-transition: all 1s ease 0s !important;
+    -moz-transition: all 1s ease 0s !important;
+    -ms-transition: all 1s ease 0s !important;
+    -o-transition: all 1s ease 0s !important;
 }
