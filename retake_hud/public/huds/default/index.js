@@ -370,28 +370,11 @@ function fillGrenadeLeft(player, nr, side, max) {
 
         pl = pl_smoke + pl_flash + pl_molo + pl_grenade;
 
-        if (pl == 0) {
-            $(".spam > .left_container > .classification").html("NULL");
-            $(".spam > .left_container > .classification").css("color", "#ed0000");
-        } else if (pl >= 1 && pl <= 20) {
-            $(".spam > .left_container > .classification").html("POOR");
-            $(".spam > .left_container > .classification").css("color", "#EB4802");
-        } else if (pl >= 21 && pl <= 30) {
-            $(".spam > .left_container > .classification").html("BASIC");
-            $(".spam > .left_container > .classification").css("color", "rgb(255, 19, 31)");
-        } else if (pl >= 31 && pl <= 40) {
-            $(".spam > .left_container > .classification").html("GOOD");
-            $(".spam > .left_container > .classification").css("color", "rgb(48, 140, 244)");
-        } else if (pl >= 41) {
-            $(".spam > .left_container > .classification").html("FINE");
-            $(".spam > .left_container > .classification").css("color", "rgb(75 255 0)");
-        }
 
-        $(".spam > .left_container > .he_container > .count").html("x" + l_grenade);
-        $(".spam > .left_container > .smoke_container > .count").html("x" + l_smoke);
-        $(".spam > .left_container > .molo_container > .count").html("x" + l_molo);
-        $(".spam > .left_container > .flash_container > .count").html("x" + l_flash);
-
+        $(".Spam_A>.Spam_BG>.Bottom_Spam>.HE>.HE_Txt").html("x" + l_grenade);
+        $(".Spam_A>.Spam_BG>.Bottom_Spam>.Smoke>.Smoke_Txt").html("x" + l_smoke);
+        $(".Spam_A>.Spam_BG>.Bottom_Spam>.Inc>.Inc_Txt").html("x" + l_molo);
+        $(".Spam_A>.Spam_BG>.Bottom_Spam>.Flash>.Flash_Txt").html("x" + l_flash);
 
     }
 
@@ -444,27 +427,10 @@ function fillGrenadeRight(player, nr, side, max) {
 
         pr = pr_smoke + pr_flash + pr_molo + pr_grenade;
 
-        if (pr == 0) {
-            $(".spam > .right_container > .classification").html("NULL");
-            $(".spam > .right_container > .classification").css("color", "#ed0000");
-        } else if (pr >= 1 && pr <= 20) {
-            $(".spam > .right_container > .classification").html("POOR");
-            $(".spam > .right_container > .classification").css("color", "#EB4802");
-        } else if (pr >= 21 && pr <= 30) {
-            $(".spam > .right_container > .classification").html("BASIC");
-            $(".spam > .right_container > .classification").css("color", "rgb(255, 19, 31)");
-        } else if (pr >= 31 && pr <= 40) {
-            $(".spam > .right_container > .classification").html("GOOD");
-            $(".spam > .right_container > .classification").css("color", "rgb(48, 140, 244)");
-        } else if (pr >= 41) {
-            $(".spam > .right_container > .classification").html("FINE");
-            $(".spam > .right_container > .classification").css("color", "rgb(75 255 0)");
-        }
-
-        $(".spam > .right_container > .he_container > .count").html("x" + r_grenade);
-        $(".spam > .right_container > .smoke_container > .count").html("x" + r_smoke);
-        $(".spam > .right_container > .molo_container > .count").html("x" + r_molo);
-        $(".spam > .right_container > .flash_container > .count").html("x" + r_flash);
+        $(".Spam_B>.Spam_BG>.Bottom_Spam>.HE>.HE_Txt").html("x" + r_grenade);
+        $(".Spam_B>.Spam_BG>.Bottom_Spam>.Smoke>.Smoke_Txt").html("x" + r_smoke);
+        $(".Spam_B>.Spam_BG>.Bottom_Spam>.Inc>.Inc_Txt").html("x" + r_molo);
+        $(".Spam_B>.Spam_BG>.Bottom_Spam>.Flash>.Flash_Txt").html("x" + r_flash);
 
 
     }
@@ -1566,6 +1532,19 @@ function updatePage(data) {
     $(".Firepower > .Firepower_BG>.Bar_Firepower_A").css("background-color", "rgba(" + left_color + ")");
     $(".firepower > .Firepower_BG>.Bar_Firepower_B").css("background-color", "rgba(" + right_color + ")");
 
+    $(".Spam_A>.Spam_BG>.Top_Spam").css("background-color", "rgb(" + left_color + ")");
+    $(".Spam_A>.Spam_BG>.Bottom_Spam>.HE>.HE_Txt").css("color", "rgb(" + left_color + ")");
+    $(".Spam_A>.Spam_BG>.Bottom_Spam>.Flash>.Flash_Txt").css("color", "rgb(" + left_color + ")");
+    $(".Spam_A>.Spam_BG>.Bottom_Spam>.Smoke>.Smoke_Txt").css("color", "rgb(" + left_color + ")");
+    $(".Spam_A>.Spam_BG>.Bottom_Spam>.Inc>.Inc_Txt").css("color", "rgb(" + left_color + ")");
+
+
+    $(".Spam_B>.Spam_BG>.Top_Spam").css("background-color", "rgb(" + right_color + ")");
+    $(".Spam_B>.Spam_BG>.Bottom_Spam>.HE>.HE_Txt").css("color", "rgb(" + right_color + ")");
+    $(".Spam_B>.Spam_BG>.Bottom_Spam>.Flash>.Flash_Txt").css("color", "rgb(" + right_color + ")");
+    $(".Spam_B>.Spam_BG>.Bottom_Spam>.Smoke>.Smoke_Txt").css("color", "rgb(" + right_color + ")");
+    $(".Spam_B>.Spam_BG>.Bottom_Spam>.Inc>.Inc_Txt").css("color", "rgb(" + right_color + ")");
+
     // LEFT
     //$(".header_container > .left_logo_container > .logo_bg").css("background-color", "rgb(" + left_color + ")");
     /*
@@ -1583,9 +1562,6 @@ function updatePage(data) {
     $(".player_count_left").css("box-shadow", "inset 0px 0px 20px 5px rgb(" + left_color + ")");
 
 
-    $(".spam > .left_container").css("border", "2.5px solid rgb(" + left_color + ")");
-    $(".spam > .left_container").css("background-image", "url(../../files/img/hud_elements/back_left.png)");
-
 
     $(".alerts_container > .right > .progress").css("background-color", "rgb(" + right_color + ")");
     $(".alerts_container > .right > .progress_2").css("background-color", "rgb(" + right_color + ")");
@@ -1599,16 +1575,6 @@ function updatePage(data) {
     $(".player_count_right").css("background-image", "url(../../files/img/hud_elements/back.png)");
     $(".player_count_right").css("border", "solid 2px rgb(" + right_color + ")");
     $(".player_count_right").css("box-shadow", "inset 0px 0px 20px 5px rgb(" + right_color + ")");
-
-
-    $(".spam > .right_container").css("background-image", "url(../../files/img/hud_elements/back.png)");
-
-
-    $(".spam > .right_container").css("border", "2.5px solid rgb(" + right_color + ")");
-    $(".spam > .right_container > .flash_container").css("background", right_gradient_spam);
-    $(".spam > .right_container > .he_container").css("background", right_gradient_spam);
-    $(".spam > .right_container > .molo_container").css("background", right_gradient_spam);
-    $(".spam > .right_container > .smoke_container").css("background", right_gradient_spam);
 
     */
     // GLOBAL
@@ -1625,15 +1591,28 @@ function updatePage(data) {
     // Update Molo Spam
 
     if (teams.left.side == "ct") {
-        $(".spam > .left_container > .molo_container > .icon").css('background-image', 'url("/files/img/spam_count/ctmolo.png")');
+        $(".Spam_A > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css('background-image', 'url("../../files/img/Icons/Icons/Utility_CTMolo.png")');
+        $(".Spam_A > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("background-size", "12px");
+        $(".Spam_A > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("top", "1px");
+        $(".Spam_A > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("left", "13px");
     } else if (teams.left.side == "t") {
-        $(".spam > .left_container > .molo_container > .icon").css('background-image', 'url("/files/img/spam_count/tmolo.png")');
+        $(".Spam_A > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css('background-image', 'url("../../files/img/Icons/Icons/Utility_TMolo.png")');
+        $(".Spam_A > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("background-size", "21px");
+        $(".Spam_A > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("top", "0px");
+        $(".Spam_A > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("left", "10px");
     }
 
     if (teams.right.side == "ct") {
-        $(".spam > .right_container > .molo_container > .icon").css('background-image', 'url("/files/img/spam_count/ctmolo.png")');
+        $(".Spam_B > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css('background-image', 'url("../../files/img/Icons/Icons/Utility_CTMolo.png")');
+        $(".Spam_B > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("background-size", "12px");
+        $(".Spam_B > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("top", "1px");
+        $(".Spam_B > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("left", "13px");
+
     } else if (teams.right.side == "t") {
-        $(".spam > .right_container > .molo_container > .icon").css('background-image', 'url("/files/img/spam_count/tmolo.png")');
+        $(".Spam_B > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css('background-image', 'url("../../files/img/Icons/Icons/Utility_TMolo.png")');
+        $(".Spam_B > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("background-size", "21px");
+        $(".Spam_B > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("top", "0px");
+        $(".Spam_B > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("left", "10px");
     }
 
     // Update Logos
@@ -1901,13 +1880,13 @@ function updatePage(data) {
         // SHOW SPAM & FIREPOWER
 
         function showSpam() {
-            $(".spam > .left_container").removeClass("hide_spam_left").addClass("show_spam");
-            $(".spam > .right_container").removeClass("hide_spam_right").addClass("show_spam");
+            $(".Spam_A>.Spam_BG").removeClass("hide_spam_left").addClass("show_spam");
+            $(".Spam_B>.Spam_BG").removeClass("hide_spam_right").addClass("show_spam");
         }
 
         function hideSpam() {
-            $(".spam > .left_container").removeClass("show_spam").addClass("hide_spam_left");
-            $(".spam > .right_container").removeClass("show_spam").addClass("hide_spam_right");
+            $(".Spam_A>.Spam_BG").removeClass("show_spam").addClass("hide_spam_left");
+            $(".Spam_B>.Spam_BG").removeClass("show_spam").addClass("hide_spam_right");
         }
 
         function showGiveaway() {
@@ -2038,12 +2017,12 @@ function updatePage(data) {
 
         if (phase.phase == "live" && phase.phase !== "bomb") {
             if (phase.phase_ends_in > 104) {
-                if ($(".spam > .left_container").css("opacity") == 0 && $(".spam > .right_container").css("opacity") == 0) {
+                if ($(".Spam_A>.Spam_BG").css("opacity") == 0 && $(".Spam_B>.Spam_BG").css("opacity") == 0) {
                     showSpam();
                     showGiveaway();
                 }
             } else {
-                if ($(".spam > .left_container").css("opacity") == 1 && $(".spam > .right_container").css("opacity") == 1) {
+                if ($(".Spam_A>.Spam_BG").css("opacity") == 1 && $(".Spam_B>.Spam_BG").css("opacity") == 1) {
                     hideGiveaway();
                     hideSpam();
                 }
