@@ -3052,7 +3052,7 @@ sub {
     font-weight: 600;
     line-height: 1.4;
     text-align: center;
-    letter-spacing: 1.5;
+    letter-spacing: 2;
     position: absolute;
     left: 0px;
     bottom: 0px;
@@ -3061,92 +3061,116 @@ sub {
     z-index: 211;
 }
 
+.Loss_Bonus_B {
+    position: absolute;
+    right: 30px;
+    top: 438px;
+    width: 175px;
+    height: 73px;
+    z-index: 208;
+    overflow: hidden;
+}
 
-/* .Loss_Bonus_A_copy {
+.Loss_Bonus_B>.Loss_Bonus_BG {
     position: absolute;
     left: 0px;
     top: 0px;
-    width: 1920px;
-    height: 1080px;
-    z-index: 464;
-  }
-  .Loss_A {
+    width: 100%;
+    height: 100%;
+    z-index: 209;
+    background-color: rgb(44, 43, 48);
+}
+
+.Loss_Bonus_B>.Loss_Bonus_BG>.Top_Loss {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 18px;
+    z-index: 210;
+    background-color: rgb(99, 64, 243);
+}
+
+.Loss_Bonus_B>.Loss_Bonus_BG>.Top_Loss>.Loss_Txt {
     font-size: 16px;
-    font-family: "Anybody";
+    font-family: "Anybody Condensed";
     color: rgb(236, 236, 236);
     font-weight: bold;
-    line-height: 1.688;
-    text-align: left;
-    position: absolute;
-    left: 76.609px;
-    top: 443.996px;
-    z-index: 463;
-  }
-  .Loss_A_BG {
-    background-color: rgb(102, 85, 229);
-    position: absolute;
-    left: 30px;
-    top: 448px;
-    width: 175px;
-    height: 18px;
-    z-index: 462;
-  }
-  .Loss_1_A {
-    background-color: rgb(102, 85, 229);
-    position: absolute;
-    left: 75px;
-    top: 474px;
-    width: 14px;
-    height: 14px;
-    z-index: 461;
-  }
-  .Loss_2_A {
-    background-color: rgb(236, 236, 236);
-    position: absolute;
-    left: 99px;
-    top: 474px;
-    width: 14px;
-    height: 14px;
-    z-index: 460;
-  }
-  .Loss_3_A {
-    background-color: rgb(236, 236, 236);
-    position: absolute;
-    left: 123px;
-    top: 474px;
-    width: 14px;
-    height: 14px;
-    z-index: 459;
-  }
-  .Loss_4_A {
-    background-color: rgb(236, 236, 236);
-    position: absolute;
-    left: 147px;
-    top: 474px;
-    width: 14px;
-    height: 14px;
-    z-index: 458;
-  }
-  .Loss_Money_A {
-    font-size: 24px;
-    font-family: "Anybody";
-    color: rgb(236, 236, 236);
-    line-height: 1.2;
+    line-height: 1.4;
     text-align: center;
+    letter-spacing: 1.5;
     position: absolute;
-    left: 89.421px;
-    top: 490.1px;
-    z-index: 457;
-  }
-  .Loss_Box_A_BG {
-    background-color: rgb(44, 43, 48);
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 211;
+}
+
+.Loss_Bonus_B>.Loss_Bonus_BG>.Bottom_Loss {
     position: absolute;
-    left: 30px;
-    top: 448px;
-    width: 175px;
-    height: 73px;
-    z-index: 456;
-  } */
+    left: 0px;
+    top: 18px;
+    width: 100%;
+    height: 55px;
+    z-index: 210;
+}
+
+.Loss_Bonus_B>.Loss_Bonus_BG>.Bottom_Loss>.Box_1 {
+    position: absolute;
+    top: 15%;
+    left: 4%;
+    height: 20%;
+    width: 20%;
+    background-color: rgb(99, 64, 243);
+    z-index: 211;
+}
+
+.Loss_Bonus_B>.Loss_Bonus_BG>.Bottom_Loss>.Box_2 {
+    position: absolute;
+    top: 15%;
+    left: 28%;
+    height: 20%;
+    width: 20%;
+    background-color: rgb(99, 64, 243);
+    z-index: 211;
+}
+
+.Loss_Bonus_B>.Loss_Bonus_BG>.Bottom_Loss>.Box_3 {
+    position: absolute;
+    top: 15%;
+    left: 52%;
+    height: 20%;
+    width: 20%;
+    background-color: rgb(99, 64, 243);
+    z-index: 211;
+}
+
+.Loss_Bonus_B>.Loss_Bonus_BG>.Bottom_Loss>.Box_4 {
+    position: absolute;
+    top: 15%;
+    left: 76%;
+    height: 20%;
+    width: 20%;
+    background-color: rgb(99, 64, 243);
+    z-index: 211;
+}
+
+.Loss_Bonus_B>.Loss_Bonus_BG>.Bottom_Loss>.Loss_Txt {
+    font-size: 26px;
+    font-family: "Anybody Condensed";
+    color: rgb(236, 236, 236);
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: center;
+    letter-spacing: 2;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 55%;
+    z-index: 211;
+}
 
 .show_history {
     transition: all 0.8s ease 0.5s !important;

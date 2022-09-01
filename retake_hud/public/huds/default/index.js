@@ -1213,34 +1213,31 @@ function updatePage(data) {
     var money_bonus_right = crl_value_right;
     var money_bonus_left = crl_value_left;
 
-    $(".right_bonus>.bonus_text>.real_text").html("<font color='#fff'> LOSS BONUS </font>");
-    $(".right_bonus>.bonus_text").css("background", "rgba(" + right_color + ", 0.8)");
-    $(".right_bonus").css("border", "solid 2px rgb(" + right_color + ")");
-    $(".right_bonus").css("background-image", "url(../../files/img/hud_elements/back.png)");
-    $(".right_bonus>.bonus_box_1").css("border", "solid 2px rgb(" + right_color + ")");
-    $(".right_bonus>.bonus_box_2").css("border", "solid 2px rgb(" + right_color + ")");
-    $(".right_bonus>.bonus_box_3").css("border", "solid 2px rgb(" + right_color + ")");
-    $(".right_bonus>.bonus_box_4").css("border", "solid 2px rgb(" + right_color + ")");
+    $(".Loss_Bonus_B>.Loss_Bonus_BG>.Top_Loss").css("background", "rgba(" + right_color + ", 0.8)");
+    $(".Loss_Bonus_B>.Loss_Bonus_BG>.Bottom_Loss>.Box_1").css("border", "solid 2px rgb(" + right_color + ")");
+    $(".Loss_Bonus_B>.Loss_Bonus_BG>.Bottom_Loss>.Box_2").css("border", "solid 2px rgb(" + right_color + ")");
+    $(".Loss_Bonus_B>.Loss_Bonus_BG>.Bottom_Loss>.Box_3").css("border", "solid 2px rgb(" + right_color + ")");
+    $(".Loss_Bonus_B>.Loss_Bonus_BG>.Bottom_Loss>.Box_4").css("border", "solid 2px rgb(" + right_color + ")");
 
 
     if (loss_bonus_right == 0) {
-        $(".right_bonus>.bonus_box_1").css("background", "rgba(255,255,255 , 0)");
-        $(".right_bonus>.bonus_box_2").css("background", "rgba(255,255,255 , 0)");
-        $(".right_bonus>.bonus_box_3").css("background", "rgba(255,255,255 , 0)");
-        $(".right_bonus>.bonus_box_4").css("background", "rgba(255,255,255 , 0)");
-        $(".right_bonus>.bonus_box_1").css("box-shadow", "0px 0px 10px 2px  rgba(255,255,255 , 0)");
-        $(".right_bonus>.bonus_box_2").css("box-shadow", "0px 0px 10px 2px  rgba(255,255,255 , 0)");
-        $(".right_bonus>.bonus_box_3").css("box-shadow", "0px 0px 10px 2px  rgba(255,255,255 , 0)");
-        $(".right_bonus>.bonus_box_4").css("box-shadow", "0px 0px 10px 2px  rgba(255,255,255 , 0)");
+        $(".Loss_Bonus_B>.Loss_Bonus_BG>.Bottom_Loss>.Box_1").css("background", "rgba(255,255,255 , 0)");
+        $(".Loss_Bonus_B>.Loss_Bonus_BG>.Bottom_Loss>.Box_2").css("background", "rgba(255,255,255 , 0)");
+        $(".Loss_Bonus_B>.Loss_Bonus_BG>.Bottom_Loss>.Box_3").css("background", "rgba(255,255,255 , 0)");
+        $(".Loss_Bonus_B>.Loss_Bonus_BG>.Bottom_Loss>.Box_4").css("background", "rgba(255,255,255 , 0)");
+        $(".Loss_Bonus_B>.Loss_Bonus_BG>.Bottom_Loss>.Box_1").css("box-shadow", "0px 0px 10px 2px  rgba(255,255,255 , 0)");
+        $(".Loss_Bonus_B>.Loss_Bonus_BG>.Bottom_Loss>.Box_2").css("box-shadow", "0px 0px 10px 2px  rgba(255,255,255 , 0)");
+        $(".Loss_Bonus_B>.Loss_Bonus_BG>.Bottom_Loss>.Box_3").css("box-shadow", "0px 0px 10px 2px  rgba(255,255,255 , 0)");
+        $(".Loss_Bonus_B>.Loss_Bonus_BG>.Bottom_Loss>.Box_4").css("box-shadow", "0px 0px 10px 2px  rgba(255,255,255 , 0)");
     } else if (loss_bonus_right == 1) {
-        $(".right_bonus>.bonus_box_1").css("background", "rgba(" + right_color + ", 0.8)");
-        $(".right_bonus>.bonus_box_2").css("background", "rgba(255,255,255 , 0)");
-        $(".right_bonus>.bonus_box_3").css("background", "rgba(255,255,255 , 0)");
-        $(".right_bonus>.bonus_box_4").css("background", "rgba(255,255,255 , 0)");
-        $(".right_bonus>.bonus_box_1").css("box-shadow", "0px 0px 10px 2px  rgba(" + right_color + ", 0.8)");
-        $(".right_bonus>.bonus_box_2").css("box-shadow", "0px 0px 10px 2px  rgba(255,255,255 , 0)");
-        $(".right_bonus>.bonus_box_3").css("box-shadow", "0px 0px 10px 2px  rgba(255,255,255 , 0)");
-        $(".right_bonus>.bonus_box_4").css("box-shadow", "0px 0px 10px 2px  rgba(255,255,255 , 0)");
+        $(".Loss_Bonus_B>.Loss_Bonus_BG>.Bottom_Loss>.Box_1").css("background", "rgba(" + right_color + ", 0.8)");
+        $(".Loss_Bonus_B>.Loss_Bonus_BG>.Bottom_Loss>.Box_2").css("background", "rgba(255,255,255 , 0)");
+        $(".Loss_Bonus_B>.Loss_Bonus_BG>.Bottom_Loss>.Box_3").css("background", "rgba(255,255,255 , 0)");
+        $(".Loss_Bonus_B>.Loss_Bonus_BG>.Bottom_Loss>.Box_4").css("background", "rgba(255,255,255 , 0)");
+        $(".Loss_Bonus_B>.Loss_Bonus_BG>.Bottom_Loss>.Box_1").css("box-shadow", "0px 0px 10px 2px  rgba(" + right_color + ", 0.8)");
+        $(".Loss_Bonus_B>.Loss_Bonus_BG>.Bottom_Loss>.Box_2").css("box-shadow", "0px 0px 10px 2px  rgba(255,255,255 , 0)");
+        $(".Loss_Bonus_B>.Loss_Bonus_BG>.Bottom_Loss>.Box_3").css("box-shadow", "0px 0px 10px 2px  rgba(255,255,255 , 0)");
+        $(".Loss_Bonus_B>.Loss_Bonus_BG>.Bottom_Loss>.Box_4").css("box-shadow", "0px 0px 10px 2px  rgba(255,255,255 , 0)");
     } else if (loss_bonus_right == 2) {
         $(".right_bonus>.bonus_box_1").css("background", "rgba(" + right_color + ", 0.8)");
         $(".right_bonus>.bonus_box_2").css("background", "rgba(" + right_color + ", 0.8)");
