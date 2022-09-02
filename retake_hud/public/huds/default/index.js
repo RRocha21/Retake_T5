@@ -176,6 +176,7 @@ function fillObserved(player) {
     }
     if (statistics.armor && statistics.helmet) {
         $(".Spectate_Container>.Spectate_Bar>#armor").append($("<img style='transform: scaleX(-1)'/>").attr("src", "../../files/img/Icons/Icons/Equipment_Helmet.png"));
+        // $(".Spectate_Container>.Spectate_Bar>#armor").append($("<img width='10px' height='10px'/>").attr("src", "../../files/img/Icons/Icons/Equipment_Helmet.png"));
     }
 
 
@@ -1927,7 +1928,7 @@ function updatePage(data) {
             }
             //
             if (phase.phase == "bomb" && bomb_time > "9" || phase.phase == "defuse") {
-                $(".Top_Bar>.Timer_BG>.Timer").html("<font size='20px'>BOMB </font>" + Math.round(bomb_time, -2));
+                $(".Top_Bar>.Timer_BG>.Timer").html("<font size='20px'></font>" + Math.round(bomb_time, -2));
                 var progressbomb_time = bomb_time * 100 / 40 + "%";
                 if (phase.phase !== "defuse") {
                     $(".Progress_Bar>.Center_Bar>.Center_Txt").html("BOMB PLANTED");
