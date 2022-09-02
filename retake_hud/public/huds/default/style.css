@@ -40,7 +40,6 @@ sub {
     width: 445.5px;
     height: 100px;
     z-index: 318;
-    overflow: hidden;
 }
 
 .Top_Bar>.Team_A>.Top_BG {
@@ -51,6 +50,7 @@ sub {
     width: 270.5px;
     height: 100px;
     z-index: 282;
+    overflow: hidden;
 }
 
 .Top_Bar>.Team_A>.Top_BG>.Pause {
@@ -151,13 +151,24 @@ sub {
     z-index: 297;
 }
 
+.Top_Bar>.Team_A>.BO5 {
+    position: absolute;
+    background-color: rgb(99, 64, 243);
+    opacity: 0.2;
+    left: 445.5px;
+    top: 31px;
+    width: 20px;
+    height: 69px;
+    z-index: 450;
+}
+
 .Top_Bar>.Team_A>.BO5_A {
     position: absolute;
     left: 445.5px;
     top: 31px;
     width: 20px;
     height: 69px;
-    z-index: 306;
+    z-index: 450;
 }
 
 .Top_Bar>.Team_A>.BO5_A>.BO5_Team_A_BG {
@@ -168,27 +179,42 @@ sub {
     top: 0px;
     width: 20px;
     height: 69px;
-    z-index: 307;
+    z-index: 451;
 }
 
-.Top_Bar>.Team_A>.BO5_A>.Game_1_Team_A {
-    background-color: rgb(99, 64, 243);
-    position: absolute;
-    left: 6.5px;
-    top: 7px;
+.block {
+    margin-top: 6px;
+    margin-left: 5px;
+    left: 7px;
     width: 8px;
     height: 24px;
-    z-index: 308;
+    border: solid 1px;
+    z-index: 470;
 }
 
-.Top_Bar>.Team_A>.BO5_A>.Game_2_Team_A {
-    background-color: rgb(236, 236, 236);
-    position: absolute;
-    left: 6.5px;
-    bottom: 7px;
-    width: 8px;
+.block.win {
+    margin-top: 6px;
+    width: 7px;
     height: 24px;
-    z-index: 309;
+    border: solid 1px;
+    z-index: 471;
+}
+
+.bo1block {
+    margin-top: 17px;
+    margin-left: 4px;
+    left: 4px;
+    width: 7px;
+    height: 35px;
+    border: solid 2px;
+    z-index: 470;
+}
+
+.bo1block.w7n1 {
+    width: 8px;
+    height: 35px;
+    border: solid 2px;
+    z-index: 471;
 }
 
 .Top_Bar>.Team_B {
@@ -198,7 +224,6 @@ sub {
     width: 445.5px;
     height: 100px;
     z-index: 303;
-    overflow: hidden;
 }
 
 .Top_Bar>.Team_B>.Top_BG {
@@ -209,6 +234,7 @@ sub {
     width: 270.5px;
     height: 100px;
     z-index: 282;
+    overflow: hidden;
 }
 
 .Top_Bar>.Team_B>.Top_BG>.Pause {
@@ -309,13 +335,24 @@ sub {
     z-index: 297;
 }
 
+.Top_Bar>.Team_B>.BO5 {
+    position: absolute;
+    background-color: rgb(99, 64, 243);
+    opacity: 0.2;
+    right: 445.5px;
+    top: 31px;
+    width: 20px;
+    height: 69px;
+    z-index: 450;
+}
+
 .Top_Bar>.Team_B>.BO5_B {
     position: absolute;
     right: 445.5px;
     top: 31px;
     width: 20px;
     height: 69px;
-    z-index: 295;
+    z-index: 450;
 }
 
 .Top_Bar>.Team_B>.BO5_B>.BO5_Team_B_BG {
@@ -326,7 +363,7 @@ sub {
     top: 0px;
     width: 20px;
     height: 69px;
-    z-index: 296;
+    z-index: 451;
 }
 
 .Top_Bar>.Team_B>.BO5_B>.Game_1_Team_B {
@@ -336,7 +373,7 @@ sub {
     top: 7px;
     width: 8px;
     height: 24px;
-    z-index: 297;
+    z-index: 452;
 }
 
 .Top_Bar>.Team_B>.BO5_B>.Game_2_Team_B {
@@ -346,7 +383,7 @@ sub {
     bottom: 7px;
     width: 8px;
     height: 24px;
-    z-index: 298;
+    z-index: 453;
 }
 
 .Top_Bar>.Round_BG {
@@ -3563,5 +3600,8 @@ sub {
 }
 
 -o-transition: all 1s ease 0s !important;
+
+}
+o-transition: all 1s ease 0s !important;
 
 }
