@@ -742,8 +742,8 @@ function updatePage(data) {
         var block = $("<div class='bo1block'></div>");
         var left_bl = $("<div></div>");
         var right_bl = $("<div></div>");
-        block.clone().appendTo($(left_bl)).addClass(match.team_1.map_score > x ? "win" : "");
-        block.clone().appendTo($(right_bl)).addClass(match.team_2.map_score > x ? "win" : "");
+        block.clone().appendTo($(left_bl));
+        block.clone().appendTo($(right_bl));
 
         $(".Top_Bar>.Team_A>.BO5_A").html(left_bl);
         $(".Top_Bar>.Team_B>.BO5_B").html(right_bl);
