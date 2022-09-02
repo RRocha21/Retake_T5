@@ -17,7 +17,7 @@ var SettingsMenu = ( function () {
 			radioid: "KBMouseRadio"                                            
 		},
 		ControllerSettings: {
-			xml: 'settings_steaminput',                                                                      
+			xml: 'settings_controller',
 			radioid: "ControllerRadio"
 		},
 		GameSettings: {
@@ -38,16 +38,56 @@ var SettingsMenu = ( function () {
 		}
 	};
 
-    var _NavigateToTab = function( tabID ) 
-    {
+    var _NavigateToTab = function( tabID ) {
 		
+        var bDisplaySteamInputSettings = false;
+
+        if ( tabID == 'ControllerSettings' )
+        {
+           if ( OptionsMenuAPI.BIsSteamInputActiveAndControllersConnected() )                                                                                
+            {
+                bDisplaySteamInputSettings = true;
+            }
+		}
+	
         var parentPanel = $('#SettingsMenuContent');
 
                                                
                                     
-        if (!parentPanel.FindChildInLayoutFile(tabID)) 
+        if (!parentPanel.FindChildInLayoutFile(tabID))
         {
-            _InitTab(tabID);
+            var newPanel = $.CreatePanel('Panel', parentPanel, tabID);
+                                                             
+
+			let XmlName = tabInfo[ tabID ].xml;
+			if (bDisplaySteamInputSettings) {
+                XmlName = "settings_steaminput";
+            }
+            newPanel.BLoadLayout('file://{resources}/layout/settings/' + XmlName + '.xml', false, false );
+            
+                                                                                        
+                                                                   
+            newPanel.OnPropertyTransitionEndEvent = function ( panelName, propertyName )
+            {   
+                if( newPanel.id === panelName && propertyName === 'opacity')
+                {
+                                                             
+                    if( newPanel.visible === true && newPanel.BIsTransparent() )
+                    {
+                                                                       
+                        newPanel.visible = false;
+                        newPanel.SetReadyForDisplay( false );
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+
+            $.RegisterEventHandler( 'PropertyTransitionEnd', newPanel, newPanel.OnPropertyTransitionEndEvent );
+  
+                                                                                                                
+            newPanel.visible = false;
         }
 
                                                                                   
@@ -78,15 +118,6 @@ var SettingsMenu = ( function () {
             }
 
             SettingsMenuShared.NewTabOpened( activeTab );
-
-			  
-			  
-			  
-            var controllerSettingsStr = 'ControllerSettings';
-            if (tabID == controllerSettingsStr) 
-            {
-                $.DispatchEvent("CSGOControllerSettingsOpened");
-            }
         }
     };
 
@@ -133,52 +164,17 @@ var SettingsMenu = ( function () {
 		p.AddClass('Highlight');
 	}
 
-	var _InitTab = function(tabID) 
-    {
-        var parentPanel = $('#SettingsMenuContent');
-
-        var newPanel = $.CreatePanel('Panel', parentPanel, tabID);
-                                                         
-
-        let XmlName = tabInfo[ tabID ].xml;
-        newPanel.BLoadLayout('file://{resources}/layout/settings/' + XmlName + '.xml', false, false );
-            
-                                                                                    
-                                                               
-        newPanel.OnPropertyTransitionEndEvent = function ( panelName, propertyName )
-        {   
-            if( newPanel.id === panelName && propertyName === 'opacity')
-            {
-                                                         
-                if( newPanel.visible === true && newPanel.BIsTransparent() )
-                {
-                                                                   
-                    newPanel.visible = false;
-                    newPanel.SetReadyForDisplay( false );
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        $.RegisterEventHandler( 'PropertyTransitionEnd', newPanel, newPanel.OnPropertyTransitionEndEvent );
-  
-                                                                                                            
-        newPanel.visible = false;
-    }
 	var _Init = function( )
 	{
 		                                                             
 		for (let tab in tabInfo) {
 			if ( tab !== "Promoted" && tab !== "Search" )
-                _InitTab(tab);
+				_NavigateToTab(tab);
 		}
 	}
 
 	return {
 		Init                            : _Init,
-        InitTab	                        : _InitTab,
 		NavigateToTab	                : _NavigateToTab,
 		NavigateToSetting	            : _NavigateToSetting,
 		NavigateToSettingPanel	        : _NavigateToSettingPanel,

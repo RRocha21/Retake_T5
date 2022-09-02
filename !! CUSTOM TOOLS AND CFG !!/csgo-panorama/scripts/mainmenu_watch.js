@@ -234,7 +234,7 @@ var mainmenu_watch = ( function()
 		{
 			let elTeamLogo = elTeam.FindChildTraverse( 'JsTeamLogo' );
 
-			let teamName = "";
+			let teamName = $.Localize( "#CSGO_PickEm_Team_TBD" );
 			let teamPlaceStr = "";
 
 			if ( oTeamData )
@@ -245,7 +245,6 @@ var mainmenu_watch = ( function()
 				let teamPlaceToken = oTeamData[ 'place_token' ];
 
 				let teamLogo = 'file://{images}/tournaments/teams/' + teamTag.toLowerCase() + '.svg';
-
 				teamName = $.Localize( 'CSGO_TeamID_' + team );
 				teamPlaceStr = $.Localize( teamPlaceToken );
 
@@ -258,10 +257,6 @@ var mainmenu_watch = ( function()
 					  				                                                                                                                    
 					  				                                                             
 				}
-			}
-			else if ( elTeam.id === 'JsChampions' )
-			{
-				teamName = $.Localize( "#CSGO_PickEm_Team_TBD" );
 			}
 
 			elTeam.SetDialogVariable( "team-place", teamPlaceStr );

@@ -1,0 +1,6 @@
+"LightmappedGeneric"
+{
+	"$basetexture" "customstuff/omen/omen-logo-350x350"
+	"$basetexturetransform" "center .5 1 scale 6.5 6.5 rotate 0 translate 0 0"
+	"$translucent" 1
+}

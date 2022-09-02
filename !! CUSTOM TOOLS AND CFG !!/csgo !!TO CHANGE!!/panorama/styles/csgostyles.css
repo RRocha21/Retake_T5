@@ -47,8 +47,8 @@
 @define subMenuFadoutTime: 0.25s; 
 
                    
-@define color-CT: #00c7d1;
-@define color-T: #e5101b;
+@define color-CT: #6340F3;
+@define color-T: #FF4D40;
 
 @define color-icon-bomb: #ffb136;
 @define color-icon-hostage-alive:    yellow;
@@ -194,7 +194,7 @@ Label.MonoNumbersFont, TextEntry.MonoNumbersFont
 
 .fontcolor-white
 {
-	color:white;
+	color:#ECECEC;
 }
 
 .text-align-center
