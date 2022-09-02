@@ -722,7 +722,7 @@ function updatePage(data) {
 
         var block = $("<div class='block'></div>");
         var left_bl = $("<div></div>");
-        var right_bl = $("<div></div>");
+        var right_bl = $("<div'></div>");
         for (var x = 0; x < (matchup == "bo5" ? 3 : 2); x++) {
             block.clone().appendTo($(left_bl)).addClass(match.team_1.map_score > x ? "win" : "");
             block.clone().appendTo($(right_bl)).addClass(match.team_2.map_score > x ? "win" : "");
@@ -1030,9 +1030,9 @@ function updatePage(data) {
         $(".Top_Bar>.Team_B>.Score_Team_B_BG").css("background-image", "url(../../files/img/hud_elements/Score_Team_A_Noise.png)");
 
         $(".Top_Bar>.Team_A>.Logo_Team_A_BG").css("background-image", "url(../../files/img/hud_elements/Logo_Team_B_Noise.png)");
-        $(".Top_Bar>.Team_A>.Logo_Team_A_BG").css("scaleX", "-1");
+        $(".Top_Bar>.Team_A>.Logo_Team_A_BG").css("scaleX", "1");
         $(".Top_Bar>.Team_B>.Logo_Team_B_BG").css("background-image", "url(../../files/img/hud_elements/Logo_Team_A_Noise.png)");
-        $(".Top_Bar>.Team_B>.Logo_Team_B_BG").css("scaleX", "-1");
+        $(".Top_Bar>.Team_B>.Logo_Team_B_BG").css("scaleX", "1");
     }
 
     // Apply
@@ -1423,6 +1423,8 @@ function updatePage(data) {
 
 
 
+
+
     $(".Top_Bar>.Team_A>.Score_Team_A_BG>.Score_Team_A").html(teams.left.score);
     $(".Top_Bar>.Team_B>.Score_Team_B_BG>.Score_Team_B").html(teams.right.score);
 
@@ -1433,11 +1435,14 @@ function updatePage(data) {
         $(".Spam_A > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("background-size", "12px");
         $(".Spam_A > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("top", "1px");
         $(".Spam_A > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("left", "13px");
+        $(".topbar_i_counter>.player_count_left").css("background-image", "url(../../files/img/hud_elements/Score_Team_A_Noise.png)")
     } else if (teams.left.side == "t") {
         $(".Spam_A > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css('background-image', 'url("../../files/img/Icons/Icons/Utility_TMolo.png")');
         $(".Spam_A > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("background-size", "21px");
         $(".Spam_A > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("top", "0px");
         $(".Spam_A > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("left", "10px");
+        $(".topbar_i_counter>.player_count_left").css("background-image", "url(../../files/img/hud_elements/Score_Team_B_Noise.png)")
+
     }
 
     if (teams.right.side == "ct") {
@@ -1445,12 +1450,16 @@ function updatePage(data) {
         $(".Spam_B > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("background-size", "12px");
         $(".Spam_B > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("top", "1px");
         $(".Spam_B > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("left", "13px");
+        $(".topbar_i_counter>.player_count_right").css("background-image", "url(../../files/img/hud_elements/Score_Team_A_Noise.png)")
+
 
     } else if (teams.right.side == "t") {
         $(".Spam_B > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css('background-image', 'url("../../files/img/Icons/Icons/Utility_TMolo.png")');
         $(".Spam_B > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("background-size", "21px");
         $(".Spam_B > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("top", "0px");
         $(".Spam_B > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("left", "10px");
+        $(".topbar_i_counter>.player_count_right").css("background-image", "url(../../files/img/hud_elements/Score_Team_B_Noise.png)")
+
     }
 
     // Update Logos
@@ -1501,11 +1510,11 @@ function updatePage(data) {
 
         function startAnimationDefuse(name, side, long) {
 
-            // if (data.info.bomb.countdown > 0.2) {
-            //     defuse_countdown = data.info.bomb.countdown;
-            // } else if (data.info.bomb.countdown <= 0.2) {
-            //     defuse_countdown = 0.0;
-            // }
+            if (data.info.bomb.countdown > 0.3) {
+                defuse_countdown = data.info.bomb.countdown - 0.2;
+            } else if (data.info.bomb.countdown <= 0.3) {
+                defuse_countdown = 0.0;
+            }
 
             var progress_width;
 
@@ -1693,14 +1702,16 @@ function updatePage(data) {
                 $(".win_container>.win_BG>.background").css("background-image", "url(../../files/img/hud_elements/winner_ct.png)");
             }
 
-            $(".win_container>.team_BG").css("transform", "translate(0px,0px)").css("transition", "transform 0.3s ease-out 0.8s");
-            $(".win_container>.win_BG").css("transform", "translate(0px,0px)").css("transition", "transform 0.0s ease-out 0.5s");
+            $(".win_container>.team_BG").css("transform", "translate(0px,0px)").css("transition", "transform 0.3s ease-out 0.7s");
+            $(".win_container>.win_BG").css("transform", "translate(0px,0px)").css("transition", "transform 0.0s ease-out 0.6s");
+            $(".win_container>.team_BG>.icon").css("animation", "LogoIn 2s ease-out  forwards");
 
         }
 
         function stopAnimationWinner() {
-            $(".win_container>.team_BG").css("transform", "translate(-300px,-300px)").css("transition", "transform 0.0s ease-out 0.5s");
-            $(".win_container>.win_BG").css("transform", "translate(300px,300px)").css("transition", "transform 0.3s ease-out 0.8s");
+            $(".win_container>.team_BG>.icon").css("animation", "LogoOut 0.4s ease-out forwards");
+            $(".win_container>.team_BG").css("transform", "translate(0px,-270px)").css("transition", "transform 0.0s ease-out 1s");
+            $(".win_container>.win_BG").css("transform", "translate(0px,280px)").css("transition", "transform 0.3s ease-out 1s");
 
         }
 
@@ -1885,13 +1896,13 @@ function updatePage(data) {
                 }
 
                 $(".Top_Bar>.Timer_BG>.Timer").text(count_minute + ":" + count_seconds);
-
+                console.log(pause_now_left);
                 if (side == "left") {
-                    $(".Top_Bar>.Team_A>.Top_BG>.Pause>.Pause_Txt").html("Pausa Tatica " + 4 - pause_now_left + "/4");
+                    $(".Top_Bar>.Team_A>.Top_BG>.Pause>.Pause_Text").html("tactical Pause " + (4 - pause_now_left) + "/4");
                     $(".Top_Bar>.Team_A>.Top_BG>.Pause>.Pause_Txt>.Txt").html("TATICAL PAUSE");
                     $(".Top_Bar>.Team_A>.Top_BG>.Pause").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
                 } else if (side == "right") {
-                    $(".Top_Bar>.Team_B>.Top_BG>.Pause>.Pause_Txt").html("Pausa Tatica " + 4 - pause_now_right + "/4");
+                    $(".Top_Bar>.Team_B>.Top_BG>.Pause>.Pause_Text").html("tactical Pause " + (4 - pause_now_right) + "/4");
                     $(".Top_Bar>.Team_B>.Top_BG>.Pause>.Pause_Txt>.Txt").html("TATICAL PAUSE");
                     $(".Top_Bar>.Team_B>.Top_BG>.Pause").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
                 }
