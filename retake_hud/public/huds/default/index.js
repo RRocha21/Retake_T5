@@ -1877,9 +1877,8 @@ function updatePage(data) {
         if (phase.phase == "over") {
             hideSpam();
         }
-
-        var pause_now_left = 4 - teams.left.timeouts;
-        var pause_now_right = 4 - teams.right.timeouts;
+        var pause_now_left = (4 - teams.left.timeouts);
+        var pause_now_right = (4 - teams.right.timeouts);
 
         // Update Timer
 
@@ -1896,7 +1895,7 @@ function updatePage(data) {
                 }
 
                 $(".Top_Bar>.Timer_BG>.Timer").text(count_minute + ":" + count_seconds);
-                console.log(pause_now_left);
+                console.log(pause_now_right);
                 if (side == "left") {
                     $(".Top_Bar>.Team_A>.Top_BG>.Pause>.Pause_Text").html("tactical Pause " + (4 - pause_now_left) + "/4");
                     $(".Top_Bar>.Team_A>.Top_BG>.Pause>.Pause_Txt>.Txt").html("TATICAL PAUSE");
@@ -1952,7 +1951,6 @@ function updatePage(data) {
                 }
                 var progressbomb_time = bomb_time * 100 / 40 + "%";
                 if (teams.left.side == "t") {
-                    console.log("passie");
                     $(".Progress_Bar>.Left_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
                     $(".Progress_Bar>.Left_Team>.Progress").css("width", progressbomb_time).css("transition", "all 0.5s ease-out 0s");
                     $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
