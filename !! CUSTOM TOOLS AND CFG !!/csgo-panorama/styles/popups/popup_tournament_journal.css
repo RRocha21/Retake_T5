@@ -41,9 +41,10 @@
 {
 	blur: fastgaussian( 4, 4, 3 );
     -s2-mix-blend-mode: opaque;
-    brightness: .2;
+    brightness: .1;
+    saturation: .8;
 
-    background-image: url( "file://{images}/tournaments/events/bg_19_fullscreen.png" );
+    background-image: url( "file://{images}/tournaments/events/bg_18_fullscreen.png" );
 	background-repeat: no-repeat;
 	background-size: clip_then_cover;
 	background-position: 50% 0%;

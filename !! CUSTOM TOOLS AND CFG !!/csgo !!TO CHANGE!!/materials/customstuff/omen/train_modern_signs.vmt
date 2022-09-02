@@ -1,0 +1,8 @@
+lightmappedGeneric
+{
+	$baseTexture "customstuff/omen/train_modern_signs"
+	$translucent 1
+	$decal 1
+	$decalscale 0.25
+
+}

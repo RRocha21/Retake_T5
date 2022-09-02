@@ -422,7 +422,7 @@
 					<Label html="true" text="#CSGO_Watch_ServerWebsite" />
 					<Image src="file://{images}/icons/ui/link.svg"/>
 				</Button>
-				<Label id="id-sb-mouse-instructions" html="true"/>
+				<Label id="id-sb-mouse-instructions" />
 			</Panel>
 		</snippet>
 

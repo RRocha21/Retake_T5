@@ -133,7 +133,6 @@ var MainMenuTournamentPassStatus = ( function()
 
 	var _ShowTournamentJournalPanel = function ( id )
 	{
-		                                                             
 		UiToolkitAPI.ShowCustomLayoutPopupParameters(
 			'',
 			'file://{resources}/layout/popups/popup_tournament_journal.xml',

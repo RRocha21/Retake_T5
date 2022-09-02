@@ -49,30 +49,30 @@
    
                                                                                
 
-.money 
+.money
 {
-    width: fit-children;
-            
+    width: fit-children;         
     height: 140px;
+
     opacity: 1.0;
-    margin-top: -52px;
+
+    margin-top:-52px;
     margin-bottom: -12px;
     z-index: 1;
-    transition-property: opacity;
-    transition-timing-function: linear;
-    transition-duration: 0.05s;
+
+	transition-property: opacity;
+	transition-timing-function: linear;
+    transition-duration: 0.1s;
 }
 
-.buymenu CSGOHudMoney.money__in-buy-zone.money__in-buy-time CCSGOSteamInputAction,
-CSGOHudMoney CCSGOSteamInputAction 
+
+
+CSGOHudMoney .steam-button-glyph
 {
     width: 24px;
     height: 24px;
-    opacity: 0;
-    transition-property: opacity;
-    transition-timing-function: linear;
-    transition-duration: 0.05s;
 }
+
 
 .money-text-buy-icon
 {
@@ -86,30 +86,21 @@ CSGOHudMoney CCSGOSteamInputAction
     -s2-mix-blend-mode: additive;
 
     opacity: 0;
-    transition-property: opacity;
-	transition-timing-function: linear;
-    transition-duration: 0.05s;
     img-shadow: 1px 1px 2px 1.0 #00000033;
 
     wash-color-fast: lightgreen;
 }
 
-CCSGOSteamInputAction.money-text-buy-icon 
+CSGOHudMoney.money__in-buy-zone .steam-button-glyph,
+.money__in-buy-zone .money-text-buy-icon
 {
-    wash-color-fast: white;
-    margin-left: 0px;
+    opacity:1;
 }
 
-
-.money__in-buy-zone.money__in-buy-time .money-text-buy-icon 
+.buymenu .buymenu-money CSGOHudMoney.money__in-buy-zone .steam-button-glyph,
+.buymenu .buymenu-money .money__in-buy-zone .money-text-buy-icon
 {
-    opacity: 1;
-}
-
-
-.buymenu .buymenu-money .money__in-buy-zone.money__in-buy-time .money-text-buy-icon 
-{
-    opacity: 0;
+    opacity:0;
 }
 
 .money-text-explorebonus-icon
@@ -398,14 +389,16 @@ CCSGOSteamInputAction.money-text-buy-icon
 }
 
 
-CSGOHudMoney CCSGOSteamInputAction
+CSGOHudMoney CCSGOSteamInputAction.ControllerConnected
 {
     visibility: collapse;
 }
 
-.SteamInputGlyphsActive CSGOHudMoney.money__in-buy-zone.money__in-buy-time CCSGOSteamInputAction.ControllerConnected {
+.SteamInputGlyphsActive CSGOHudMoney.money__in-buy-zone CCSGOSteamInputAction.ControllerConnected 
+{
     visibility: visible;
 }
+
 
 CSGOHudMoney .steam-button-glyph
 {

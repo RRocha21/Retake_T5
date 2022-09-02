@@ -4,7 +4,7 @@ var OpBalanceReminder = ( function()
 {
     var _Init = function()
     {
-        var nSeasonIndex = 10;                                                                                                                   
+        var nSeasonIndex = 9;                                                                                                                   
         if( OperationUtil.ValidateOperationInfo( nSeasonIndex ) )
         {
             var isPremium = OperationUtil.GetOperationInfo().bPremiumUser;
