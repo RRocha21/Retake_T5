@@ -12,9 +12,9 @@ body {
     -moz-border-radius: 0px !important;
     -ms-border-radius: 0px !important;
     -o-border-radius: 0px !important;
-    /* cursor: none;
+    cursor: none;
     user-select: none;
-    pointer-events: none; */
+    pointer-events: none;
 }
 
 sub {

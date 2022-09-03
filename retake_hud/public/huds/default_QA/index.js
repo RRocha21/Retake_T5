@@ -1323,8 +1323,8 @@ function updatePage(data) {
             }
         } else if (total_rounds <= 30) {
             nr = i + 1;
-            z = nr - 16;
-            if (nr > 15) {
+            z = nr - 15;
+            if (nr >= 15) {
                 if (round_wins[nr].startsWith('ct_')) {
                     if (round_wins[nr].startsWith('ct_win_elimination')) {
                         $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_death.png)");
