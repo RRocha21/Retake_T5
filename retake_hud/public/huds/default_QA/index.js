@@ -1293,9 +1293,7 @@ function updatePage(data) {
         $(".Game_History>.History_Text>.Text").html("GAME HISTORY - 2<sup>ND</sup> HALF");
     }
 
-    if (result.length > 30) {
-        $(".Game_History").css("opacity", "0");
-    }
+
 
 
     var flag = 0;
@@ -1353,8 +1351,10 @@ function updatePage(data) {
                     $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "none");
                 }
             }
-        } else {
-            $(".Game_History").css("opacity", "0");
+        } else if (total_rounds > 31) {
+            console.log("paso");
+            $(".Game_History>.History_Text").css("opacity", "0");
+            $(".Game_History>.History_Bar").css("opacity", "0");
         }
     }
 
@@ -1513,7 +1513,7 @@ function updatePage(data) {
         function startAnimationDefuse(name, side, long) {
 
             if (data.info.bomb.countdown > 0.2) {
-                defuse_countdown = data.info.bomb.countdown - 0.1;
+                defuse_countdown = data.info.bomb.countdown;
             } else if (data.info.bomb.countdown <= 0.2) {
                 defuse_countdown = 0.0;
             }
@@ -1521,9 +1521,9 @@ function updatePage(data) {
             var progress_width;
 
             if ($(".Progress_Bar").hasClass("longd")) {
-                progress_width = defuse_countdown * 100 / 10 + "%";
+                progress_width = defuse_countdown * 100 / 10.0 + "%";
             } else {
-                progress_width = defuse_countdown * 100 / 5 + "%";
+                progress_width = defuse_countdown * 100 / 5.0 + "%";
             }
 
             if (side == "left") {
@@ -1539,13 +1539,14 @@ function updatePage(data) {
                 $(".Progress_Bar>.Right_Team>.Progress").css("width", progress_width).css("transition", "all 0.5s ease-out 0s");
                 $(".Progress_Bar>.Right_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
             }
+
             if ($(".Progress_Bar").hasClass("longd")) {
-                if (data.info.bomb.countdown < 9.5) {
+                if (data.info.bomb.countdown < 9.6) {
                     $(".Progress_Bar>.Center_Bar>.Center_Txt").html("DEFUSING BOMB");
                     $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
                 }
             } else {
-                if (data.info.bomb.countdown < 4.5) {
+                if (data.info.bomb.countdown < 4.6) {
                     $(".Progress_Bar>.Center_Bar>.Center_Txt").html("DEFUSING BOMB");
                     $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
                 }
