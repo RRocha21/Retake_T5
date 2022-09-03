@@ -12,9 +12,9 @@ body {
     -moz-border-radius: 0px !important;
     -ms-border-radius: 0px !important;
     -o-border-radius: 0px !important;
-    cursor: none;
+    /* cursor: none;
     user-select: none;
-    pointer-events: none;
+    pointer-events: none; */
 }
 
 sub {
@@ -934,6 +934,21 @@ sub {
     z-index: 162;
 }
 
+.players_left_container>.Player>.Health_Bar>.Flash {
+    background-color: rgba(255, 255, 255, 0.8);
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 250;
+    transition: all 0.4s ease-in-out 0s;
+    -webkit-transition: all 0.4s ease-in-out 0s;
+    -moz-transition: all 0.4s ease-in-out 0s;
+    -ms-transition: all 0.4s ease-in-out 0s;
+    -o-transition: all 0.4s ease-in-out 0s;
+}
+
 .players_left_container>.Player>.Health_Bar>.Health_Bar_Color {
     background-color: rgb(99, 64, 243);
     opacity: 1;
@@ -1012,12 +1027,12 @@ sub {
     text-transform: uppercase;
     font-family: "Anybody Condensed";
     color: rgb(236, 236, 236);
-    font-weight: 600;
-    line-height: 1.10;
+    font-weight: 700;
+    line-height: 1.3;
     letter-spacing: 1;
     text-align: left;
     height: 25px;
-    width: 100px;
+    width: 120px;
     left: 7px;
     top: 22px;
     z-index: 172;
@@ -1284,6 +1299,21 @@ sub {
     z-index: 172;
 }
 
+.players_right_container>.Player>.Health_Bar>.Flash {
+    background-color: rgba(255, 255, 255, 0.8);
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 250;
+    transition: all 0.4s ease-in-out 0s;
+    -webkit-transition: all 0.4s ease-in-out 0s;
+    -moz-transition: all 0.4s ease-in-out 0s;
+    -ms-transition: all 0.4s ease-in-out 0s;
+    -o-transition: all 0.4s ease-in-out 0s;
+}
+
 .players_right_container>.Player>.Health_Bar>.Health_Icon {
     background-image: url("../../files/img/Icons/Icons/Player_Health.png");
     background-position: center;
@@ -1332,12 +1362,12 @@ sub {
     text-transform: uppercase;
     font-family: "Anybody Condensed";
     color: rgb(236, 236, 236);
-    font-weight: 600;
-    line-height: 1.10;
+    font-weight: 700;
+    line-height: 1.30;
     letter-spacing: 1;
     text-align: right;
     height: 25px;
-    width: 100px;
+    width: 120px;
     right: 7px;
     top: 22px;
     z-index: 172;
@@ -2259,6 +2289,24 @@ sub {
     background-color: rgb(99, 64, 243);
 }
 
+.Progress_Bar>.Left_Team>.txt {
+    position: absolute;
+    font-size: 22px;
+    text-transform: uppercase;
+    font-family: "Anybody Condensed";
+    color: rgb(236, 236, 236);
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 1.1;
+    text-align: center;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 487;
+    opacity: 0;
+}
+
 .Progress_Bar>.Right_Team {
     position: absolute;
     right: 0px;
@@ -2289,6 +2337,24 @@ sub {
     height: 25px;
     z-index: 326;
     background-color: rgb(255, 77, 64);
+}
+
+.Progress_Bar>.Right_Team>.txt {
+    position: absolute;
+    font-size: 22px;
+    text-transform: uppercase;
+    font-family: "Anybody Condensed";
+    color: rgb(236, 236, 236);
+    font-weight: 700;
+    line-height: 1.40;
+    letter-spacing: 1.1;
+    text-align: center;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 487;
+    opacity: 0;
 }
 
 .Progress_Bar>.Center_Bar {

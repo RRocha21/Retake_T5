@@ -175,10 +175,8 @@ function fillObserved(player) {
         $(".Spectate_Container>.Spectate_Bar>#armor").append($("<img />").attr("src", "../../files/img/Icons/Icons/Equipment_Shield.png"));
     }
     if (statistics.armor && statistics.helmet) {
-        $(".Spectate_Container>.Spectate_Bar>#armor").append($("<img style='transform: scaleX(-1)'/>").attr("src", "../../files/img/Icons/Icons/Equipment_Helmet.png"));
-        // $(".Spectate_Container>.Spectate_Bar>#armor").append($("<img width='10px' height='10px'/>").attr("src", "../../files/img/Icons/Icons/Equipment_Helmet.png"));
+        $(".Spectate_Container>.Spectate_Bar>#armor").append($("<img style='transform: scaleX(-1) ;width:23px ; height:23px; margin-top: 1px'/>").attr("src", "../../files/img/Icons/Icons/Equipment_Helmet.png"));
     }
-
 
     loadAvatar(player.steamid, function() {
         $(".picture").html($("<img width='130px' height='130px'  />").attr("src", "/av/" + player.steamid));
@@ -497,15 +495,16 @@ function fillPlayer(player, nr, side, max) {
         $player.find(".number").html(player.observer_slot);
 
         $player.find(".Health_Bar>.Health_Bar_Color").css("width", statistics.health + "%");
-        /* Para fazer flash
-                if (statistics.health == 0) {
-                    var flash_amount = 0;
-                } else {
-                    var flash_amount = (statistics.flashed * 0.9 / 255);
-                }
-                $player.find(".flash").css("background", "rgba(255,255,255," + flash_amount + ")");
-        */
-        l_team_value = l_team_value + statistics.money;
+        /* Para fazer flash */
+
+        if (statistics.health == 0) {
+            var flash_amount = 0;
+        } else {
+            var flash_amount = (statistics.flashed * 0.9 / 255);
+        }
+        $player.find(".Flash").css("background", "rgba(255,255,255," + flash_amount + ")");
+
+        // l_team_value = l_team_value + statistics.money;
 
         /*
         if (statistics.health == 0) {
@@ -525,14 +524,15 @@ function fillPlayer(player, nr, side, max) {
         $player.find(".number").html(player.observer_slot);
 
         $player.find(".Health_Bar>.Health_Bar_Color").css("width", statistics.health + "%");
-        /*
+
         if (statistics.health == 0) {
             var flash_amount = 0;
         } else {
             var flash_amount = (statistics.flashed * 0.9 / 255);
         }
-        $player.find(".flash").css("background", "rgba(255,255,255," + flash_amount + ")");
+        $player.find(".Flash").css("background", "rgba(255,255,255," + flash_amount + ")");
 
+        /*
         if (statistics.health == 0) {
             gradient = "linear-gradient(to " + side + ", rgb(25,25,25)" + (100 - statistics.health) + "%, " + health_color + " " + (100 - statistics.health) + "%)";
             if ($top.find(".player_bar").hasClass("test")) {} else {
@@ -562,15 +562,15 @@ function fillPlayer(player, nr, side, max) {
 
         $player.find(".Health_Bar>.Health_Bar_Color").css("width", statistics.health + "%");
 
-        /*
+
         if (statistics.health == 0) {
             var flash_amount = 0;
             0
         } else {
             var flash_amount = (statistics.flashed * 0.9 / 255);
         }
-        $player.find(".flash").css("background", "rgba(255,255,255," + flash_amount + ")");
-
+        $player.find(".Flash").css("background", "rgba(255,255,255," + flash_amount + ")");
+        /*
         if (statistics.health == 0) {
             gradient = "linear-gradient(to " + side + ", rgb(25,25,25)" + (100 - statistics.health) + "%, " + health_color + " " + (100 - statistics.health) + "%)";
             if ($top.find(".player_bar").hasClass("test")) {} else {
@@ -1287,11 +1287,13 @@ function updatePage(data) {
     }
 
     var total_rounds = teams.left.score + teams.right.score;
+    var total = total_rounds + 1;
     if (result.length < 15) {
         $(".Game_History>.History_Text>.Text").html("GAME HISTORY - 1<sup>ST</sup> HALF");
     } else {
         $(".Game_History>.History_Text>.Text").html("GAME HISTORY - 2<sup>ND</sup> HALF");
     }
+
 
     var flag = 0;
     var z = 0;
@@ -1529,12 +1531,16 @@ function updatePage(data) {
 
             if (side == "left") {
                 $(".Progress_Bar>.Center_Bar>.Center_Txt").html("DEFUSING BOMB");
+                $(".Progress_Bar>.Left_Team>.txt").css("opacity", "1");
+                $(".Progress_Bar>.Left_Team>.txt").html(name);
                 $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
                 $(".Progress_Bar>.Left_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px,0px)");
                 $(".Progress_Bar>.Left_Team>.Progress").css("width", progress_width).css("transition", "all 0.5s ease-out 0s");
                 $(".Progress_Bar>.Left_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
             } else {
                 $(".Progress_Bar>.Center_Bar>.Center_Txt").html("DEFUSING BOMB");
+                $(".Progress_Bar>.Right_Team>.txt").css("opacity", "1");
+                $(".Progress_Bar>.Right_Team>.txt").html(name);
                 $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
                 $(".Progress_Bar>.Right_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px,0px)");
                 $(".Progress_Bar>.Right_Team>.Progress").css("width", progress_width).css("transition", "all 0.5s ease-out 0s");
@@ -1565,13 +1571,15 @@ function updatePage(data) {
             }, 500);
         }
 
-        function startAnimationPlanting(name, side, long) {
+        function startAnimationPlanting(name, side) {
 
             var countdown = parseFloat(3.2) - parseFloat(data.info.bomb.countdown);
             countdown = countdown.toFixed(1);
             var progress_width = countdown * 100 / 3 + "%";
 
             if (side == "left") {
+                $(".Progress_Bar>.Left_Team>.txt").css("opacity", "1");
+                $(".Progress_Bar>.Left_Team>.txt").html(name);
                 $(".Progress_Bar>.Center_Bar>.Center_Txt").html("PLANTING BOMB");
                 $(".Progress_Bar>.Left_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
                 $(".Progress_Bar>.Left_Team>.Progress").css("width", progress_width).css("transition", "all 0.5s ease-out 0s");
@@ -1579,6 +1587,8 @@ function updatePage(data) {
                 $(".Progress_Bar>.Left_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
 
             } else {
+                $(".Progress_Bar>.Right_Team>.txt").css("opacity", "1");
+                $(".Progress_Bar>.Right_Team>.txt").html(name);
                 $(".Progress_Bar>.Center_Bar>.Center_Txt").html("PLANTING BOMB");
                 $(".Progress_Bar>.Right_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
                 $(".Progress_Bar>.Right_Team>.Progress").css("width", progress_width).css("transition", "all 0.5s ease-out 0s");
@@ -1592,10 +1602,12 @@ function updatePage(data) {
             setTimeout(function() {
                 if ($(".Progress_Bar>.Center_Bar>.Center_Txt").text() == "PLANTING BOMB") {
                     if (teams.left.side == "t") {
+                        $(".Progress_Bar>.Left_Team>.txt").css("opacity", "0");
                         $(".Progress_Bar>.Center_Bar>.Center_Txt").html(" ");
                         $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(-40px)");
                         $(".Progress_Bar>.Left_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(-40px)");
                     } else if (teams.right.side == "t") {
+                        $(".Progress_Bar>.Right_Team>.txt").css("opacity", "0");
                         $(".Progress_Bar>.Center_Bar>.Center_Txt").html(" ");
                         $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(-40px)");
                         $(".Progress_Bar>.Right_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(-40px)");
@@ -1703,16 +1715,17 @@ function updatePage(data) {
                 $(".win_container>.win_BG>.background").css("background-image", "url(../../files/img/hud_elements/winner_ct.png)");
             }
 
-            $(".win_container>.team_BG").css("transform", "translate(0px,0px)").css("transition", "transform 0.3s ease-out 0.7s");
-            $(".win_container>.win_BG").css("transform", "translate(0px,0px)").css("transition", "transform 0.0s ease-out 0.6s");
-            $(".win_container>.team_BG>.icon").css("animation", "LogoIn 2s ease-out  forwards");
-
+            $(".win_container>.team_BG").css("transform", "translate(0px,0px)").css("transition", "transform 0.0s ease-out 0.4s");
+            $(".win_container>.team_BG>.icon").css("animation", "LogoIn 1s ease-out  forwards");
+            $(".win_container>.win_BG").css("transform", "translate(0px,0px)").css("transition", "transform 0.4s ease-out 0.8s");
+            $(".win_contianer>.win_BG>.txt").css("transform", "translate(0px,0px)").css("transition", "transform 0.9s ease-out 1.2s");
         }
 
         function stopAnimationWinner() {
-            $(".win_container>.team_BG>.icon").css("animation", "LogoOut 0.4s ease-out forwards");
-            $(".win_container>.team_BG").css("transform", "translate(0px,-270px)").css("transition", "transform 0.0s ease-out 1s");
-            $(".win_container>.win_BG").css("transform", "translate(0px,280px)").css("transition", "transform 0.3s ease-out 1s");
+            $(".win_container>.team_BG>.icon").css("animation", "LogoOut 0.5s ease-out forwards");
+            $(".win_container>.team_BG").css("transform", "translate(0px,-270px)").css("transition", "transform 0.6s ease-out 0.9s");
+            $(".win_container>.win_BG").css("transform", "translate(0px,280px)").css("transition", "transform 0.6s ease-out 0.9s");
+            $(".win_contianer>.win_BG>.txt").css("transform", "translate(0px,280px)").css("transition", "transform 0.6s ease-out 0.9s");
 
         }
 
@@ -1896,7 +1909,6 @@ function updatePage(data) {
                 }
 
                 $(".Top_Bar>.Timer_BG>.Timer").text(count_minute + ":" + count_seconds);
-                console.log(pause_now_right);
                 if (side == "left") {
                     $(".Top_Bar>.Team_A>.Top_BG>.Pause>.Pause_Text").html("tactical Pause " + (4 - pause_now_left) + "/4");
                     $(".Top_Bar>.Team_A>.Top_BG>.Pause>.Pause_Txt>.Txt").html("TATICAL PAUSE");
@@ -1934,11 +1946,13 @@ function updatePage(data) {
                     $(".Progress_Bar>.Center_Bar>.Center_Txt").html("BOMB PLANTED");
                 }
                 if (teams.left.side == "t") {
+                    $(".Progress_Bar>.Left_Team>.txt").css("opacity", "0");
                     $(".Progress_Bar>.Left_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
                     $(".Progress_Bar>.Left_Team>.Progress").css("width", progressbomb_time).css("transition", "all 0.5s ease-out 0s");
                     $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
                     $(".Progress_Bar>.Left_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
                 } else if (teams.right.side == "t") {
+                    $(".Progress_Bar>.Right_Team>.txt").css("opacity", "0");
                     $(".Progress_Bar>.Right_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
                     $(".Progress_Bar>.Right_Team>.Progress").css("width", progressbomb_time).css("transition", "all 0.5s ease-out 0s");
                     $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
@@ -1952,11 +1966,13 @@ function updatePage(data) {
                 }
                 var progressbomb_time = bomb_time * 100 / 40 + "%";
                 if (teams.left.side == "t") {
+                    $(".Progress_Bar>.Left_Team>.txt").css("opacity", "0");
                     $(".Progress_Bar>.Left_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
                     $(".Progress_Bar>.Left_Team>.Progress").css("width", progressbomb_time).css("transition", "all 0.5s ease-out 0s");
                     $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
                     $(".Progress_Bar>.Left_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
                 } else if (teams.right.side == "t") {
+                    $(".Progress_Bar>.Right_Team>.txt").css("opacity", "0");
                     $(".Progress_Bar>.Right_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
                     $(".Progress_Bar>.Right_Team>.Progress").css("width", progressbomb_time).css("transition", "all 0.5s ease-out 0s");
                     $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
