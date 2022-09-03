@@ -104,7 +104,7 @@ function fillObserved(player) {
     $playeractive.find(".separator").css("opacity", "1");
 
     if (player.team == "CT" && teams.left.side == "ct") {
-        $(".Spectate_Container>.Spectate_Bar").css("background-image", "url(../../files/img/hud_elements/Texture_Fluid_CT.png)")
+        $(".Spectate_Container>.Spectate_Bar").css("background-image", "url(../../files/img/hud_elements/Texture_Fluid_CT_v2.png)")
         $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate_Background").css("background-color", "rgba(" + ct_color + ",0.2)");
         $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate").css("background-color", "rgb(" + ct_color + ")");
 
@@ -114,7 +114,7 @@ function fillObserved(player) {
 
 
     } else if (player.team == "CT" && teams.right.side == "ct") {
-        $(".Spectate_Container>.Spectate_Bar").css("background-image", "url(../../files/img/hud_elements/Texture_Fluid_CT.png)")
+        $(".Spectate_Container>.Spectate_Bar").css("background-image", "url(../../files/img/hud_elements/Texture_Fluid_CT_v2.png)")
         $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate_Background").css("background-color", "rgb(" + ct_color + ",0.2)");
         $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate ").css("background-color", "rgb(" + ct_color + ")");
 
@@ -125,7 +125,7 @@ function fillObserved(player) {
 
 
     } else if (player.team == "T" && teams.left.side == "t") {
-        $(".Spectate_Container>.Spectate_Bar").css("background-image", "url(../../files/img/hud_elements/Texture_Fluid_T.png)")
+        $(".Spectate_Container>.Spectate_Bar").css("background-image", "url(../../files/img/hud_elements/Texture_Fluid_T_v2.png)")
         $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate_Background").css("background-color", "rgba(" + t_color + ",0.2)");
         $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate").css("background-color", "rgb(" + t_color + ")");
 
@@ -135,7 +135,7 @@ function fillObserved(player) {
 
 
     } else if (player.team == "T" && teams.right.side == "t") {
-        $(".Spectate_Container>.Spectate_Bar").css("background-image", "url(../../files/img/hud_elements/Texture_Fluid_T.png)")
+        $(".Spectate_Container>.Spectate_Bar").css("background-image", "url(../../files/img/hud_elements/Texture_Fluid_T_v2.png)")
         $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate_Background").css("background-color", "rgba(" + t_color + ",0.2)");
         $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate ").css("background-color", "rgb(" + t_color + ")");
 
@@ -1708,20 +1708,26 @@ function updatePage(data) {
             } else if (gameside == "t") {
                 $(".win_container>.team_BG>.icon").css("background-image", "url(../../files/img/Logo_Retake.png)");
                 $(".win_container>.win_BG>.true_team").html(name);
-                $(".win_container>.win_BG>.background").css("background-image", "url(../../files/img/hud_elements/winner_ct.png)");
+                $(".win_container>.win_BG>.background").css("background-image", "url(../../files/img/hud_elements/winner_t.png)");
             }
 
-            $(".win_container>.team_BG").css("transform", "translate(0px,0px)").css("transition", "transform 0.0s ease-out 0.3s");
-            $(".win_container>.team_BG>.icon").css("animation", "LogoIn 1s ease-out  forwards");
-            $(".win_container>.win_BG").css("transform", "translate(0px,0px)").css("transition", "transform 0.3s ease-out 0.6s");
-            $(".win_container>.win_BG>.txt").css("transform", "translate(0px,0px)").css("transition", "transform 0.7s ease-out 0.9s");
+            $(".win_container>.team_BG").css("transform", "translate(0px,0px)").css("transition", "transform 0.3s ease 0.0s");
+            $(".win_container>.team_BG>.icon").css("animation", "LogoIn 0.5s ease forwards");
+            $(".win_container>.win_BG").css("transform", "translate(0px,0px)").css("transition", "transform 0.3s ease 0.6s");
+            $(".win_container>.win_BG>.true_team").css("transform", "translate(0px,0px)").css("transition", "transform 0.3s ease 0.8s");
+            $(".win_container>.win_BG>.txt").css("transform", "translate(0px,0px)").css("transition", "transform 0.3s ease 1s");
+
         }
 
         function stopAnimationWinner() {
-            $(".win_container>.team_BG>.icon").css("animation", "LogoOut 0.5s ease-out forwards");
-            $(".win_container>.team_BG").css("transform", "translate(0px,-270px)").css("transition", "transform 0.7s ease-out 0.9s");
-            $(".win_container>.win_BG").css("transform", "translate(0px,280px)").css("transition", "transform 0.7s ease-out 0.9s");
-            $(".win_container>.win_BG>.txt").css("transform", "translate(0px,280px)").css("transition", "transform 0.7s ease-out 0.9s");
+
+            $(".win_container>.win_BG>.true_team").css("transform", "translate(0px,-280px)").css("transition", "transform 0.3s ease 0s");
+            $(".win_container>.win_BG>.txt").css("transform", "translate(0px,280px)").css("transition", "transform 0.3s ease 0.2s");
+            $(".win_container>.win_BG").css("transform", "translate(0px,280px)").css("transition", "transform 0.3s ease 0.4s");
+
+            $(".win_container>.team_BG>.icon").css("animation", "LogoOut 0.3s ease forwards");
+            $(".win_container>.team_BG").css("transform", "translate(0px,-270px)").css("transition", "transform 0.3s ease 0.4s");
+
         }
 
         // SHOW SPAM & FIREPOWER
@@ -1905,11 +1911,12 @@ function updatePage(data) {
 
                 $(".Top_Bar>.Timer_BG>.Timer").text(count_minute + ":" + count_seconds);
                 if (side == "left") {
-                    $(".Top_Bar>.Team_A>.Top_BG>.Pause>.Pause_Text").html("tactical Pause " + (4 - pause_now_left) + "/4");
+                    $(".Top_Bar>.Team_A>.Top_BG>.Pause>.Pause_Text").html("tactical Pause " + pause_now_left + "/4");
                     $(".Top_Bar>.Team_A>.Top_BG>.Pause>.Pause_Txt>.Txt").html("TATICAL PAUSE");
                     $(".Top_Bar>.Team_A>.Top_BG>.Pause").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
+
                 } else if (side == "right") {
-                    $(".Top_Bar>.Team_B>.Top_BG>.Pause>.Pause_Text").html("tactical Pause " + (4 - pause_now_right) + "/4");
+                    $(".Top_Bar>.Team_B>.Top_BG>.Pause>.Pause_Text").html("tactical Pause " + pause_now_left + "/4");
                     $(".Top_Bar>.Team_B>.Top_BG>.Pause>.Pause_Txt>.Txt").html("TATICAL PAUSE");
                     $(".Top_Bar>.Team_B>.Top_BG>.Pause").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
                 }
@@ -1935,7 +1942,7 @@ function updatePage(data) {
             }
             //
             if (phase.phase == "bomb" && bomb_time > "9" || phase.phase == "defuse") {
-                $(".Top_Bar>.Timer_BG>.Timer").html("<font size='20px'></font>" + Math.round(bomb_time, -2));
+                $(".Top_Bar>.Timer_BG>.Timer").html(Math.round(bomb_time, -2));
                 var progressbomb_time = bomb_time * 100 / 40 + "%";
                 if (phase.phase !== "defuse") {
                     $(".Progress_Bar>.Center_Bar>.Center_Txt").html("BOMB PLANTED");
@@ -1955,7 +1962,7 @@ function updatePage(data) {
                 }
 
             } else if (phase.phase == "bomb" && bomb_time <= "9.99999" && bomb_time >= "0") {
-                $(".Top_Bar>.Timer_BG>.Timer").html("<font size='20px'>BOMB </font>" + Math.round(bomb_time, -2));
+                $(".Top_Bar>.Timer_BG>.Timer").html(Math.round(bomb_time, -2));
                 if (phase.phase !== "defuse") {
                     $(".Progress_Bar>.Center_Bar>.Center_Txt").html("BOMB PLANTED");
                 }
