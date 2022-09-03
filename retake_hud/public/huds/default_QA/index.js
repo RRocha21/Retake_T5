@@ -1293,6 +1293,10 @@ function updatePage(data) {
         $(".Game_History>.History_Text>.Text").html("GAME HISTORY - 2<sup>ND</sup> HALF");
     }
 
+    if (result.length > 30) {
+        $(".Game_History").css("opacity", "0");
+    }
+
 
     var flag = 0;
     var z = 0;
