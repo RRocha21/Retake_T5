@@ -1508,9 +1508,9 @@ function updatePage(data) {
 
         function startAnimationDefuse(name, side, long) {
 
-            if (data.info.bomb.countdown > 0.3) {
+            if (data.info.bomb.countdown > 0.2) {
                 defuse_countdown = data.info.bomb.countdown - 0.2;
-            } else if (data.info.bomb.countdown <= 0.3) {
+            } else if (data.info.bomb.countdown <= 0.2) {
                 defuse_countdown = 0.0;
             }
 
@@ -1522,22 +1522,35 @@ function updatePage(data) {
                 progress_width = defuse_countdown * 100 / 5 + "%";
             }
 
-
-
             if (side == "left") {
-                if (data.info.bomb.countdown > 0.3) {
-                    $(".Progress_Bar>.Center_Bar>.Center_Txt").html("DEFUSING BOMB");
-                    $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
+                if ($(".Progress_Bar").hasClass("longd")) {
+                    if (data.info.bomb.countdown < 9.7) {
+                        $(".Progress_Bar>.Center_Bar>.Center_Txt").html("DEFUSING BOMB");
+                        $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
+                    }
+                } else {
+                    if (data.info.bomb.countdown < 4.7) {
+                        $(".Progress_Bar>.Center_Bar>.Center_Txt").html("DEFUSING BOMB");
+                        $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
+                    }
                 }
+
                 $(".Progress_Bar>.Left_Team>.txt").css("opacity", "1");
                 $(".Progress_Bar>.Left_Team>.txt").html(name);
                 $(".Progress_Bar>.Left_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px,0px)");
                 $(".Progress_Bar>.Left_Team>.Progress").css("width", progress_width).css("transition", "all 0.5s ease-out 0s");
                 $(".Progress_Bar>.Left_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
             } else {
-                if (data.info.bomb.countdown > 0.3) {
-                    $(".Progress_Bar>.Center_Bar>.Center_Txt").html("DEFUSING BOMB");
-                    $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
+                if ($(".Progress_Bar").hasClass("longd")) {
+                    if (data.info.bomb.countdown < 9.7) {
+                        $(".Progress_Bar>.Center_Bar>.Center_Txt").html("DEFUSING BOMB");
+                        $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
+                    }
+                } else {
+                    if (data.info.bomb.countdown < 4.7) {
+                        $(".Progress_Bar>.Center_Bar>.Center_Txt").html("DEFUSING BOMB");
+                        $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
+                    }
                 }
                 $(".Progress_Bar>.Right_Team>.txt").css("opacity", "1");
                 $(".Progress_Bar>.Right_Team>.txt").html(name);
