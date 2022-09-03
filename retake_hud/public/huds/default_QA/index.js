@@ -1350,7 +1350,7 @@ function updatePage(data) {
                 }
             }
         } else {
-            $(".round_winner").css("opacity", "0");
+            $(".Game_History").css("opacity", "0");
         }
     }
 
