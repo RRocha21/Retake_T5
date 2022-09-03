@@ -1524,12 +1524,12 @@ function updatePage(data) {
 
             if (side == "left") {
                 if ($(".Progress_Bar").hasClass("longd")) {
-                    if (data.info.bomb.countdown < 9.7) {
+                    if (data.info.bomb.countdown < 9.5) {
                         $(".Progress_Bar>.Center_Bar>.Center_Txt").html("DEFUSING BOMB");
                         $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
                     }
                 } else {
-                    if (data.info.bomb.countdown < 4.7) {
+                    if (data.info.bomb.countdown < 4.5) {
                         $(".Progress_Bar>.Center_Bar>.Center_Txt").html("DEFUSING BOMB");
                         $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
                     }
@@ -1542,12 +1542,12 @@ function updatePage(data) {
                 $(".Progress_Bar>.Left_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
             } else {
                 if ($(".Progress_Bar").hasClass("longd")) {
-                    if (data.info.bomb.countdown < 9.7) {
+                    if (data.info.bomb.countdown < 9.5) {
                         $(".Progress_Bar>.Center_Bar>.Center_Txt").html("DEFUSING BOMB");
                         $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
                     }
                 } else {
-                    if (data.info.bomb.countdown < 4.7) {
+                    if (data.info.bomb.countdown < 4.5) {
                         $(".Progress_Bar>.Center_Bar>.Center_Txt").html("DEFUSING BOMB");
                         $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
                     }
