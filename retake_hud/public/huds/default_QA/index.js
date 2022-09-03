@@ -43,7 +43,7 @@ var dark_t_color = "44, 43, 48";
 var black_color = "44, 43, 48";
 var white_color = "236, 236, 236";
 
-var warning = "229, 16, 27";
+var warning = "255, 77, 64";
 
 
 /* -------------------------------- */
@@ -243,9 +243,9 @@ function fillPlayers(teams) {
                 pl_molo = 0;
                 pl_flash = 0;
 
-                l_alive = 0;
                 left_team_value = l_team_value;
                 l_team_value = 0;
+                l_alive = 0;
             }
         }
     }
@@ -269,6 +269,7 @@ function fillPlayers(teams) {
                 pr_smoke = 0;
                 pr_molo = 0;
                 pr_flash = 0;
+
                 right_team_value = r_team_value;
                 r_team_value = 0;
                 r_alive = 0;
@@ -504,7 +505,7 @@ function fillPlayer(player, nr, side, max) {
         }
         $player.find(".Flash").css("background", "rgba(255,255,255," + flash_amount + ")");
 
-        // l_team_value = l_team_value + statistics.money;
+        l_team_value = l_team_value + statistics.money;
 
         /*
         if (statistics.health == 0) {
