@@ -43,7 +43,7 @@ var dark_t_color = "44, 43, 48";
 var black_color = "44, 43, 48";
 var white_color = "236, 236, 236";
 
-var warning = "255, 77, 64";
+var warning = "207, 255, 62";
 
 
 /* -------------------------------- */
