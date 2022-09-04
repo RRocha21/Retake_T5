@@ -1324,7 +1324,7 @@ function updatePage(data) {
                     $(".Game_History>.History_Bar>.Right_Team>.Round_n" + nr + ">.Result").css("background-image", "none");
                 }
             }
-        } else if (total_rounds <= 30) {
+        } else if (total_rounds < 30) {
             nr = i + 1;
             z = nr - 15;
             if (nr >= 15) {
@@ -1527,16 +1527,16 @@ function updatePage(data) {
             }
 
             if (side == "left") {
+                $(".Progress_Bar>.Left_Team>.Progress").css("width", progress_width).css("transition", "all 0.5s ease-out 0s");
                 $(".Progress_Bar>.Left_Team>.txt").css("opacity", "1");
                 $(".Progress_Bar>.Left_Team>.txt").html(name);
                 $(".Progress_Bar>.Left_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px,0px)");
-                $(".Progress_Bar>.Left_Team>.Progress").css("width", progress_width).css("transition", "all 0.5s ease-out 0s");
                 $(".Progress_Bar>.Left_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
             } else {
+                $(".Progress_Bar>.Left_Team>.Progress").css("width", progress_width).css("transition", "all 0.5s ease-out 0s");
                 $(".Progress_Bar>.Right_Team>.txt").css("opacity", "1");
                 $(".Progress_Bar>.Right_Team>.txt").html(name);
                 $(".Progress_Bar>.Right_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px,0px)");
-                $(".Progress_Bar>.Right_Team>.Progress").css("width", progress_width).css("transition", "all 0.5s ease-out 0s");
                 $(".Progress_Bar>.Right_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
             }
 
@@ -1931,7 +1931,6 @@ function updatePage(data) {
                     $(".Top_Bar>.Team_B>.Top_BG>.Pause>.Pause_Txt>.Txt").html("TATICAL PAUSE");
                     $(".Top_Bar>.Team_B>.Top_BG>.Pause").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
                 }
-                console.log(pause_now_right);
             }
 
             function stopAnimationPause(side) {
