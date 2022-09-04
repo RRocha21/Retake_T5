@@ -673,11 +673,11 @@ sub {
 }
 
 .Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Spectate {
-    font-size: 20px;
+    font-size: 19px;
     font-family: "Anybody Condensed";
     color: rgb(236, 236, 236);
     font-weight: bold;
-    letter-spacing: 1.7;
+    letter-spacing: 1.6;
     line-height: 1.1;
     text-align: center;
     position: absolute;
@@ -733,11 +733,11 @@ sub {
 }
 
 .Spectate_Container>.Spectate_Bar>.Ammo_Spectate_BG>.Ammo_Spectate {
-    font-size: 20px;
+    font-size: 19px;
     font-family: "Anybody Condensed";
     color: rgb(236, 236, 236);
     font-weight: bold;
-    letter-spacing: 1.7;
+    letter-spacing: 1.6;
     line-height: 1.1;
     text-align: center;
     position: absolute;
