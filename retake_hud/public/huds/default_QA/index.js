@@ -449,13 +449,20 @@ function fillPlayer(player, nr, side, max) {
     }
 
     //PLAYER KILLS AND DEATHS
-    /*
-    if (statistics.round_kills > 0) {
-        $bottom.find(".k").html(statistics.kills + "<sup> (" + statistics.round_kills + ")</sup>");
+    if (player.observer_slot <= 5) {
+        $player.find(".Round_Kills").removeClass("dead_left_kills").addClass("alive_kills").removeClass(statistics.health == 0 ? "alive_kills" : "").addClass(statistics.health == 0 ? "dead_left_kills" : "");
     } else {
-        $bottom.find(".k").html(statistics.kills);
+        $player.find(".Round_Kills").removeClass("dead_right_kills").addClass("alive_kills").removeClass(statistics.health == 0 ? "alive_kills" : "").addClass(statistics.health == 0 ? "dead_right_kills" : "");
+
     }
-    */
+
+    if (statistics.round_kills > 0) {
+        $player.find(".background>.frags").html(statistics.round_kills);
+        $player.find(".Round_kills>.background").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
+    } else {
+        $player.find(".Round_kills>.background").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(-75px)");
+    }
+
 
     $player.find(".Kills").html(statistics.kills);
     $player.find(".Deaths").html(statistics.deaths);
@@ -470,6 +477,7 @@ function fillPlayer(player, nr, side, max) {
 
     $player.removeClass("dead").addClass("alive").removeClass(statistics.health == 0 ? "alive" : "").addClass(statistics.health == 0 ? "dead" : "");
     $player.find(".health_text").removeClass("dead_life").addClass("alive_life").removeClass(statistics.health == 0 ? "alive_life" : "").addClass(statistics.health == 0 ? "dead_life" : "");
+
     if (flag_replays == 1) {
         $player.addClass("replays");
     }
