@@ -1350,7 +1350,7 @@ function updatePage(data) {
                     $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "none");
                 }
             }
-        } else if (total_rounds > 30) {
+        } else {
             console.log("paso");
             $(".Game_History>.History_Text").css("opacity", "0");
             $(".Game_History>.History_Bar").css("opacity", "0");
