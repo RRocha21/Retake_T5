@@ -1341,7 +1341,6 @@ function updatePage(data) {
                 }
 
                 if (round_wins[nr].startsWith('t_')) {
-                    $(".round_winner>.team_left_" + nr).css("box-shadow", "inset 0 -15px 13px  rgba(" + t_color + ",0.8)");
                     if (round_wins[nr].startsWith('t_win_elimination')) {
                         $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/t_death.png)");
                     } else if (round_wins[nr].startsWith('t_win_bomb')) {
@@ -1351,7 +1350,7 @@ function updatePage(data) {
                     $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "none");
                 }
             }
-        } else if (total_rounds > 31) {
+        } else if (total_rounds > 30) {
             console.log("paso");
             $(".Game_History>.History_Text").css("opacity", "0");
             $(".Game_History>.History_Bar").css("opacity", "0");
