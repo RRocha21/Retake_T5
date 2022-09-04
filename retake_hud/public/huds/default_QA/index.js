@@ -996,9 +996,14 @@ function updatePage(data) {
     var round_now = teams.left.score + teams.right.score + 1;
     $(".Top_Bar>.Round_BG>.Round").html("ROUND " + round_now + "/30");
 
+    var right_name = teams.right.name;
+    var left_name = teams.left.name;
+    if (right_name.length > 14) right_name = right_name.substring(0, 14);
+    if (left_name.length > 14) left_name = left_name.substring(0, 14);
+
     // Update Names
-    $(".Top_Bar>.Team_A>.Top_BG>.Team_A_Name").html(teams.left.name);
-    $(".Top_Bar>.Team_B>.Top_BG>.Team_B_Name").html(teams.right.name);
+    $(".Top_Bar>.Team_A>.Top_BG>.Team_A_Name").html(left_name);
+    $(".Top_Bar>.Team_B>.Top_BG>.Team_B_Name").html(right_name);
 
 
     // Update Colors
