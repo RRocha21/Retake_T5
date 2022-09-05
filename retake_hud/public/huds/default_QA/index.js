@@ -630,7 +630,7 @@ function fillPlayer(player, nr, side, max) {
     $player.find(".Weapon>.Weapon_Icon").css("opacity", "0");
     $player.find("#utility").html("");
 
-
+    var best = 0;
     for (let key in weapons) {
         let weapon = weapons[key];
         let name = weapon.name.replace("weapon_", "");
@@ -647,16 +647,17 @@ function fillPlayer(player, nr, side, max) {
             } else if (type) {
                 view += side == "right" ? " img-hor" : "";
                 if (type == "Pistol") {
-                    if (side == "right") {
-                        $player.find(".Weapon>.Weapon_Icon").css("background-image", " url(../../files/img/weapons/" + name + ".png)")
-                        $player.find(".Weapon>.Weapon_Icon").css("opacity", "1");
-                    } else {
-                        $player.find(".Weapon>.Weapon_Icon").css("background-image", " url(../../files/img/weapons/" + name + ".png)")
-                        $player.find(".Weapon>.Weapon_Icon").css("opacity", "1");
+                    if (best == 0) {
+                        if (side == "right") {
+                            $player.find(".Weapon>.Weapon_Icon").css("background-image", " url(../../files/img/weapons/" + name + ".png)")
+                            $player.find(".Weapon>.Weapon_Icon").css("opacity", "1");
+                        } else {
+                            $player.find(".Weapon>.Weapon_Icon").css("background-image", " url(../../files/img/weapons/" + name + ".png)")
+                            $player.find(".Weapon>.Weapon_Icon").css("opacity", "1");
+                        }
                     }
-
                 } else {
-
+                    best = 1;
                     if (side == "right") {
                         $player.find(".Weapon>.Weapon_Icon").css("background-image", " url(../../files/img/weapons/" + name + ".png)")
                         $player.find(".Weapon>.Weapon_Icon").css("opacity", "1");
@@ -1509,8 +1510,8 @@ function updatePage(data) {
 
     }
 
-    //OBSERVED PLAYER
 
+    //OBSERVED PLAYER
     if (observed && observed.steamid != 1 && observed.getStats()) {
         fillObserved(observed);
     }
@@ -1525,17 +1526,19 @@ function updatePage(data) {
         function startAnimationDefuse(name, side, long) {
 
             if (data.info.bomb.countdown > 0.2) {
-                defuse_countdown = data.info.bomb.countdown;
+                defuse_countdown = data.info.bomb.countdown - 0.1;
             } else if (data.info.bomb.countdown <= 0.2) {
                 defuse_countdown = 0.0;
             }
 
             var progress_width;
 
-            if ($(".Progress_Bar").hasClass("longd")) {
-                progress_width = defuse_countdown * 100 / 10.0 + "%";
+            if ($(".Progress_Bar>.Center_Bar").hasClass("longd")) {
+                console.log("errou");
+                progress_width = defuse_countdown * 100 / 10 + "%";
             } else {
-                progress_width = defuse_countdown * 100 / 5.0 + "%";
+                console.log("entrou");
+                progress_width = defuse_countdown * 100 / 5 + "%";
             }
 
             if (side == "left") {
@@ -1545,14 +1548,14 @@ function updatePage(data) {
                 $(".Progress_Bar>.Left_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px,0px)");
                 $(".Progress_Bar>.Left_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
             } else {
-                $(".Progress_Bar>.Left_Team>.Progress").css("width", progress_width).css("transition", "all 0.5s ease-out 0s");
+                $(".Progress_Bar>.Right_Team>.Progress").css("width", progress_width).css("transition", "all 0.5s ease-out 0s");
                 $(".Progress_Bar>.Right_Team>.txt").css("opacity", "1");
                 $(".Progress_Bar>.Right_Team>.txt").html(name);
                 $(".Progress_Bar>.Right_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px,0px)");
                 $(".Progress_Bar>.Right_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
             }
 
-            if ($(".Progress_Bar").hasClass("longd")) {
+            if ($(".Progress_Bar>.Center_Bar").hasClass("longd")) {
                 if (data.info.bomb.countdown < 9.6) {
                     $(".Progress_Bar>.Center_Bar>.Center_Txt").html("DEFUSING BOMB");
                     $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
@@ -1685,7 +1688,7 @@ function updatePage(data) {
 
 
                 if (data.info.bomb.countdown > 5) {
-                    $(".Progress_Bar").addClass("longd");
+                    $(".Progress_Bar>.Center_Bar").addClass("longd");
                 }
 
 
@@ -1928,19 +1931,13 @@ function updatePage(data) {
 
                 var progress_width = phase.phase_ends_in * 100 / 30 + "%";
 
-                if (phase.phase_ends_in < 0.2) {
-                    stopAnimationPause();
-                }
-
                 $(".Top_Bar>.Timer_BG>.Timer").text(count_minute + ":" + count_seconds);
                 if (side == "left") {
                     $(".Top_Bar>.Team_A>.Top_BG>.Pause>.Pause_Text").html("tactical Pause " + pause_now_left + "/4");
-                    $(".Top_Bar>.Team_A>.Top_BG>.Pause>.Pause_Txt>.Txt").html("TATICAL PAUSE");
                     $(".Top_Bar>.Team_A>.Top_BG>.Pause").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
 
                 } else if (side == "right") {
                     $(".Top_Bar>.Team_B>.Top_BG>.Pause>.Pause_Text").html("tactical Pause " + pause_now_right + "/4");
-                    $(".Top_Bar>.Team_B>.Top_BG>.Pause>.Pause_Txt>.Txt").html("TATICAL PAUSE");
                     $(".Top_Bar>.Team_B>.Top_BG>.Pause").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
                 }
             }
@@ -1949,7 +1946,6 @@ function updatePage(data) {
 
 
                 setTimeout(function() {
-
                     $(".Top_Bar>.Team_A>.Top_BG>.Pause").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateX(300px)");
                     $(".Top_Bar>.Team_B>.Top_BG>.Pause").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateX(-300px)");
 
@@ -2027,9 +2023,10 @@ function updatePage(data) {
                     stopAnimationWinner();
                     //hideFirePower();
                     hideBonus();
-                    showGiveaway();
+                    // showGiveaway();
                 }
             } else {
+                stopAnimationPause();
                 $(".Top_Bar>.Timer_BG>.Timer").text(count_minute + ":" + count_seconds).css("font-size", "60px");
 
                 if (data.info.bomb.state !== "planting") {
