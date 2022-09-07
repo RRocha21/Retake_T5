@@ -2473,6 +2473,7 @@ sub {
     height: 25px;
     z-index: 326;
     background-color: rgb(99, 64, 243);
+    transition: all 0.5s ease 0s;
 }
 
 .Progress_Bar>.Left_Team>.txt {
@@ -2523,6 +2524,7 @@ sub {
     height: 25px;
     z-index: 326;
     background-color: rgb(255, 77, 64);
+    transition: all 0.5s ease 0s;
 }
 
 .Progress_Bar>.Right_Team>.txt {

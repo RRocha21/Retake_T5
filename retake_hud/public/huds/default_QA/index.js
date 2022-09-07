@@ -1337,9 +1337,12 @@ function updatePage(data) {
     } else if (total_rounds < 60) {
         $(".Game_History>.History_Text>.Text").html("GAME HISTORY - 5<sup>TH</sup> OVERTIME");
         $(".Game_History>.History_Bar>.Overtime_Divider").css("opacity", "1");
+    } else {
+
+        $(".Game_History>.History_Bar>.Overtime_Divider").css("opacity", "0");
+        $(".Game_History>.History_Text").css("opacity", "0");
+        $(".Game_History>.History_Bar").css("opacity", "0");
     }
-
-
 
 
     var flag = 0;
@@ -1624,7 +1627,6 @@ function updatePage(data) {
                         $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "none");
                     }
                 }
-
             }
         } else if (total_rounds < 60) {
             nr = i + 1
@@ -1684,6 +1686,9 @@ function updatePage(data) {
                 }
 
             }
+        } else {
+            $(".Game_History>.History_Text").css("opacity", "0");
+            $(".Game_History>.History_Bar").css("opacity", "0");
         }
     }
 
@@ -1854,24 +1859,22 @@ function updatePage(data) {
             var progress_width;
 
             if ($(".Progress_Bar>.Center_Bar").hasClass("longd")) {
-                console.log("errou");
                 progress_width = defuse_countdown * 100 / 10 + "%";
             } else {
-                console.log("entrou");
                 progress_width = defuse_countdown * 100 / 5 + "%";
             }
 
             if (side == "left") {
-                $(".Progress_Bar>.Left_Team>.Progress").css("width", progress_width).css("transition", "all 0.5s ease-out 0s");
+                $(".Progress_Bar>.Left_Team>.Progress").css("width", progress_width).css("transition", "width 1s ease 0s");
                 $(".Progress_Bar>.Left_Team>.txt").css("opacity", "1");
                 $(".Progress_Bar>.Left_Team>.txt").html(name);
-                $(".Progress_Bar>.Left_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px,0px)");
+                $(".Progress_Bar>.Left_Team>.Progress").css("transition", "transform 0.5s ease 0s").css("transform", "translate(0px,0px)");
                 $(".Progress_Bar>.Left_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
             } else {
-                $(".Progress_Bar>.Right_Team>.Progress").css("width", progress_width).css("transition", "all 0.5s ease-out 0s");
+                $(".Progress_Bar>.Right_Team>.Progress").css("width", progress_width).css("transition", "width 1s ease 0s");
                 $(".Progress_Bar>.Right_Team>.txt").css("opacity", "1");
                 $(".Progress_Bar>.Right_Team>.txt").html(name);
-                $(".Progress_Bar>.Right_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px,0px)");
+                $(".Progress_Bar>.Right_Team>.Progress").css("transition", "transform 0.5s ease 0s").css("transform", "translate(0px,0px)");
                 $(".Progress_Bar>.Right_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
             }
 
@@ -2289,13 +2292,13 @@ function updatePage(data) {
                 if (teams.left.side == "t") {
                     $(".Progress_Bar>.Left_Team>.txt").css("opacity", "0");
                     $(".Progress_Bar>.Left_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
-                    $(".Progress_Bar>.Left_Team>.Progress").css("width", progressbomb_time).css("transition", "all 0.5s ease-out 0s");
+                    $(".Progress_Bar>.Left_Team>.Progress").css("width", progressbomb_time).css("transition", "all 0.5s ease 0s");
                     $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
                     $(".Progress_Bar>.Left_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
                 } else if (teams.right.side == "t") {
                     $(".Progress_Bar>.Right_Team>.txt").css("opacity", "0");
                     $(".Progress_Bar>.Right_Team>.Progress").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
-                    $(".Progress_Bar>.Right_Team>.Progress").css("width", progressbomb_time).css("transition", "all 0.5s ease-out 0s");
+                    $(".Progress_Bar>.Right_Team>.Progress").css("width", progressbomb_time).css("transition", "all 0.5s ease 0s");
                     $(".Progress_Bar>.Center_Bar").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
                     $(".Progress_Bar>.Right_Team").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
                 }
