@@ -1282,10 +1282,12 @@ function updatePage(data) {
 
     /* EQUIPMENT MONEY START*/
 
-    $(".Equipment_B>.Equipment_BG>.True_Equip_Money>.Money_Txt").css("color", "rgb(" + right_color + ")");
-    $(".Equipment_B>.Equipment_BG>.True_Team_Money>.Money_Txt").css("color", "rgb(" + right_color + ")");
-    $(".Equipment_A>.Equipment_BG>.True_Equip_Money>.Money_Txt").css("color", "rgb(" + left_color + ")");
-    $(".Equipment_A>.Equipment_BG>.True_Team_Money>.Money_Txt").css("color", "rgb(" + left_color + ")");
+    $(".Equipment_B>.Equipment_BG>.True_Equip_Money>.Money_Txt").css("color", "rgb(243,243,243)");
+    $(".Equipment_B>.Equipment_BG>.True_Team_Money>.Money_Txt").css("color", "rgb(243,243,243)");
+    $(".Equipment_A>.Equipment_BG>.True_Equip_Money>.Money_Txt").css("color", "rgb(243,243,243)");
+    $(".Equipment_A>.Equipment_BG>.True_Team_Money>.Money_Txt").css("color", "rgb(243,243,243)");
+
+
 
     $(".Equipment_B>.Equipment_BG>.True_Team_Money>.Money_Txt").html("$ " + right_team_value);
     $(".Equipment_B>.Equipment_BG>.True_Equip_Money>.Money_Txt").html("$ " + right.equip_value);
@@ -1294,17 +1296,47 @@ function updatePage(data) {
 
 
     /* EQUIPMENT MONEY FINITO*/
-    for (i = 0; i <= 15; i++) {
-        $(".Game_History>.History_Bar>.Left_Team>.Round_n" + i + ">.Result").css("background-image", "url(../../files/img/History/dot.png)");
-        $(".Game_History>.History_Bar>.Right_Team>.Round_n" + i + ">.Result").css("background-image", "url(../../files/img/History/dot.png)");
-    }
 
     var total_rounds = teams.left.score + teams.right.score;
     var total = total_rounds + 1;
-    if (result.length < 15) {
-        $(".Game_History>.History_Text>.Text").html("GAME HISTORY - 1<sup>ST</sup> HALF");
+
+    if (total_rounds < 30) {
+        for (i = 0; i <= 15; i++) {
+            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + i + ">.Result").css("background-image", "url(../../files/img/History/dot.png)");
+            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + i + ">.Result").css("background-image", "url(../../files/img/History/dot.png)");
+        }
     } else {
+        for (i = 0; i <= 15; i++) {
+            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + i + ">.Result").css("background-image", "none");
+            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + i + ">.Result").css("background-image", "none");
+        }
+        for (i = 1; i <= 15; i += 2) {
+            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + i + ">.Result").css("background-image", "url(../../files/img/History/dot.png)");
+            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + i + ">.Result").css("background-image", "url(../../files/img/History/dot.png)");
+        }
+    }
+
+    if (total_rounds < 15) {
+        $(".Game_History>.History_Text>.Text").html("GAME HISTORY - 1<sup>ST</sup> HALF");
+        $(".Game_History>.History_Bar>.Overtime_Divider").css("opacity", "0");
+    } else if (total_rounds < 30) {
         $(".Game_History>.History_Text>.Text").html("GAME HISTORY - 2<sup>ND</sup> HALF");
+        $(".Game_History>.History_Bar>.Overtime_Divider").css("opacity", "0");
+    } else if (total_rounds < 36) {
+        $(".Game_History>.History_Text>.Text").html("GAME HISTORY - 1<sup>ST</sup> OVERTIME");
+        $(".Game_History>.History_Bar>.Overtime_Divider").css("opacity", "1");
+    } else if (total_rounds < 42) {
+        $(".Game_History>.History_Text>.Text").html("GAME HISTORY - 2<sup>ND</sup> OVERTIME");
+        $(".Game_History>.History_Bar>.Overtime_Divider").css("opacity", "1");
+    } else if (total_rounds < 48) {
+        $(".Game_History>.History_Text>.Text").html("GAME HISTORY - 3<sup>RD</sup> OVERTIME");
+        $(".Game_History>.History_Bar>.Overtime_Divider").css("opacity", "1");
+    } else if (total_rounds < 54) {
+        $(".Game_History>.History_Text>.Text").html("GAME HISTORY - 4<sup>TH</sup> OVERTIME");
+        $(".Game_History>.History_Bar>.Overtime_Divider").css("opacity", "1");
+    } else if (total_rounds < 60) {
+        $(".Game_History>.History_Text>.Text").html("GAME HISTORY - 5<sup>TH</sup> OVERTIME");
+        $(".Game_History>.History_Bar>.Overtime_Divider").css("opacity", "1");
     }
 
 
@@ -1312,7 +1344,8 @@ function updatePage(data) {
 
     var flag = 0;
     var z = 0;
-    for (i = 0; i < result.length; i++) {
+    var y = 0;
+    for (i = 0; i < total_rounds; i++) {
         if (total_rounds < 15) {
             nr = i + 1;
             if (nr < 15) {
@@ -1364,10 +1397,293 @@ function updatePage(data) {
                     $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "none");
                 }
             }
-        } else {
-            console.log("paso");
-            $(".Game_History>.History_Text").css("opacity", "0");
-            $(".Game_History>.History_Bar").css("opacity", "0");
+        } else if (total_rounds < 36) {
+            nr = i + 1
+            y = nr - 30;
+
+            if (nr == 31) z = 1;
+            if (nr == 32) z = 3;
+            if (nr == 33) z = 5;
+            if (nr == 34) z = 11;
+            if (nr == 35) z = 13;
+            if (nr == 36) z = 15;
+            if (nr > 30) {
+                if (y <= 3) {
+                    if (round_wins[y].startsWith('ct_')) {
+                        if (round_wins[y].startsWith('ct_win_elimination')) {
+                            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_death.png)");
+                        } else if (round_wins[y].startsWith('ct_win_defuse')) {
+                            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_defuse.png)");
+                        } else if (round_wins[y].startsWith('ct_win_time')) {
+                            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_time.png)");
+                        }
+                    } else {
+                        $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "none");
+                    }
+
+                    if (round_wins[y].startsWith('t_')) {
+                        if (round_wins[y].startsWith('t_win_elimination')) {
+                            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/t_death.png)");
+                        } else if (round_wins[y].startsWith('t_win_bomb')) {
+                            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/t_bomb.png)");
+                        }
+                    } else {
+                        $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "none");
+                    }
+                } else {
+                    if (round_wins[y].startsWith('ct_')) {
+                        if (round_wins[y].startsWith('ct_win_elimination')) {
+                            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_death.png)");
+                        } else if (round_wins[y].startsWith('ct_win_defuse')) {
+                            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_defuse.png)");
+                        } else if (round_wins[y].startsWith('ct_win_time')) {
+                            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_time.png)");
+                        }
+                    } else {
+                        $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "none");
+                    }
+
+                    if (round_wins[y].startsWith('t_')) {
+                        if (round_wins[y].startsWith('t_win_elimination')) {
+                            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/t_death.png)");
+                        } else if (round_wins[y].startsWith('t_win_bomb')) {
+                            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/t_bomb.png)");
+                        }
+                    } else {
+                        $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "none");
+                    }
+                }
+            }
+        } else if (total_rounds < 42) {
+            nr = i + 1
+            y = nr - 36;
+
+            if (nr == 37) z = 1;
+            if (nr == 38) z = 3;
+            if (nr == 39) z = 5;
+            if (nr == 40) z = 11;
+            if (nr == 41) z = 13;
+            if (nr == 42) z = 15;
+            if (nr > 36) {
+                if (y <= 3) {
+                    if (round_wins[y].startsWith('ct_')) {
+                        if (round_wins[y].startsWith('ct_win_elimination')) {
+                            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_death.png)");
+                        } else if (round_wins[y].startsWith('ct_win_defuse')) {
+                            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_defuse.png)");
+                        } else if (round_wins[y].startsWith('ct_win_time')) {
+                            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_time.png)");
+                        }
+                    } else {
+                        $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "none");
+                    }
+
+                    if (round_wins[y].startsWith('t_')) {
+                        if (round_wins[y].startsWith('t_win_elimination')) {
+                            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/t_death.png)");
+                        } else if (round_wins[y].startsWith('t_win_bomb')) {
+                            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/t_bomb.png)");
+                        }
+                    } else {
+                        $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "none");
+                    }
+                } else {
+                    if (round_wins[y].startsWith('ct_')) {
+                        if (round_wins[y].startsWith('ct_win_elimination')) {
+                            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_death.png)");
+                        } else if (round_wins[y].startsWith('ct_win_defuse')) {
+                            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_defuse.png)");
+                        } else if (round_wins[y].startsWith('ct_win_time')) {
+                            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_time.png)");
+                        }
+                    } else {
+                        $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "none");
+                    }
+
+                    if (round_wins[y].startsWith('t_')) {
+                        if (round_wins[y].startsWith('t_win_elimination')) {
+                            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/t_death.png)");
+                        } else if (round_wins[y].startsWith('t_win_bomb')) {
+                            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/t_bomb.png)");
+                        }
+                    } else {
+                        $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "none");
+                    }
+                }
+            }
+        } else if (total_rounds < 48) {
+            nr = i + 1
+            y = nr - 42;
+
+            if (nr == 43) z = 1;
+            if (nr == 44) z = 3;
+            if (nr == 45) z = 5;
+            if (nr == 46) z = 11;
+            if (nr == 47) z = 13;
+            if (nr == 48) z = 15;
+            if (nr > 42) {
+                if (y <= 3) {
+                    if (round_wins[y].startsWith('ct_')) {
+                        if (round_wins[y].startsWith('ct_win_elimination')) {
+                            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_death.png)");
+                        } else if (round_wins[y].startsWith('ct_win_defuse')) {
+                            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_defuse.png)");
+                        } else if (round_wins[y].startsWith('ct_win_time')) {
+                            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_time.png)");
+                        }
+                    } else {
+                        $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "none");
+                    }
+
+                    if (round_wins[y].startsWith('t_')) {
+                        if (round_wins[y].startsWith('t_win_elimination')) {
+                            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/t_death.png)");
+                        } else if (round_wins[y].startsWith('t_win_bomb')) {
+                            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/t_bomb.png)");
+                        }
+                    } else {
+                        $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "none");
+                    }
+                } else {
+                    if (round_wins[y].startsWith('ct_')) {
+                        if (round_wins[y].startsWith('ct_win_elimination')) {
+                            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_death.png)");
+                        } else if (round_wins[y].startsWith('ct_win_defuse')) {
+                            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_defuse.png)");
+                        } else if (round_wins[y].startsWith('ct_win_time')) {
+                            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_time.png)");
+                        }
+                    } else {
+                        $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "none");
+                    }
+
+                    if (round_wins[y].startsWith('t_')) {
+                        if (round_wins[y].startsWith('t_win_elimination')) {
+                            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/t_death.png)");
+                        } else if (round_wins[y].startsWith('t_win_bomb')) {
+                            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/t_bomb.png)");
+                        }
+                    } else {
+                        $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "none");
+                    }
+                }
+            }
+        } else if (total_rounds < 54) {
+            nr = i + 1
+            y = nr - 48;
+
+            if (nr == 49) z = 1;
+            if (nr == 50) z = 3;
+            if (nr == 51) z = 5;
+            if (nr == 52) z = 11;
+            if (nr == 53) z = 13;
+            if (nr == 54) z = 15;
+            if (nr > 48) {
+                if (y <= 3) {
+                    if (round_wins[y].startsWith('ct_')) {
+                        if (round_wins[y].startsWith('ct_win_elimination')) {
+                            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_death.png)");
+                        } else if (round_wins[y].startsWith('ct_win_defuse')) {
+                            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_defuse.png)");
+                        } else if (round_wins[y].startsWith('ct_win_time')) {
+                            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_time.png)");
+                        }
+                    } else {
+                        $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "none");
+                    }
+
+                    if (round_wins[y].startsWith('t_')) {
+                        if (round_wins[y].startsWith('t_win_elimination')) {
+                            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/t_death.png)");
+                        } else if (round_wins[y].startsWith('t_win_bomb')) {
+                            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/t_bomb.png)");
+                        }
+                    } else {
+                        $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "none");
+                    }
+                } else {
+                    if (round_wins[y].startsWith('ct_')) {
+                        if (round_wins[y].startsWith('ct_win_elimination')) {
+                            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_death.png)");
+                        } else if (round_wins[y].startsWith('ct_win_defuse')) {
+                            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_defuse.png)");
+                        } else if (round_wins[y].startsWith('ct_win_time')) {
+                            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_time.png)");
+                        }
+                    } else {
+                        $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "none");
+                    }
+
+                    if (round_wins[y].startsWith('t_')) {
+                        if (round_wins[y].startsWith('t_win_elimination')) {
+                            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/t_death.png)");
+                        } else if (round_wins[y].startsWith('t_win_bomb')) {
+                            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/t_bomb.png)");
+                        }
+                    } else {
+                        $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "none");
+                    }
+                }
+
+            }
+        } else if (total_rounds < 60) {
+            nr = i + 1
+            y = nr - 54;
+
+            if (nr == 55) z = 1;
+            if (nr == 56) z = 3;
+            if (nr == 57) z = 5;
+            if (nr == 58) z = 11;
+            if (nr == 59) z = 13;
+            if (nr == 60) z = 15;
+            if (nr > 54) {
+                if (y <= 3) {
+                    if (round_wins[y].startsWith('ct_')) {
+                        if (round_wins[y].startsWith('ct_win_elimination')) {
+                            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_death.png)");
+                        } else if (round_wins[y].startsWith('ct_win_defuse')) {
+                            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_defuse.png)");
+                        } else if (round_wins[y].startsWith('ct_win_time')) {
+                            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_time.png)");
+                        }
+                    } else {
+                        $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "none");
+                    }
+
+                    if (round_wins[y].startsWith('t_')) {
+                        if (round_wins[y].startsWith('t_win_elimination')) {
+                            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/t_death.png)");
+                        } else if (round_wins[y].startsWith('t_win_bomb')) {
+                            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/t_bomb.png)");
+                        }
+                    } else {
+                        $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "none");
+                    }
+                } else {
+                    if (round_wins[y].startsWith('ct_')) {
+                        if (round_wins[y].startsWith('ct_win_elimination')) {
+                            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_death.png)");
+                        } else if (round_wins[y].startsWith('ct_win_defuse')) {
+                            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_defuse.png)");
+                        } else if (round_wins[y].startsWith('ct_win_time')) {
+                            $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/ct_time.png)");
+                        }
+                    } else {
+                        $(".Game_History>.History_Bar>.Left_Team>.Round_n" + z + ">.Result").css("background-image", "none");
+                    }
+
+                    if (round_wins[y].startsWith('t_')) {
+                        if (round_wins[y].startsWith('t_win_elimination')) {
+                            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/t_death.png)");
+                        } else if (round_wins[y].startsWith('t_win_bomb')) {
+                            $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "url(../../files/img/History/t_bomb.png)");
+                        }
+                    } else {
+                        $(".Game_History>.History_Bar>.Right_Team>.Round_n" + z + ">.Result").css("background-image", "none");
+                    }
+                }
+
+            }
         }
     }
 
@@ -1451,12 +1767,14 @@ function updatePage(data) {
         $(".Spam_A > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("top", "1px");
         $(".Spam_A > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("left", "13px");
         $(".topbar_i_counter>.player_count_left").css("background-image", "url(../../files/img/hud_elements/Score_Team_A_Noise.png)")
+        $(".Equipment_A>.Equipment_BG").css("background-image", "url(../../files/img/hud_elements/Score_Team_A_Noise.png");
     } else if (teams.left.side == "t") {
         $(".Spam_A > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css('background-image', 'url("../../files/img/Icons/Icons/Utility_TMolo.png")');
         $(".Spam_A > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("background-size", "21px");
         $(".Spam_A > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("top", "0px");
         $(".Spam_A > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("left", "10px");
         $(".topbar_i_counter>.player_count_left").css("background-image", "url(../../files/img/hud_elements/Score_Team_B_Noise.png)")
+        $(".Equipment_A>.Equipment_BG").css("background-image", "url(../../files/img/hud_elements/Score_Team_B_Noise.png");
 
     }
 
@@ -1466,6 +1784,7 @@ function updatePage(data) {
         $(".Spam_B > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("top", "1px");
         $(".Spam_B > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("left", "13px");
         $(".topbar_i_counter>.player_count_right").css("background-image", "url(../../files/img/hud_elements/Score_Team_A_Noise.png)")
+        $(".Equipment_B>.Equipment_BG").css("background-image", "url(../../files/img/hud_elements/Score_Team_A_Noise.png");
 
 
     } else if (teams.right.side == "t") {
@@ -1473,7 +1792,8 @@ function updatePage(data) {
         $(".Spam_B > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("background-size", "21px");
         $(".Spam_B > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("top", "0px");
         $(".Spam_B > .Spam_BG > .Bottom_Spam > .Inc > .Inc_Icon ").css("left", "10px");
-        $(".topbar_i_counter>.player_count_right").css("background-image", "url(../../files/img/hud_elements/Score_Team_B_Noise.png)")
+        $(".topbar_i_counter>.player_count_right").css("background-image", "url(../../files/img/hud_elements/Score_Team_B_Noise.png)");
+        $(".Equipment_B>.Equipment_BG").css("background-image", "url(../../files/img/hud_elements/Score_Team_B_Noise.png");
 
     }
 
