@@ -179,7 +179,7 @@ function fillObserved(player) {
     }
 
     loadAvatar(player.steamid, function() {
-        $(".picture").html($("<img width='130px' height='130px'  />").attr("src", "/av/" + player.steamid));
+        $(".Photo_Area>.Player_Photo").html($("<img width='180px' height='180px'  />").attr("src", "/av/" + player.steamid));
     });
 
 }
