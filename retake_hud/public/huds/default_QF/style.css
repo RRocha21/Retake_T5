@@ -116,6 +116,7 @@ sub {
     width: 445.5px;
     height: 100px;
     z-index: 318;
+    overflow: hidden;
 }
 
 .Top_Bar>.Team_A>.Top_BG {
@@ -125,7 +126,7 @@ sub {
     top: 0px;
     width: 270.5px;
     height: 100px;
-    z-index: 282;
+    z-index: 50;
     overflow: hidden;
 }
 
@@ -297,6 +298,7 @@ sub {
     width: 445.5px;
     height: 100px;
     z-index: 303;
+    overflow: hidden;
 }
 
 .Top_Bar>.Team_B>.Top_BG {
@@ -306,7 +308,7 @@ sub {
     top: 0px;
     width: 270.5px;
     height: 100px;
-    z-index: 282;
+    z-index: 50;
     overflow: hidden;
 }
 
@@ -3629,14 +3631,13 @@ sub {
     background-image: url(../../files/img/hud_elements/win_text.png);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 65%;
+    background-size: 500px;
     position: absolute;
     left: 0px;
-    top: 63px;
+    top: 27px;
     width: 100%;
     height: 100%;
     z-index: 13;
-    transform: translate(0px, 280px);
 }
 
 .win_container>.team_BG {
@@ -3998,4 +3999,43 @@ sub {
     -moz-transition: all 1s ease 0s !important;
     -ms-transition: all 1s ease 0s !important;
     -o-transition: all 1s ease 0s !important;
+}
+
+.hide_right_team_name {
+    transition: all 1s ease 0s !important;
+    -webkit-transition: all 1s ease 0s !important;
+    -moz-transition: all 1s ease 0s !important;
+    -ms-transition: all 1s ease 0s !important;
+    -o-transition: all 1s ease 0s !important;
+    transform: translate(-240px, 0px) !important;
+    -webkit-transform: translate(-240px, 0px) !important;
+    -moz-transform: translate(-240px, 0px) !important;
+    -ms-transform: translate(-240px, 0px) !important;
+    -o-transform: translate(-240px, 0px) !important;
+}
+
+.hide_left_team_name {
+    transition: all 1s ease 0s !important;
+    -webkit-transition: all 1s ease 0s !important;
+    -moz-transition: all 1s ease 0s !important;
+    -ms-transition: all 1s ease 0s !important;
+    -o-transition: all 1s ease 0s !important;
+    transform: translate(240px, 0px) !important;
+    -webkit-transform: translate(240px, 0px) !important;
+    -moz-transform: translate(240px, 0px) !important;
+    -ms-transform: translate(240px, 0px) !important;
+    -o-transform: translate(240px, 0px) !important;
+}
+
+.show_team_name {
+    transition: all 1s ease 0s !important;
+    -webkit-transition: all 1s ease 0s !important;
+    -moz-transition: all 1s ease 0s !important;
+    -ms-transition: all 1s ease 0s !important;
+    -o-transition: all 1s ease 0s !important;
+    transform: translate(0px, 0px) !important;
+    -webkit-transform: translate(0px, 0px) !important;
+    -moz-transform: translate(0px, 0px) !important;
+    -ms-transform: translate(0px, 0px) !important;
+    -o-transform: translate(0px, 0px) !important;
 }

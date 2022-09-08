@@ -1862,7 +1862,7 @@ function updatePage(data) {
         function startAnimationDefuse(name, side, long) {
 
             if (data.info.bomb.countdown > 0.2) {
-                defuse_countdown = data.info.bomb.countdown - 0.1;
+                defuse_countdown = data.info.bomb.countdown - 0.2;
             } else if (data.info.bomb.countdown <= 0.2) {
                 defuse_countdown = 0.0;
             }
@@ -1871,9 +1871,12 @@ function updatePage(data) {
 
             if ($(".Progress_Bar>.Center_Bar").hasClass("longd")) {
                 progress_width = defuse_countdown * 100 / 10 + "%";
+                console.log("fodeu");
             } else {
+                console.log("entrou aqui");
                 progress_width = defuse_countdown * 100 / 5 + "%";
             }
+
             if (side == "left") {
                 $(".Progress_Bar>.Left_Team>.Progress").css("width", progress_width).css("transition", "all 0.5s ease 0s");
                 $(".Progress_Bar>.Left_Team>.txt").css("opacity", "1");
@@ -1905,7 +1908,7 @@ function updatePage(data) {
 
         function stopAnimationDefuse() {
 
-            $(".Progress_Bar").hasClass("longd");
+            $(".Progress_Bar>.Center_Bar").hasClass("longd");
 
             setTimeout(function() {
                 if ($(".Progress_Bar>.Center_Bar>.Center_Txt").text() == "DEFUSING BOMB") {
@@ -1929,7 +1932,7 @@ function updatePage(data) {
             var countdown = parseFloat(3.2) - parseFloat(data.info.bomb.countdown);
             countdown = countdown.toFixed(1);
             var progress_width = countdown * 100 / 3 + "%";
-
+            showTeamName();
             if (side == "left") {
                 $(".Progress_Bar>.Left_Team>.txt").css("opacity", "1");
                 $(".Progress_Bar>.Left_Team>.txt").html(name);
@@ -1954,6 +1957,7 @@ function updatePage(data) {
 
             setTimeout(function() {
                 if ($(".Progress_Bar>.Center_Bar>.Center_Txt").text() == "PLANTING BOMB") {
+                    hideTeamName();
                     if (teams.left.side == "t") {
                         $(".Progress_Bar>.Left_Team>.txt").css("opacity", "0");
                         $(".Progress_Bar>.Center_Bar>.Center_Txt").html(" ");
@@ -2020,7 +2024,7 @@ function updatePage(data) {
                 }
 
 
-                if (data.info.bomb.countdown > 5) {
+                if (data.info.bomb.countdown > 6.0) {
                     $(".Progress_Bar>.Center_Bar").addClass("longd");
                 }
 
@@ -2060,14 +2064,26 @@ function updatePage(data) {
 
         function startAnimationWinner(side, name, gameside) {
 
-            if (gameside == "ct") {
-                $(".win_container>.team_BG>.icon").css("background-image", "url(../../files/img/Logo_Retake.png)");
-                $(".win_container>.win_BG>.true_team").html(name);
-                $(".win_container>.win_BG>.background").css("background-image", "url(../../files/img/hud_elements/winner_ct.png)");
-            } else if (gameside == "t") {
-                $(".win_container>.team_BG>.icon").css("background-image", "url(../../files/img/Logo_Retake.png)");
-                $(".win_container>.win_BG>.true_team").html(name);
-                $(".win_container>.win_BG>.background").css("background-image", "url(../../files/img/hud_elements/winner_t.png)");
+            if (side == "left") {
+                if (gameside == "ct") {
+                    $(".win_container>.team_BG>.icon").css("background-image", 'url("/teams/' + teams.left.logo + '")');
+                    $(".win_container>.win_BG>.true_team").html(name);
+                    $(".win_container>.win_BG>.background").css("background-image", "url(../../files/img/hud_elements/winner_ct.png)");
+                } else if (gameside == "t") {
+                    $(".win_container>.team_BG>.icon").css("background-image", 'url("/teams/' + teams.left.logo + '")');
+                    $(".win_container>.win_BG>.true_team").html(name);
+                    $(".win_container>.win_BG>.background").css("background-image", "url(../../files/img/hud_elements/winner_t.png)");
+                }
+            } else if (side == "right") {
+                if (gameside == "ct") {
+                    $(".win_container>.team_BG>.icon").css("background-image", 'url("/teams/' + teams.right.logo + '")');
+                    $(".win_container>.win_BG>.true_team").html(name);
+                    $(".win_container>.win_BG>.background").css("background-image", "url(../../files/img/hud_elements/winner_ct.png)");
+                } else if (gameside == "t") {
+                    $(".win_container>.team_BG>.icon").css("background-image", 'url("/teams/' + teams.right.logo + '")');
+                    $(".win_container>.win_BG>.true_team").html(name);
+                    $(".win_container>.win_BG>.background").css("background-image", "url(../../files/img/hud_elements/winner_t.png)");
+                }
             }
 
             $(".win_container>.team_BG").css("transform", "translate(0px,0px)").css("transition", "transform 0.3s ease 0.0s");
@@ -2164,6 +2180,24 @@ function updatePage(data) {
             $(".Game_History").addClass("hide_history").removeClass("show_history");
         }
 
+        function hideTeamName() {
+            $(".Top_Bar>.Team_B>.Top_BG").removeClass("show_team_name").addClass("hide_right_team_name");
+            $(".Top_Bar>.Team_A>.Top_BG").removeClass("show_team_name").addClass("hide_left_team_name");
+            $(".Top_Bar>.Team_B>.Logo_Team_B_BG").removeClass("show_team_name").addClass("hide_right_team_name");
+            $(".Top_Bar>.Team_A>.Logo_Team_A_BG").removeClass("show_team_name").addClass("hide_left_team_name");
+            $(".Top_Bar>.Team_A>.Top_BG>.Team_A_Name").css("opacity", "0");
+            $(".Top_Bar>.Team_B>.Top_BG>.Team_B_Name").css("opacity", "0");
+        }
+
+        function showTeamName() {
+            $(".Top_Bar>.Team_B>.Top_BG").removeClass("hide_right_team_name").addClass("show_team_name");
+            $(".Top_Bar>.Team_A>.Top_BG").removeClass("hide_left_team_name").addClass("show_team_name");
+            $(".Top_Bar>.Team_B>.Logo_Team_B_BG").removeClass("hide_right_team_name").addClass("show_team_name");
+            $(".Top_Bar>.Team_A>.Logo_Team_A_BG").removeClass("hide_left_team_name").addClass("show_team_name");
+            $(".Top_Bar>.Team_A>.Top_BG>.Team_A_Name").css("opacity", "1");
+            $(".Top_Bar>.Team_B>.Top_BG>.Team_B_Name").css("opacity", "1");
+        }
+
 
 
 
@@ -2197,6 +2231,7 @@ function updatePage(data) {
             if (phase.phase_ends_in > 1) {
                 showSpam();
                 showBonus();
+                showTeamName();
                 if (bo == 1) {
                     showPickem();
                     $(".map_picks>.first_map").css("opacity", "0");
@@ -2211,6 +2246,7 @@ function updatePage(data) {
             } else {
                 showSpam();
                 hideBonus();
+                showTeamName();
                 if (bo == 1) {
                     hidePickem();
                 } else if (bo == 3) {
@@ -2231,11 +2267,13 @@ function updatePage(data) {
                 if ($(".Spam_A>.Spam_BG").css("opacity") == 0 && $(".Spam_B>.Spam_BG").css("opacity") == 0) {
                     showSpam();
                     showGiveaway();
+                    showTeamName();
                 }
             } else {
                 if ($(".Spam_A>.Spam_BG").css("opacity") == 1 && $(".Spam_B>.Spam_BG").css("opacity") == 1) {
                     hideGiveaway();
                     hideSpam();
+                    hideTeamName();
                 }
             }
         }
@@ -2244,6 +2282,7 @@ function updatePage(data) {
 
         if (phase.phase == "bomb" && bomb_time > "30") {
             showSpam();
+            showTeamName();
         } else if (phase.phase == "bomb" && phase.phase_ends_in < 30 && ($(".spam > .left_container").css("opacity") == 1 && $(".spam > .right_container").css("opacity") == 1)) {
             hideSpam();
         }
