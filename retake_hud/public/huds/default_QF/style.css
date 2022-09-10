@@ -14,7 +14,7 @@ body {
     -o-border-radius: 0px !important;
     /* cursor: none;
     user-select: none;
-    pointer-events: none; */
+    pointer-events: none;  */
 }
 
 sub {
@@ -228,27 +228,28 @@ sub {
     z-index: 297;
 }
 
-.Top_Bar>.Team_A>.BO5 {
+/* 445.5 */
+.Top_Bar>.Timer_BG>.BO5_1 {
     position: absolute;
     background-color: rgb(99, 64, 243);
     opacity: 0.2;
-    left: 446px;
-    top: 31px;
+    left: 0px;
+    top: 0px;
     width: 20px;
     height: 69px;
-    z-index: 450;
+    z-index: 497;
 }
 
-.Top_Bar>.Team_A>.BO5_A {
+.Top_Bar>.Timer_BG>.BO5_A {
     position: absolute;
-    left: 446px;
-    top: 31px;
+    left: 0px;
+    top: 0px;
     width: 20px;
     height: 69px;
-    z-index: 450;
+    z-index: 498;
 }
 
-.Top_Bar>.Team_A>.BO5_A>.BO5_Team_A_BG {
+.Top_Bar>.Timer_BG>.BO5_A>.BO5_Team_A_BG {
     background-color: rgb(99, 64, 243);
     opacity: 0.2;
     position: absolute;
@@ -256,7 +257,7 @@ sub {
     top: 0px;
     width: 20px;
     height: 69px;
-    z-index: 451;
+    z-index: 499;
 }
 
 .block {
@@ -410,27 +411,27 @@ sub {
     z-index: 297;
 }
 
-.Top_Bar>.Team_B>.BO5 {
+.Top_Bar>.Timer_BG>.BO5_2 {
     position: absolute;
     background-color: rgb(99, 64, 243);
     opacity: 0.2;
-    right: 446px;
-    top: 31px;
+    right: 0px;
+    top: 0px;
     width: 20px;
     height: 69px;
     z-index: 450;
 }
 
-.Top_Bar>.Team_B>.BO5_B {
+.Top_Bar>.Timer_BG>.BO5_B {
     position: absolute;
-    right: 446px;
-    top: 31px;
+    right: 0px;
+    top: 0px;
     width: 20px;
     height: 69px;
     z-index: 450;
 }
 
-.Top_Bar>.Team_B>.BO5_B>.BO5_Team_B_BG {
+.Top_Bar>.Timer_BG>.BO5_B>.BO5_Team_B_BG {
     background-color: rgb(255, 77, 64);
     opacity: 0.2;
     position: absolute;
