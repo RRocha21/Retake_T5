@@ -11,26 +11,23 @@ var wl_teamb = "";
 
 
 
-var map1 = "vertigo"; // Map 1 Name
-var map2 = "dust2"; // Map 2 Name
-var map3 = "inferno"; // Map 3 Name
+var map1 = ""; // Map 1 Name
+var map2 = ""; // Map 2 Name
+var map3 = ""; // Map 3 Name
 var map4 = ""; // Map 4 Name
 var map5 = ""; // Map 5 Name
-var playing = "3" // Values: 1-5
+var map1_res1 = 0;
+var map1_res2 = 0;
+var map2_res1 = 0;
+var map2_res2 = 0;
+var map3_res1 = 0;
+var map3_res2 = 0;
+var swapsides = 0;
 var pick = "DECIDER"; // Current map pick
 
-var swappicksides = 0;
+var playing = 2;
 
-var map1_res1 = 16;
-var map1_res2 = 14;
-
-var map2_res1 = 16;
-var map2_res2 = 2;
-
-var map3_res1 = 11;
-var map3_res2 = 1;
-
-var bo = 1;
+var bo = 3;
 
 var flag_replays = 1;
 
@@ -735,6 +732,22 @@ function updatePage(data) {
 
     var matchup = data.getMatchType();
     var match = data.getMatch();
+
+    map1 = match.map_pick.map1; // Map 1 Name
+    map2 = match.map_pick.map2; // Map 2 Name
+    map3 = match.map_pick.map3; // Map 3 Name
+    current_map = match.map_pick.map_current;
+    swapsides = match.map_pick.sides_swap;
+
+
+    map1_res1 = match.map_1_res.map_left_res;
+    map1_res2 = match.map_1_res.map_right_res;
+    map2_res1 = match.map_2_res.map_left_res;
+    map2_res2 = match.map_2_res.map_right_res;
+    map3_res1 = match.map_3_res.map_left_res;
+    map3_res2 = match.map_3_res.map_right_res;
+
+
     if (matchup && matchup.toLowerCase() != "none") {
 
 
@@ -785,7 +798,6 @@ function updatePage(data) {
     var map = data.map();
     var previously = data.previously();
 
-    var map3 = map.name.slice(3);
     var round_now = map.round + (round.phase == "over" || round.phase == "intermission" ?
         0 :
         1);
@@ -1061,143 +1073,78 @@ function updatePage(data) {
     // Apply
 
     /* MAP PICKS START  */
+    console.log(swapsides);
+    if (swapsides == 0) {
+        $(".MapPick_BG>.Map1>.Team_Name").html("<font color='#fff'>" + teams.left.name + "</font>");
+        $(".MapPick_BG>.Map1").css("background", "rgb(" + left_color + ")");
+        $(".MapPick_BG>.Map1>.Map").css("background-image", "url(../../files/img/maps/" + map1 + ".jpg)");
+        $(".MapPick_BG>.Map1>.Map_Name").html("<font color='#fff'>" + map1 + "</font>");
 
-    if (swappicksides == 0) {
-
-        $(".map_picks>.first_map>.text_container").html("<font color='#fff'>" + teams.left.name + "</font>");
-        $(".map_picks>.first_map>.text_container").css("background", "rgba(" + left_color + ", 0.8)");
-        $(".map_picks>.first_map").css("background-image", "url(../../files/img/maps/" + map1 + ".jpg)");
-        $(".map_picks>.first_map").css("border", "solid 4px rgb(" + left_color + ")");
-        $(".map_picks>.first_map>.text_container_2").html("<font color='#fff'>" + map1 + "</font>");
-        $(".map_picks>.first_map>.text_container_3").html("<font color='#fff'>" + map1_res1 + " - " + map1_res2 + "</font>");
-
-        if (playing == 1) {
-            $(".map_picks>.first_map>.text_container_3").html("<font color='#fff'> CURRENT </font>");
-            $(".map_picks>.first_map>.text_container_3").css("font-size", "19px");
-            $(".map_picks>.first_map>.text_container_3").css("line-height", "1.2");
-            $(".map_picks>.first_map").css("box-shadow", "inset 0 -45px 45px  rgba(" + left_color + ",0.6)");
+        if (current_map == 1) {
+            $(".MapPick_BG>.Map1>.Map_Result").html("<font color='#fff'> CURRENT </font>");
         } else {
-            $(".map_picks>.first_map>.text_container_3").html("<font color='#fff'>" + map1_res1 + " - " + map1_res2 + "</font>");
-            $(".map_picks>.first_map").css("box-shadow", "inset 0 -50px 50px  rgba(3,16,35,0.8)");
-            $(".map_picks>.first_map>.text_container_3").css("line-height", "1.05");
+            $(".MapPick_BG>.Map1>.Map_Result").html("<font color='#fff'>" + map1_res1 + " - " + map1_res2 + "</font>");
         }
 
-        $(".map_picks>.second_map>.text_container").html("<font color='#fff'> " + teams.right.name + " </font>");
-        $(".map_picks>.second_map>.text_container").css("background", "rgba(" + right_color + ", 0.8)");
-        $(".map_picks>.second_map").css("background-image", "url(../../files/img/maps/" + map2 + ".jpg)");
-        $(".map_picks>.second_map").css("border", "solid 4px rgb(" + right_color + ")");
-        $(".map_picks>.second_map>.text_container_2").html("<font color='#fff'>" + map2 + "</font>");
+        $(".MapPick_BG>.Map2>.Team_Name").html("<font color='#fff'> " + teams.right.name + " </font>");
+        $(".MapPick_BG>.Map2").css("background", "rgb(" + right_color + ")");
+        $(".MapPick_BG>.Map2>.Map").css("background-image", "url(../../files/img/maps/" + map2 + ".jpg)");
+        $(".MapPick_BG>.Map2>.Map_Name").html("<font color='#fff'>" + map2 + "</font>");
 
-        if (playing == 2) {
-            $(".map_picks>.second_map>.text_container_3").html("<font color='#fff'>CURRENT</font>");
-            $(".map_picks>.second_map>.text_container_3").css("font-size", "19px");
-            $(".map_picks>.second_map>.text_container_3").css("line-height", "1.2");
-            $(".map_picks>.second_map").css("box-shadow", "inset 0 -45px 45px  rgba(" + right_color + ",0.6)");
-        } else if (playing == 1) {
-            $(".map_picks>.second_map>.text_container_3").html("<font color='#fff'> NEXT </font>");
-            $(".map_picks>.second_map>.text_container_3").css("font-size", "19px");
-            $(".map_picks>.second_map>.text_container_3").css("line-height", "1.2");
-            $(".map_picks>.second_map").css("box-shadow", "inset 0 -50px 50px  rgba(3,16,35,0.8)");
+        if (current_map == 2) {
+            $(".MapPick_BG>.Map2>.Map_Result").html("<font color='#fff'>CURRENT</font>");
+        } else if (current_map == 1) {
+            $(".MapPick_BG>.Map2>.Map_Result").html("<font color='#fff'> NEXT </font>");
         } else {
-            $(".map_picks>.second_map>.text_container_3").html("<font color='#fff'>" + map2_res1 + " - " + map2_res2 + "</font>");
-            $(".map_picks>.second_map").css("box-shadow", "inset 0 -50px 50px  rgba(3,16,35,0.8)");
-            $(".map_picks>.second_map>.text_container_3").css("line-height", "1.05");
+            $(".MapPick_BG>.Map2>.Map_Result").html("<font color='#fff'>" + map2_res1 + " - " + map2_res2 + "</font>");
         }
 
-        $(".map_picks>.decider_map>.text_container").html("<font color='#fff'> DECIDER </font>");
-        $(".map_picks>.decider_map>.text_container").css("background", "rgba(3,16,35, 0.8)");
-        $(".map_picks>.decider_map").css("background-image", "url(../../files/img/maps/" + map3 + ".jpg)");
-        $(".map_picks>.decider_map").css("border", "solid 4px rgb(3,16,35)");
-        $(".map_picks>.decider_map>.text_container_2").html("<font color='#fff'>" + map3 + "</font>");
+        $(".MapPick_BG>.Map3>.Team_Name").html("<font color='#fff'> DECIDER </font>");
+        $(".MapPick_BG>.Map3>.Map").css("background-image", "url(../../files/img/maps/" + map3 + ".jpg)");
+        $(".MapPick_BG>.Map3>.Map_Name").html("<font color='#fff'>" + map3 + "</font>");
 
-        if (playing == 2) {
-            $(".map_picks>.decider_map>.text_container_3").html("<font color='#fff'>NEXT</font>");
-            $(".map_picks>.decider_map>.text_container_3").css("font-size", "19px");
-            $(".map_picks>.decider_map>.text_container_3").css("line-height", "1.2");
-            $(".map_picks>.decider_map").css("box-shadow", "inset 0 -50px 50px  rgba(3,16,35,0.8)");
-        } else if (playing == 1) {
-            $(".map_picks>.decider_map>.text_container_3").html("<font color='#fff'></font>");
-            $(".map_picks>.decider_map>.text_container_3").css("font-size", "19px");
-            $(".map_picks>.decider_map>.text_container_3").css("line-height", "1.2");
-            $(".map_picks>.decider_map").css("box-shadow", "inset 0 -50px 50px  rgba(3,16,35,0.8)");
+        if (current_map == 2) {
+            $(".MapPick_BG>.Map3>.Map_Result").html("<font color='#fff'>NEXT</font>");
+        } else if (current_map == 1) {
+            $(".MapPick_BG>.Map3>.Map_Result").html("<font color='#fff'></font>");
         } else {
-            $(".map_picks>.decider_map>.text_container_3").html("<font color='#fff'>CURRENT</font>");
-            $(".map_picks>.decider_map>.text_container_3").css("font-size", "19px");
-            $(".map_picks>.decider_map>.text_container_3").css("line-height", "1.2");
-            $(".map_picks>.decider_map").css("box-shadow", "inset 0 -45px 45px  rgba(3,16,35,0.45)");
+            $(".MapPick_BG>.Map3>.Map_Result").html("<font color='#fff'>CURRENT</font>");
         }
-
     } else {
-        $(".map_picks>.first_map>.text_container").html("<font color='#fff'>" + teams.right.name + "</font>");
-        $(".map_picks>.first_map>.text_container").css("background", "rgba(" + right_color + ", 0.8)");
-        $(".map_picks>.first_map").css("background-image", "url(../../files/img/maps/" + map1 + ".jpg)");
-        $(".map_picks>.first_map").css("border", "solid 4px rgb(" + right_color + ")");
-        $(".map_picks>.first_map>.text_container_2").html("<font color='#fff'>" + map1 + "</font>");
-        $(".map_picks>.first_map>.text_container_3").html("<font color='#fff'>" + map1_res1 + " - " + map1_res2 + "</font>");
+        $(".MapPick_BG>.Map1>.Team_Name").html("<font color='#fff'>" + teams.right.name + "</font>");
+        $(".MapPick_BG>.Map1").css("background", "rgb(" + right_color + ")");
+        $(".MapPick_BG>.Map1>.Map").css("background-image", "url(../../files/img/maps/" + map1 + ".jpg)");
+        $(".MapPick_BG>.Map1>.Map_Name").html("<font color='#fff'>" + map1 + "</font>");
 
-
-
-        $(".map_picks>.first_map>.text_container").html("<font color='#fff'>" + teams.right.name + "</font>");
-        $(".map_picks>.first_map>.text_container").css("background", "rgba(" + right_color + ", 0.8)");
-        $(".map_picks>.first_map").css("background-image", "url(../../files/img/maps/" + map1 + ".jpg)");
-        $(".map_picks>.first_map").css("border", "solid 4px rgb(" + right_color + ")");
-        $(".map_picks>.first_map>.text_container_2").html("<font color='#fff'>" + map1 + "</font>");
-        $(".map_picks>.first_map>.text_container_3").html("<font color='#fff'>" + map1_res1 + " - " + map1_res2 + "</font>");
-
-        if (playing == 1) {
-            $(".map_picks>.first_map>.text_container_3").html("<font color='#fff'> CURRENT </font>");
-            $(".map_picks>.first_map>.text_container_3").css("font-size", "19px");
-            $(".map_picks>.first_map>.text_container_3").css("line-height", "1.2");
-            $(".map_picks>.first_map").css("box-shadow", "inset 0 -45px 45px  rgba(" + right_color + ",0.6)");
+        if (current_map == 1) {
+            $(".MapPick_BG>.Map1>.Map_Result").html("<font color='#fff'> CURRENT </font>");
         } else {
-            $(".map_picks>.first_map>.text_container_3").html("<font color='#fff'>" + map1_res1 + " - " + map1_res2 + "</font>");
-            $(".map_picks>.first_map").css("box-shadow", "inset 0 -50px 50px  rgba(3,16,35,0.8)");
-            $(".map_picks>.first_map>.text_container_3").css("line-height", "1.05");
+            $(".MapPick_BG>.Map1>.Map_Result").html("<font color='#fff'>" + map1_res1 + " - " + map1_res2 + "</font>");
         }
 
-        $(".map_picks>.second_map>.text_container").html("<font color='#fff'> " + teams.left.name + " </font>");
-        $(".map_picks>.second_map>.text_container").css("background", "rgba(" + left_color + ", 0.8)");
-        $(".map_picks>.second_map").css("background-image", "url(../../files/img/maps/" + map2 + ".jpg)");
-        $(".map_picks>.second_map").css("border", "solid 4px rgb(" + left_color + ")");
-        $(".map_picks>.second_map>.text_container_2").html("<font color='#fff'>" + map2 + "</font>");
+        $(".MapPick_BG>.Map2>.Team_Name").html("<font color='#fff'> " + teams.left.name + " </font>");
+        $(".MapPick_BG>.Map2").css("background", "rgb(" + left_color + ")");
+        $(".MapPick_BG>.Map2>.Map").css("background-image", "url(../../files/img/maps/" + map2 + ".jpg)");
+        $(".MapPick_BG>.Map2>.Map_Name").html("<font color='#fff'>" + map2 + "</font>");
 
-        if (playing == 2) {
-            $(".map_picks>.second_map>.text_container_3").html("<font color='#fff'>CURRENT</font>");
-            $(".map_picks>.second_map>.text_container_3").css("font-size", "19px");
-            $(".map_picks>.second_map>.text_container_3").css("line-height", "1.2");
-            $(".map_picks>.second_map").css("box-shadow", "inset 0 -45px 45px  rgba(" + left_color + ",0.6)");
-        } else if (playing == 1) {
-            $(".map_picks>.second_map>.text_container_3").html("<font color='#fff'> NEXT </font>");
-            $(".map_picks>.second_map>.text_container_3").css("font-size", "19px");
-            $(".map_picks>.second_map>.text_container_3").css("line-height", "1.2");
-            $(".map_picks>.second_map").css("box-shadow", "inset 0 -50px 50px  rgba(3,16,35,0.8)");
+        if (current_map == 2) {
+            $(".MapPick_BG>.Map2>.Map_Result").html("<font color='#fff'>CURRENT</font>");
+        } else if (current_map == 1) {
+            $(".MapPick_BG>.Map2>.Map_Result").html("<font color='#fff'> NEXT </font>");
         } else {
-            $(".map_picks>.second_map>.text_container_3").html("<font color='#fff'>" + map2_res1 + " - " + map2_res2 + "</font>");
-            $(".map_picks>.second_map").css("box-shadow", "inset 0 -50px 50px  rgba(3,16,35,0.8)");
-            $(".map_picks>.second_map>.text_container_3").css("line-height", "1.05");
+            $(".MapPick_BG>.Map2>.Map_Result").html("<font color='#fff'>" + map2_res1 + " - " + map2_res2 + "</font>");
         }
 
-        $(".map_picks>.decider_map>.text_container").html("<font color='#fff'> DECIDER </font>");
-        $(".map_picks>.decider_map>.text_container").css("background", "rgba(3,16,35, 0.8)");
-        $(".map_picks>.decider_map").css("background-image", "url(../../files/img/maps/" + map3 + ".jpg)");
-        $(".map_picks>.decider_map").css("border", "solid 4px rgb(3,16,35)");
-        $(".map_picks>.decider_map>.text_container_2").html("<font color='#fff'>" + map3 + "</font>");
+        $(".MapPick_BG>.Map3>.Team_Name").html("<font color='#fff'> DECIDER </font>");
+        $(".MapPick_BG>.Map3>.Map").css("background-image", "url(../../files/img/maps/" + map3 + ".jpg)");
+        $(".MapPick_BG>.Map3>.Map_Name").html("<font color='#fff'>" + map3 + "</font>");
 
-        if (playing == 2) {
-            $(".map_picks>.decider_map>.text_container_3").html("<font color='#fff'>NEXT</font>");
-            $(".map_picks>.decider_map>.text_container_3").css("font-size", "19px");
-            $(".map_picks>.decider_map>.text_container_3").css("line-height", "1.2");
-            $(".map_picks>.decider_map").css("box-shadow", "inset 0 -50px 50px  rgba(3,16,35,0.8)");
-        } else if (playing == 1) {
-            $(".map_picks>.decider_map>.text_container_3").html("<font color='#fff'></font>");
-            $(".map_picks>.decider_map>.text_container_3").css("font-size", "19px");
-            $(".map_picks>.decider_map>.text_container_3").css("line-height", "1.2");
-            $(".map_picks>.decider_map").css("box-shadow", "inset 0 -50px 50px  rgba(3,16,35,0.8)");
+        if (current_map == 2) {
+            $(".MapPick_BG>.Map3>.Map_Result").html("<font color='#fff'>NEXT</font>");
+        } else if (current_map == 1) {
+            $(".MapPick_BG>.Map3>.Map_Result").html("<font color='#fff'></font>");
         } else {
-            $(".map_picks>.decider_map>.text_container_3").html("<font color='#fff'>CURRENT</font>");
-            $(".map_picks>.decider_map>.text_container_3").css("font-size", "19px");
-            $(".map_picks>.decider_map>.text_container_3").css("line-height", "1.2");
-            $(".map_picks>.decider_map").css("box-shadow", "inset 0 -45px 45px  rgba(3,16,35,0.45)");
+            $(".MapPick_BG>.Map3>.Map_Result").html("<font color='#fff'>CURRENT</font>");
         }
     }
     $(".round_winner>.rounds").html("<font color='#fff'>1</font>");
@@ -2137,27 +2084,27 @@ function updatePage(data) {
 
 
         function showPickem() {
-            $(".map_picks").removeClass("hide_pickem").addClass("show_pickem");
+            $(".MapPick_BG").removeClass("hide_pickem").addClass("show_pickem");
         }
 
         function hidePickem() {
-            $(".map_picks").removeClass("show_pickem").addClass("hide_pickem");
+            $(".MapPick_BG").removeClass("show_pickem").addClass("hide_pickem");
         }
 
         function showPickem_1() {
-            $(".map_picks>.first_map").removeClass("hide_pickem_1").addClass("show_pickem_1");
+            $(".MapPick_BG>.Map1").removeClass("hide_pickem_1").addClass("show_pickem_1");
         }
 
         function hidePickem_1() {
-            $(".map_picks>.first_map").removeClass("show_pickem_1").addClass("hide_pickem_1");
+            $(".MapPick_BG>.Map1").removeClass("show_pickem_1").addClass("hide_pickem_1");
         }
 
         function showPickem_2() {
-            $(".map_picks>.second_map").removeClass("hide_pickem_2").addClass("show_pickem_2");
+            $(".MapPick_BG>.Map2").removeClass("hide_pickem_2").addClass("show_pickem_2");
         }
 
         function hidePickem_2() {
-            $(".map_picks>.second_map").removeClass("show_pickem_2").addClass("hide_pickem_2");
+            $(".MapPick_BG>.Map2").removeClass("show_pickem_2").addClass("hide_pickem_2");
         }
 
         function showFirePower() {
@@ -2304,27 +2251,27 @@ function updatePage(data) {
                 var progress_width = phase.phase_ends_in * 100 / 30 + "%";
 
                 $(".Top_Bar>.Timer_BG>.Timer").text(count_minute + ":" + count_seconds);
-                    if (side == "left") {
-                        $(".Top_Bar>.Team_A>.Top_BG>.Pause>.Pause_Text").html("tactical Pause " + pause_now_left + "/4");
-                        $(".Top_Bar>.Top_BG>.Pause>.Pause_Text>.txt").html("Tactical Pause");
-                        $(".Top_Bar>.Team_A>.Top_BG>.Pause").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
-    
-                    } else if (side == "right") {
-                        $(".Top_Bar>.Team_B>.Top_BG>.Pause>.Pause_Text").html("tactical Pause " + pause_now_right + "/4");
-                        $(".Top_Bar>.Top_BG>.Pause>.Pause_Text>.txt").html("Tactical Pause");
-                        $(".Top_Bar>.Team_B>.Top_BG>.Pause").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
-                    }
+                if (side == "left") {
+                    $(".Top_Bar>.Team_A>.Top_BG>.Pause>.Pause_Text").html("tactical Pause " + pause_now_left + "/4");
+                    $(".Top_Bar>.Top_BG>.Pause>.Pause_Text>.txt").html("Tactical Pause");
+                    $(".Top_Bar>.Team_A>.Top_BG>.Pause").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
+
+                } else if (side == "right") {
+                    $(".Top_Bar>.Team_B>.Top_BG>.Pause>.Pause_Text").html("tactical Pause " + pause_now_right + "/4");
+                    $(".Top_Bar>.Top_BG>.Pause>.Pause_Text>.txt").html("Tactical Pause");
+                    $(".Top_Bar>.Team_B>.Top_BG>.Pause").css("transition", "transform 0.5s ease-out 0s").css("transform", "translate(0px, 0px)");
+                }
             }
 
             function stopAnimationPause(side) {
 
 
                 setTimeout(function() {
-                    if ($(".Top_Bar>.Team_A>.Top_BG>.Pause>.Pause_Text").text() == "tactical Pause " + pause_now_left + "/4"){
+                    if ($(".Top_Bar>.Team_A>.Top_BG>.Pause>.Pause_Text").text() == "tactical Pause " + pause_now_left + "/4") {
                         $(".Top_Bar>.Team_A>.Top_BG>.Pause").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateX(300px)");
                         $(".Top_Bar>.Team_B>.Top_BG>.Pause").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateX(-300px)");
                     }
-                    if ($(".Top_Bar>.Team_B>.Top_BG>.Pause>.Pause_Text").text() == "tactical Pause " + pause_now_right + "/4"){
+                    if ($(".Top_Bar>.Team_B>.Top_BG>.Pause>.Pause_Text").text() == "tactical Pause " + pause_now_right + "/4") {
                         $(".Top_Bar>.Team_A>.Top_BG>.Pause").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateX(300px)");
                         $(".Top_Bar>.Team_B>.Top_BG>.Pause").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateX(-300px)");
                     }
