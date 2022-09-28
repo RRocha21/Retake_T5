@@ -1077,7 +1077,6 @@ function updatePage(data) {
     // Apply
 
     /* MAP PICKS START  */
-    console.log(swapsides);
     if (swapsides == 0) {
         $(".MapPick_BG>.Map1>.Team_Name").html("<font color='#fff'>" + teams.left.name + "</font>");
         $(".MapPick_BG>.Map1").css("background", "rgb(" + left_color + ")");
@@ -2224,6 +2223,7 @@ function updatePage(data) {
                 if ($(".Spam_A>.Spam_BG").css("opacity") == 1 && $(".Spam_B>.Spam_BG").css("opacity") == 1) {
                     hideGiveaway();
                     hideSpam();
+                    console.log("passou aqui");
                     hideTeamName();
                 }
             }

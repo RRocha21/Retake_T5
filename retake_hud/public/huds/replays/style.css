@@ -24,6 +24,9 @@ sub {
     margin-left: 5px;
 }
 
+.win_container {
+    transform: scale(0.8);
+}
 
 /* Top Bar Finito */
 
@@ -1611,7 +1614,7 @@ sub {
 .players_right_container>.Player>.Weapon>.Weapon_Icon {
     position: absolute;
     background-image: url("../../files/img/weapons/m4a1_silencer.png");
-    background-position: right;
+    background-position: left;
     background-repeat: no-repeat;
     filter: invert(100%);
     transform: scaleX(-1);
@@ -3576,7 +3579,7 @@ sub {
 .win_container {
     position: absolute;
     left: 511px;
-    top: 202px;
+    top: 102px;
     width: 899px;
     height: 473px;
     z-index: 10;
