@@ -108,7 +108,7 @@ function fillObserved(player) {
         $(".Spectate_Container > .Spectate_Bar > .Health_Spectate_BG > .Health_Spectate").html("" + statistics.health + "")
         $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate").css("width", ((97 * statistics.health) / 100) + "%");
         $(".Spectate_Container>.Spectate_Bar>.Ammo_Spectate_BG>.Ammo_Bar_Spectate_Background").css("background-color", "rgba(" + ct_color + ",0.2)");
-        $(".Spectate_Container>.Spectate_Bar>.Photo_AREA").css("background", "rgb(" + ct_color + ")");
+        // $(".Spectate_Container>.Spectate_Bar>.Photo_AREA").css("background", "rgb(" + ct_color + ")");
 
 
     } else if (player.team == "CT" && teams.right.side == "ct") {
@@ -120,7 +120,7 @@ function fillObserved(player) {
         $(".Spectate_Container > .Spectate_Bar > .Health_Spectate_BG > .Health_Spectate").html("" + statistics.health + "")
         $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate").css("width", ((97 * statistics.health) / 100) + "%");
         $(".Spectate_Container>.Spectate_Bar>.Ammo_Spectate_BG>.Ammo_Bar_Spectate_Background").css("background-color", "rgb(" + ct_color + ",0.2)");
-        $(".Spectate_Container>.Spectate_Bar>.Photo_AREA").css("background", "rgb(" + ct_color + ")");
+        // $(".Spectate_Container>.Spectate_Bar>.Photo_AREA").css("background", "rgb(" + ct_color + ")");
 
 
     } else if (player.team == "T" && teams.left.side == "t") {
@@ -131,7 +131,7 @@ function fillObserved(player) {
         $(".Spectate_Container > .Spectate_Bar > .Health_Spectate_BG > .Health_Spectate").html("" + statistics.health + "")
         $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate").css("width", ((97 * statistics.health) / 100) + "%");
         $(".Spectate_Container>.Spectate_Bar>.Ammo_Spectate_BG>.Ammo_Bar_Spectate_Background").css("background-color", "rgba(" + t_color + ",0.2)");
-        $(".Spectate_Container>.Spectate_Bar>.Photo_AREA").css("background", "rgb(" + t_color + ")");
+        // $(".Spectate_Container>.Spectate_Bar>.Photo_AREA").css("background", "rgb(" + t_color + ")");
 
 
     } else if (player.team == "T" && teams.right.side == "t") {
@@ -142,7 +142,7 @@ function fillObserved(player) {
         $(".Spectate_Container > .Spectate_Bar > .Health_Spectate_BG > .Health_Spectate").html("" + statistics.health + "")
         $(".Spectate_Container>.Spectate_Bar>.Health_Spectate_BG>.Health_Bar_Spectate").css("width", ((97 * statistics.health) / 100) + "%");
         $(".Spectate_Container>.Spectate_Bar>.Ammo_Spectate_BG>.Ammo_Bar_Spectate_Background").css("background-color", "rgba(" + t_color + ",0.2)");
-        $(".Spectate_Container>.Spectate_Bar>.Photo_AREA").css("background", "rgb(" + t_color + ")");
+        // $(".Spectate_Container>.Spectate_Bar>.Photo_AREA").css("background", "rgb(" + t_color + ")");
 
     }
 
