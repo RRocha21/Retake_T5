@@ -28,6 +28,7 @@ sub {
     transform: scale(0.8);
 }
 
+
 /* Top Bar Finito */
 
 @keyframes LogoIn {
@@ -776,7 +777,7 @@ sub {
 }
 
 .Spectate_Container>.Spectate_Bar>.Photo_AREA {
-    background: rgb(102, 85, 229);
+    /* background: rgb(102, 85, 229); */
     position: absolute;
     left: 240px;
     bottom: 0px;
@@ -3878,6 +3879,16 @@ sub {
     z-index: 454;
 }
 
+.MapPick_BG>.Map1>.Map_Shade {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    left: 4px;
+    top: 27px;
+    width: 114px;
+    height: 94px;
+    z-index: 455;
+}
+
 .MapPick_BG>.Map1>.Map_Name {
     font-size: 40px;
     font-family: "Anybody UltraCondensed";
@@ -3941,6 +3952,16 @@ sub {
     z-index: 454;
 }
 
+.MapPick_BG>.Map2>.Map_Shade {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    left: 4px;
+    top: 27px;
+    width: 114px;
+    height: 94px;
+    z-index: 455;
+}
+
 .MapPick_BG>.Map2>.Map_Name {
     font-size: 40px;
     font-family: "Anybody UltraCondensed";
@@ -4002,6 +4023,16 @@ sub {
     width: 114px;
     height: 94px;
     z-index: 454;
+}
+
+.MapPick_BG>.Map3>.Map_Shade {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    left: 4px;
+    top: 27px;
+    width: 114px;
+    height: 94px;
+    z-index: 455;
 }
 
 .MapPick_BG>.Map3>.Map_Name {
