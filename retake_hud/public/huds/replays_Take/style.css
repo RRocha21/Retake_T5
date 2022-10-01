@@ -4,7 +4,7 @@ body {
     padding: 0;
     color: #fff;
     overflow: hidden;
-    /* background: rgb(255, 153, 0); */
+    background: rgb(255, 153, 0);
     border-radius: 0px !important;
     font-family: "";
     font-weight: 500;
@@ -850,9 +850,9 @@ sub {
 .players_left_container {
     position: absolute;
     left: 12px;
-    top: 612px;
+    top: 582px;
     width: 330px;
-    height: 470px;
+    height: 500px;
     z-index: 208;
 }
 
@@ -864,25 +864,25 @@ sub {
 
 .players_left_container>#player2 {
     position: absolute;
-    top: 79px;
+    top: 85px;
     left: 18px;
 }
 
 .players_left_container>#player3 {
     position: absolute;
-    top: 158px;
+    top: 170px;
     left: 18px;
 }
 
 .players_left_container>#player4 {
     position: absolute;
-    top: 237px;
+    top: 255px;
     left: 18px;
 }
 
 .players_left_container>#player5 {
     position: absolute;
-    top: 316px;
+    top: 340px;
     left: 18px;
 }
 
@@ -891,10 +891,38 @@ sub {
     position: absolute;
     background-position: left;
     width: 281px;
-    height: 73px;
+    height: 79px;
     z-index: 183;
     transition: filter 0.5s ease 0.0s;
     transition: opacity 0.5s ease 0.0s;
+}
+
+.players_left_container>.Player>.Area_Photo {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    right: -5px;
+    bottom: 0px;
+    z-index: 190;
+    overflow: hidden;
+}
+
+.players_left_container>.Player>.Area_Photo>.Photo_Player {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 90px;
+    height: 90px;
+    z-index: 191;
+    align-items: center;
+}
+
+.players_left_container>.Player>.Area_Photo>.Photo_Player img {
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    height: 90px;
+    z-index: 192;
 }
 
 .players_left_container>.Player>.Round_Kills {
@@ -980,10 +1008,10 @@ sub {
 
 .players_left_container>.Player>.separator {
     position: absolute;
-    left: -9px;
-    top: 18px;
+    left: -10px;
+    top: 0px;
     width: 9px;
-    height: 55px;
+    height: 79px;
     background-color: rgb(236, 236, 236);
     z-index: 173;
     opacity: 0;
@@ -1088,7 +1116,7 @@ sub {
 
 .players_left_container>.Player>.Name {
     position: absolute;
-    font-size: 22px;
+    font-size: 19px;
     text-transform: uppercase;
     font-family: "Anybody Condensed";
     color: rgb(236, 236, 236);
@@ -1099,7 +1127,7 @@ sub {
     height: 25px;
     width: 150px;
     left: 7px;
-    top: 22px;
+    top: 26px;
     z-index: 172;
     overflow: hidden;
 }
@@ -1163,8 +1191,8 @@ sub {
     text-align: left;
     height: 18px;
     width: 18px;
-    left: 150px;
-    top: 47px;
+    left: 30px;
+    top: 53px;
     z-index: 172;
 }
 
@@ -1176,8 +1204,8 @@ sub {
     background-size: 16px;
     height: 18px;
     width: 18px;
-    left: 127px;
-    top: 49px;
+    left: 7px;
+    top: 54px;
     z-index: 172;
 }
 
@@ -1242,9 +1270,9 @@ sub {
 .players_right_container {
     position: absolute;
     right: 12px;
-    top: 612px;
+    top: 582px;
     width: 330px;
-    height: 470px;
+    height: 500px;
     z-index: 208;
 }
 
@@ -1256,25 +1284,25 @@ sub {
 
 .players_right_container>#player2 {
     position: absolute;
-    top: 79px;
+    top: 85px;
     right: 18px;
 }
 
 .players_right_container>#player3 {
     position: absolute;
-    top: 158px;
+    top: 170px;
     right: 18px;
 }
 
 .players_right_container>#player4 {
     position: absolute;
-    top: 237px;
+    top: 255px;
     right: 18px;
 }
 
 .players_right_container>#player5 {
     position: absolute;
-    top: 316px;
+    top: 340px;
     right: 18px;
 }
 
@@ -1283,20 +1311,52 @@ sub {
     position: absolute;
     background-position: right;
     width: 281px;
-    height: 73px;
+    height: 79px;
     z-index: 183;
     transition: filter 0.5s ease 0.0s;
     transition: opacity 0.5s ease 0.0s;
+}
+
+.players_right_container>.Player>.Area_Photo {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    left: -5px;
+    bottom: 0px;
+    z-index: 190;
+    overflow: hidden;
+}
+
+.players_right_container>.Player>.Area_Photo>.Photo_Player {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 90px;
+    height: 90px;
+    z-index: 191;
+    align-items: center;
+}
+
+.players_right_container>.Player>.Area_Photo>.Photo_Player img {
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    height: 90px;
+    z-index: 192;
 }
 
 .players_right_container>.Player>.Round_Kills {
     position: absolute;
     width: 20px;
     height: 73px;
-    right: 281px;
+    left: 281px;
     top: 0px;
     z-index: 183;
+    transform: all 0.5s ease 0.0s;
     overflow: hidden;
+    -webkit-transform: all 0.5s ease 0.0s;
+    -moz-transform: all 0.5s ease 0.0s;
+    -ms-transform: all 0.5s ease 0.0s;
 }
 
 .players_right_container>.Player>.Round_Kills>.background {
@@ -1369,9 +1429,9 @@ sub {
 .players_right_container>.Player>.separator {
     position: absolute;
     right: -9px;
-    top: 18px;
+    top: 0px;
     width: 9px;
-    height: 55px;
+    height: 79px;
     background-color: rgb(236, 236, 236);
     z-index: 173;
     opacity: 0;
@@ -1476,7 +1536,7 @@ sub {
 
 .players_right_container>.Player>.Name {
     position: absolute;
-    font-size: 22px;
+    font-size: 19px;
     text-transform: uppercase;
     font-family: "Anybody Condensed";
     color: rgb(236, 236, 236);
@@ -1487,7 +1547,7 @@ sub {
     height: 25px;
     width: 150px;
     right: 7px;
-    top: 22px;
+    top: 26px;
     z-index: 172;
     overflow: hidden;
 }
@@ -1551,8 +1611,8 @@ sub {
     text-align: left;
     height: 18px;
     width: 18px;
-    right: 121px;
-    top: 47px;
+    right: -1px;
+    top: 53px;
     z-index: 172;
 }
 
@@ -1564,8 +1624,8 @@ sub {
     background-size: 16px;
     height: 18px;
     width: 18px;
-    right: 144px;
-    top: 49px;
+    right: 22px;
+    top: 54px;
     z-index: 172;
 }
 

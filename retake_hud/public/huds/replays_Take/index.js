@@ -426,6 +426,10 @@ function fillPlayer(player, nr, side, max) {
 
     $player.find(".separator").css("opacity", "0");
 
+    loadAvatar(player.steamid, function() {
+        $player.find(".Area_Photo>.Photo_Player").html($("<img width='90px' height='90px'  />").attr("src", "/av/" + player.steamid));
+    });
+
     if (side == "right") {
         if (team == "ct") {
             $(".Top_Bar>.Timer_BG>.BO5_B").find(".block").css("border-color", "rgb(" + ct_color + ")");

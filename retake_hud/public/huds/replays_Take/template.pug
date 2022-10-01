@@ -1,0 +1,563 @@
+html
+  head
+    script(src="https://cdn.socket.io/socket.io-1.3.7.js")
+    script(src="http://code.jquery.com/jquery-2.1.4.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js")
+    script(src="http://ricostacruz.com/jquery.transit/jquery.transit.min.js")
+    script.
+      var ip = "#{ip}",
+      port = "#{port}",
+      disp_avatars = #{avatars},
+      delay = #{delay};
+    script(src="/js/main.js")
+    script(src=hud)
+    link(rel='stylesheet', href=css)
+    link(rel='stylesheet', href='/files/fonts/stylesheet.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css')
+    link(rel='stylesheet', href='https://csshake.surge.sh/csshake.min.css')
+  body
+    section
+      .Top_Bar
+        .Timer_BG
+          .Timer --:--
+          .BO5_1
+          .BO5_A
+            .BO5_Team_A_BG
+          .BO5_2
+          .BO5_B
+            .BO5_Team_B_BG
+        .Round_BG
+          .Round Ronda 0/0
+        .Team_A
+          .Top_BG
+            .Pause
+              .Pause_Text Pausa Tatica 1/4
+                .Txt 
+            .Team_A_Name PEW PEW
+          .Logo_Team_A_BG 
+            .Logo_Team_A
+          .Score_Team_A_BG
+            .Score_Team_A 12
+        .Team_B
+          .Top_BG
+            .Pause
+              .Pause_Text Pausa Tatica 1/4
+                .Txt 
+            .Team_B_Name PEW PEW
+          .Logo_Team_B_BG 
+            .Logo_Team_B
+          .Score_Team_B_BG
+            .Score_Team_B 16
+          .Pause
+      .Sponsors_Bar 
+        .Sponsors_BG
+          .back 
+          .sponsors
+    .Spectate_Container
+      .Spectate_Bar
+        //.Country_Spectate
+          .Country_image
+        .Name_Spectate PEW PEW
+        .Infos
+        .Health_Icon_Spectate
+          .Health_icon
+        .Health_Spectate_BG
+          .Health_Spectate 50
+          .Health_Bar_Spectate
+          .Health_Bar_Spectate_Background
+        .Ammo_Spectate_BG 
+          .Ammo_Spectate 21/150
+          .Ammo_Bar_Spectate_Background
+        .Ammo_Icon_Spectate
+          .Ammo_icon
+        .Photo_Area  
+          .Player_Photo
+            img(src="../../files/img/default.png" class="center")
+        #armor  
+          img(src="../../files/img/defuse.png")
+          img(src="../../files/img/shield.png")
+          img(src="../../files/img/Icons/Icons/Equipment_Helmet.png")
+        #utility
+          img(src="../../files/img/Icons/Icons/Utility_Flash.png")
+          img(src="../../files/img/Icons/Icons/Utility_TMolo.png")
+          img(src="../../files/img/Icons/Icons/Utility_HE.png")
+          img(src="../../files/img/Icons/Icons/Utility_Smoke.png")
+    .players_left_container 
+      #player1(class="Player")
+        //- .Round_Kills
+        //-   .background
+        //-     .icon
+        //-     .frags
+        .Area_Photo
+          .Photo_Player 
+            img(src="../../files/img/Icons/Icons/Photo_Player.png")
+        .separator
+        .Health_Bar 
+          .Flash
+          .Health 50
+          .Health_Icon
+          .Health_Bar_Color
+          .Shield_Icon
+          .Helmet_Icon
+        .Name Lroz1n
+        //- .Money $ 2500
+        .Kills 0
+        .Kills_Icon
+        //- .Deaths 16
+        //- .Deaths_Icon
+        //- #utility
+        //-   img(src="../../files/img/Icons/Icons/Utility_Flash.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_TMolo.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_HE.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_Smoke.png")
+        //- .Defuse_Bomb_Icon
+      #player2(class="Player") 
+        //- .Round_Kills
+        //-   .background
+        //-     .icon
+        //-     .frags
+        .Area_Photo
+          .Photo_Player 
+            img(src="../../files/img/Icons/Icons/Photo_Player.png")
+        .separator 	
+        .Health_Bar
+          .Flash
+          .Health 100
+          .Health_Icon
+          .Health_Bar_Color
+          .Shield_Icon
+          .Helmet_Icon
+        .Name Lroz1n 
+        //- .Money $ 2500
+        .Kills 1
+        .Kills_Icon
+        //- .Deaths 16
+        //- .Deaths_Icon
+        //- #utility
+        //-   img(src="../../files/img/Icons/Icons/Utility_Flash.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_TMolo.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_HE.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_Smoke.png")
+        //- .Defuse_Bomb_Icon
+      #player3(class="Player")
+        //- .Round_Kills
+        //-   .background
+        //-     .icon
+        //-     .frags
+        .Area_Photo
+          .Photo_Player
+            img(src="../../files/img/Icons/Icons/Photo_Player.png")
+        .separator
+        .Health_Bar
+          .Flash
+          .Health 50
+          .Health_Icon
+          .Health_Bar_Color
+          .Shield_Icon
+          .Helmet_Icon
+        .Name Lroz1n 
+        //- .Money $ 2500
+        .Kills 18
+        .Kills_Icon
+        //- .Deaths 16
+        //- .Deaths_Icon
+        //- #utility
+        //-   img(src="../../files/img/Icons/Icons/Utility_Flash.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_TMolo.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_HE.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_Smoke.png")
+        //- .Defuse_Bomb_Icon
+      #player4(class="Player")
+        //- .Round_Kills
+        //-   .background
+        //-     .icon
+        //-     .frags
+        .Area_Photo
+          .Photo_Player
+            img(src="../../files/img/Icons/Icons/Photo_Player.png")
+        .separator
+        .Health_Bar
+          .Flash
+          .Health 17
+          .Health_Icon
+          .Health_Bar_Color
+          .Shield_Icon
+          .Helmet_Icon
+        .Name Lroz1n 
+        //- .Money $ 2500
+        .Kills 22
+        .Kills_Icon
+        //- .Deaths 16
+        //- .Deaths_Icon
+        //- #utility
+        //-   img(src="../../files/img/Icons/Icons/Utility_Flash.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_TMolo.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_HE.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_Smoke.png")
+        //- .Defuse_Bomb_Icon
+      #player5(class="Player")
+        //- .Round_Kills
+        //-   .background
+        //-     .icon
+        //-     .frags
+        .Area_Photo
+          .Photo_Player
+            img(src="../../files/img/Icons/Icons/Photo_Player.png")
+        .separator
+        .Health_Bar
+          .Flash
+          .Health 35
+          .Health_Icon
+          .Health_Bar_Color
+          .Shield_Icon
+          .Helmet_Icon
+        .Name Lroz1n
+        //- .Money $ 2500
+        .Kills 35
+        .Kills_Icon
+        //- .Deaths 16
+        //- .Deaths_Icon
+        //- #utility
+        //-   img(src="../../files/img/Icons/Icons/Utility_Flash.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_TMolo.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_HE.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_Smoke.png")
+        //- .Defuse_Bomb_Icon 
+    .players_right_container 
+      #player1(class="Player")
+        //- .Round_Kills
+        //-   .background
+        //-     .icon
+        //-     .frags
+        .Area_Photo
+          .Photo_Player
+            img(src="../../files/img/Icons/Icons/Photo_Player.png")
+        .separator
+        .Health_Bar
+          .Flash
+          .Health 50
+          .Health_Icon
+          .Health_Bar_Color
+          .Shield_Icon
+          .Helmet_Icon
+        .Name Lroz1n
+        //- .Money $ 2500
+        .Kills 45
+        .Kills_Icon
+        //- .Deaths 16
+        //- .Deaths_Icon
+        //- #utility
+        //-   img(src="../../files/img/Icons/Icons/Utility_Flash.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_TMolo.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_HE.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_Smoke.png")
+        //- .Defuse_Bomb_Icon
+      #player2(class="Player")
+        //- .Round_Kills
+        //-   .background
+        //-     .icon
+        //-     .frags
+        .Area_Photo
+          .Photo_Player
+            img(src="../../files/img/Icons/Icons/Photo_Player.png")
+        .separator
+        .Health_Bar
+          .Flash
+          .Health 100
+          .Health_Icon
+          .Health_Bar_Color
+          .Shield_Icon
+          .Helmet_Icon
+        .Name Lroz1n 
+        //- .Money $ 2500
+        .Kills 5
+        .Kills_Icon
+        //- .Deaths 16
+        //- .Deaths_Icon
+        //- #utility
+        //-   img(src="../../files/img/Icons/Icons/Utility_Flash.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_TMolo.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_HE.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_Smoke.png")
+        //- .Defuse_Bomb_Icon 
+      #player3(class="Player")  
+        //- .Round_Kills
+        //-   .background
+        //-     .icon
+        //-     .frags
+        .Area_Photo
+          .Photo_Player
+            img(src="../../files/img/Icons/Icons/Photo_Player.png")
+        .separator
+        .Health_Bar
+          .Flash
+          .Health 50
+          .Health_Icon
+          .Health_Bar_Color
+          .Shield_Icon
+          .Helmet_Icon
+        .Name Lroz1n 
+        //- .Money $ 2500
+        .Kills 0
+        .Kills_Icon
+        //- .Deaths 16
+        //- .Deaths_Icon
+        //- #utility
+        //-   img(src="../../files/img/Icons/Icons/Utility_Flash.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_TMolo.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_HE.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_Smoke.png")
+        //- .Defuse_Bomb_Icon 
+      #player4(class="Player")
+        //- .Round_Kills
+        //-   .background
+        //-     .icon
+        //-     .frags
+        .Area_Photo
+          .Photo_Player
+            img(src="../../files/img/Icons/Icons/Photo_Player.png")
+        .separator
+        .Health_Bar
+          .Flash
+          .Health 17
+          .Health_Icon
+          .Health_Bar_Color
+          .Shield_Icon
+          .Helmet_Icon
+        .Name Lroz1n 
+        //- .Money $ 2500
+        .Kills 9
+        .Kills_Icon
+        //- .Deaths 16
+        //- .Deaths_Icon
+        //- #utility
+        //-   img(src="../../files/img/Icons/Icons/Utility_Flash.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_TMolo.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_HE.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_Smoke.png")
+        //- .Defuse_Bomb_Icon 
+      #player5(class="Player")
+        //- .Round_Kills
+        //-   .background
+        //-     .icon
+        //-     .frags
+        .Area_Photo
+          .Photo_Player
+            img(src="../../files/img/Icons/Icons/Photo_Player.png")
+        .separator
+        .Health_Bar
+          .Flash
+          .Health 35
+          .Health_Icon
+          .Health_Bar_Color
+          .Shield_Icon
+          .Helmet_Icon
+        .Name Lroz1n
+        //- .Money $ 2500
+        .Kills 16
+        .Kills_Icon 
+        //- .Deaths 16
+        //- .Deaths_Icon
+        //- #utility
+        //-   img(src="../../files/img/Icons/Icons/Utility_Flash.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_TMolo.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_HE.png")
+        //-   img(src="../../files/img/Icons/Icons/Utility_Smoke.png")
+        //- .Defuse_Bomb_Icon 
+    //- .Game_History
+    //-     .History_Text
+    //-       .Text Game History - 1º Half
+    //-     .History_Bar
+    //-       .Overtime_Divider
+    //-         .text_1 H
+    //-         .text_2 A
+    //-         .text_3 L
+    //-         .text_4 F
+    //-       .Defuse_Bar_copy
+    //-       .Left_Team
+    //-         .Round_n1
+    //-           .Result
+    //-         .Round_n2
+    //-           .Result
+    //-         .Round_n3
+    //-           .Result
+    //-         .Round_n4
+    //-           .Result
+    //-         .Round_n5
+    //-           .Result
+    //-         .Round_n6
+    //-           .Result
+    //-         .Round_n7
+    //-           .Result
+    //-         .Round_n8
+    //-           .Result
+    //-         .Round_n9
+    //-           .Result
+    //-         .Round_n10
+    //-           .Result
+    //-         .Round_n11
+    //-           .Result
+    //-         .Round_n12
+    //-           .Result
+    //-         .Round_n13
+    //-           .Result
+    //-         .Round_n14
+    //-           .Result
+    //-         .Round_n15
+    //-           .Result 
+    //-       .Right_Team
+    //-         .Round_n1
+    //-           .Result
+    //-         .Round_n2
+    //-           .Result
+    //-         .Round_n3
+    //-           .Result
+    //-         .Round_n4
+    //-           .Result
+    //-         .Round_n5
+    //-           .Result
+    //-         .Round_n6
+    //-           .Result
+    //-         .Round_n7
+    //-           .Result
+    //-         .Round_n8
+    //-           .Result
+    //-         .Round_n9
+    //-           .Result
+    //-         .Round_n10
+    //-           .Result
+    //-         .Round_n11
+    //-           .Result
+    //-         .Round_n12
+    //-           .Result
+    //-         .Round_n13
+    //-           .Result
+    //-         .Round_n14
+    //-           .Result
+    //-         .Round_n15
+    //-           .Result 
+    .Progress_Bar
+      .Left_Team 
+        .Background
+        .Progress
+        .txt NICOODOZ
+      .Right_Team
+        .Background
+        .Progress
+        .txt NICOODOZ
+      .Center_Bar
+        .Center_Txt 
+    //- .Firepower  
+    //-   .Firepower_BG
+    //-     .Firepower_Txt FIREPOWER
+    //-     .Bar_Firepower_A
+    //-     .Bar_Firepower_B
+    //- .Equipment_A 
+    //-   .Equipment_BG 
+    //-     .Equip_Money_BG 
+    //-       .Equip_Txt EQUIPMENT MONEY
+    //-     .Team_Money_BG
+    //-       .Team_Txt TEAM MONEY
+    //-     .Mid_Top_Divider
+    //-     .Mid_Bottom_Divider
+    //-     .True_Equip_Money
+    //-       .Money_Txt $ 4350
+    //-     .True_Team_Money
+    //-       .Money_Txt $ 2700
+    //- .Equipment_B
+    //-   .Equipment_BG 
+    //-     .Equip_Money_BG 
+    //-       .Equip_Txt EQUIPMENT MONEY
+    //-     .Team_Money_BG
+    //-       .Team_Txt TEAM MONEY
+    //-     .Mid_Top_Divider
+    //-     .Mid_Bottom_Divider
+    //-     .True_Equip_Money
+    //-       .Money_Txt $ 4350
+    //-     .True_Team_Money
+    //-       .Money_Txt $ 2700
+    //- .Spam_A   
+    //-   .Spam_BG
+    //-     .Top_Spam
+    //-     .Progress
+    //-     .Bottom_Spam  
+    //-       .HE 
+    //-         .HE_Icon
+    //-         .HE_Txt  x10
+    //-       .Flash 
+    //-         .Flash_Icon
+    //-         .Flash_Txt  x10
+    //-       .Smoke 
+    //-         .Smoke_Icon
+    //-         .Smoke_Txt  x10
+    //-       .Inc
+    //-         .Inc_Icon
+    //-         .Inc_Txt  x10
+    //- .Spam_B   
+    //-   .Spam_BG
+    //-     .Top_Spam
+    //-     .Progress
+    //-     .Bottom_Spam  
+    //-       .HE 
+    //-         .HE_Icon
+    //-         .HE_Txt  x10
+    //-       .Flash 
+    //-         .Flash_Icon
+    //-         .Flash_Txt  x10
+    //-       .Smoke 
+    //-         .Smoke_Icon
+    //-         .Smoke_Txt  x10
+    //-       .Inc
+    //-         .Inc_Icon
+    //-         .Inc_Txt  x10
+    //- .Loss_Bonus_A
+    //-   .Loss_Bonus_BG
+    //-     .Top_Loss   
+    //-       .Loss_Txt  LOSS BONUS
+    //-     .Bottom_Loss   
+    //-       .Loss_Txt  $ 1900
+    //-       .Box_1
+    //-       .Box_2
+    //-       .Box_3
+    //-       .Box_4
+    //- .Loss_Bonus_B
+    //-   .Loss_Bonus_BG
+    //-     .Top_Loss   
+    //-       .Loss_Txt  LOSS BONUS
+    //-     .Bottom_Loss   
+    //-       .Loss_Txt  $ 1900
+    //-       .Box_1
+    //-       .Box_2
+    //-       .Box_3
+    //-       .Box_4
+    //- .win_container 
+    //-   .win_BG
+    //-     .background
+    //-     .txt 
+    //-     //- .true_team
+    //-   .team_BG
+    //-     .background
+    //-     .icon
+    .topbar_i_counter 
+      .title PLAYERS ALIVE
+      .player_count_left  2
+      .player_count_right 5
+    //- .MapPick_BG
+    //-   .Map1
+    //-     .Team_Name FTW ESPORTS
+    //-     .Map
+    //-     .Map_Name Overpass
+    //-     .Map_Result 16 - 12
+    //-   .Map2 
+    //-     .Team_Name FTW ESPORTS
+    //-     .Map
+    //-     .Map_Name Overpass
+    //-     .Map_Result 16 - 12
+    //-   .Map3
+    //-     .Team_Name FTW ESPORTS
+    //-     .Map
+    //-     .Map_Name Overpass
+    //-     .Map_Result 16 - 12
+
+        
+    
