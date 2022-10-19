@@ -1179,12 +1179,22 @@ sub {
     z-index: 172;
 }
 
+.players_left_container>.Player>.kills_background {
+    position: absolute;
+    left:0px;
+    bottom:0px;
+    height:30px;
+    width:171.6px;
+    background-color: rgb(236, 236, 236);
+    z-index: 171;
+}
+
 .players_left_container>.Player>.Kills {
     position: absolute;
     font-size: 22px;
     text-transform: uppercase;
     font-family: "Anybody Condensed";
-    color: rgb(236, 236, 236);
+    color: rgb(44, 43, 48);
     font-weight: 500;
     line-height: 1.10;
     letter-spacing: 1;
@@ -1202,6 +1212,7 @@ sub {
     background-position: center;
     background-repeat: no-repeat;
     background-size: 16px;
+    filter: invert(1);
     height: 18px;
     width: 18px;
     left: 7px;
@@ -1599,12 +1610,22 @@ sub {
     z-index: 172;
 }
 
+.players_right_container>.Player>.kills_background {
+    position: absolute;
+    right:0px;
+    bottom:0px;
+    height:30px;
+    width:171.6px;
+    background-color: rgb(236, 236, 236);
+    z-index: 171;
+}
+
 .players_right_container>.Player>.Kills {
     position: absolute;
     font-size: 22px;
     text-transform: uppercase;
     font-family: "Anybody Condensed";
-    color: rgb(236, 236, 236);
+    color: rgb(44, 43, 48);    
     font-weight: 500;
     line-height: 1.10;
     letter-spacing: 1;
@@ -1621,12 +1642,18 @@ sub {
     background-image: url("../../files/img/Icons/Icons/Player_Kills.png");
     background-position: center;
     background-repeat: no-repeat;
+    filter: invert(1);
     background-size: 16px;
     height: 18px;
     width: 18px;
     right: 22px;
     top: 54px;
     z-index: 172;
+    -webkit-transform:;
+    -moz-transform:;
+    -ms-transform:;
+    -o-transform:;
+    -webkit-filter: invert(1);
 }
 
 .players_right_container>.Player>#utility {

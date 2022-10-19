@@ -467,15 +467,14 @@ function fillPlayer(player, nr, side, max) {
         $player.find(".Round_Kills").removeClass("dead_left_kills").addClass("alive_kills").removeClass(statistics.health == 0 ? "alive_kills" : "").addClass(statistics.health == 0 ? "dead_left_kills" : "");
     } else {
         $player.find(".Round_Kills").removeClass("dead_right_kills").addClass("alive_kills").removeClass(statistics.health == 0 ? "alive_kills" : "").addClass(statistics.health == 0 ? "dead_right_kills" : "");
-
     }
 
-    // if (statistics.round_kills > 0) {
-    //     $player.find(".background>.frags").html(statistics.round_kills);
-    //     $player.find(".Round_kills>.background").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(0px)");
-    // } else {
-    //     $player.find(".Round_kills>.background").css("transition", "transform 0.5s ease-out 0s").css("transform", "translateY(-75px)");
-    // }
+    if (statistics.round_kills > 0) {
+        $player.find(".background>.frags").html(statistics.round_kills);
+        $player.find(".kills_background").css("opacity", "1");
+    } else {
+        $player.find(".kills_background").css("opacity", "0");
+    }
 
     $player.find(".Kills").html(statistics.round_kills);
     $player.find(".Deaths").html(statistics.deaths);
@@ -487,6 +486,11 @@ function fillPlayer(player, nr, side, max) {
     $player.find(".number").removeClass("observed");
 
     /*################################################# CHANGING WHEN A PLAYERS DIES #################################################### */
+    if(statistics.health == 0){
+        $player.find(".Area_Photo>.Photo_Player").css("filter", "grayscale(100%)");
+    }else{
+        $player.find(".Area_Photo>.Photo_Player").css("filter", "grayscale(0%)");
+    }
 
     $player.removeClass("dead").addClass("alive").removeClass(statistics.health == 0 ? "alive" : "").addClass(statistics.health == 0 ? "dead" : "");
     $player.find(".health_text").removeClass("dead_life").addClass("alive_life").removeClass(statistics.health == 0 ? "alive_life" : "").addClass(statistics.health == 0 ? "dead_life" : "");
