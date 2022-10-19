@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     color: #fff;
-    overflow: hidden; 
+    overflow: hidden;
     /* background: rgb(255, 153, 0); */
     border-radius: 0px !important;
     font-family: "";
@@ -1127,7 +1127,7 @@ sub {
     height: 25px;
     width: 150px;
     left: 7px;
-    top: 26px;
+    top: 24px;
     z-index: 172;
     overflow: hidden;
 }
@@ -1181,10 +1181,10 @@ sub {
 
 .players_left_container>.Player>.kills_background {
     position: absolute;
-    left:0px;
-    bottom:0px;
-    height:30px;
-    width:171.6px;
+    left: 0px;
+    bottom: 0px;
+    height: 30px;
+    width: 171.6px;
     background-color: rgb(236, 236, 236);
     z-index: 171;
 }
@@ -1195,6 +1195,7 @@ sub {
     text-transform: uppercase;
     font-family: "Anybody Condensed";
     color: rgb(44, 43, 48);
+    color: rgb(236, 236, 236);
     font-weight: 500;
     line-height: 1.10;
     letter-spacing: 1;
@@ -1216,7 +1217,7 @@ sub {
     height: 18px;
     width: 18px;
     left: 7px;
-    top: 54px;
+    top: 55px;
     z-index: 172;
 }
 
@@ -1558,7 +1559,7 @@ sub {
     height: 25px;
     width: 150px;
     right: 7px;
-    top: 26px;
+    top: 24px;
     z-index: 172;
     overflow: hidden;
 }
@@ -1612,10 +1613,10 @@ sub {
 
 .players_right_container>.Player>.kills_background {
     position: absolute;
-    right:0px;
-    bottom:0px;
-    height:30px;
-    width:171.6px;
+    right: 0px;
+    bottom: 0px;
+    height: 30px;
+    width: 171.6px;
     background-color: rgb(236, 236, 236);
     z-index: 171;
 }
@@ -1625,7 +1626,7 @@ sub {
     font-size: 22px;
     text-transform: uppercase;
     font-family: "Anybody Condensed";
-    color: rgb(44, 43, 48);    
+    color: rgb(44, 43, 48);
     font-weight: 500;
     line-height: 1.10;
     letter-spacing: 1;
@@ -1633,7 +1634,7 @@ sub {
     height: 18px;
     width: 18px;
     right: -1px;
-    top: 53px;
+    top: 54px;
     z-index: 172;
 }
 
@@ -1647,12 +1648,12 @@ sub {
     height: 18px;
     width: 18px;
     right: 22px;
-    top: 54px;
+    top: 55px;
     z-index: 172;
-    -webkit-transform:;
-    -moz-transform:;
-    -ms-transform:;
-    -o-transform:;
+    -webkit-transform: ;
+    -moz-transform: ;
+    -ms-transform: ;
+    -o-transform: ;
     -webkit-filter: invert(1);
 }
 

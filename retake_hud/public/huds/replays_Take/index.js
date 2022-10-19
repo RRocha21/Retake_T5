@@ -471,9 +471,13 @@ function fillPlayer(player, nr, side, max) {
 
     if (statistics.round_kills > 0) {
         $player.find(".background>.frags").html(statistics.round_kills);
-        $player.find(".kills_background").css("opacity", "1");
+        $player.find(".kills_background").css("height", "30px").css("transition", "all 0.5s ease 0s");
+        $player.find(".kills").css("color", "rgb(44,43,48)").css("transition", "all 0.5s ease 0s");
+        $player.find(".Kills_Icon").css("filter", "invert(1)").css("transition", "all 0.5s ease 0s");
     } else {
-        $player.find(".kills_background").css("opacity", "0");
+        $player.find(".kills_background").css("height", "0%").css("transition", "all 0.5s ease 0s");
+        $player.find(".kills").css("color", "rgb(236,236,236)").css("transition", "all 0.5s ease 0s");
+        $player.find(".Kills_Icon").css("filter", "invert(0)").css("transition", "all 0.5s ease 0s");
     }
 
     $player.find(".Kills").html(statistics.round_kills);
@@ -486,9 +490,9 @@ function fillPlayer(player, nr, side, max) {
     $player.find(".number").removeClass("observed");
 
     /*################################################# CHANGING WHEN A PLAYERS DIES #################################################### */
-    if(statistics.health == 0){
+    if (statistics.health == 0) {
         $player.find(".Area_Photo>.Photo_Player").css("filter", "grayscale(100%)");
-    }else{
+    } else {
         $player.find(".Area_Photo>.Photo_Player").css("filter", "grayscale(0%)");
     }
 
