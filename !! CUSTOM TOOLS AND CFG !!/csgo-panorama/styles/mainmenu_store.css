@@ -2,16 +2,16 @@
 .news-panel--store-container
 {
 	                                                                       
-	max-height: 288px;
-	height: fill-parent-flow( .4 );
+	max-height: 300px;
+	height: 256px;
 	margin-bottom: 0px;
 }
 
-.news-panel-style-feature-panel-visible .news-panel--store-container,
-.mainmenu-news-container-stream-active .news-panel--store-container
-{
-	height: fill-parent-flow( .5 );
-}
+                                                                        
+                                                                   
+ 
+	                               
+    
 
 .store-panel__carousels
 {
@@ -657,13 +657,55 @@
 	vertical-align: center;
 }
 
-.store-panel-license-banner__button
+.store-panel-inventory-full__item
+{
+	horizontal-align: right;
+	margin-right: 0px;
+
+}
+
+.store-panel-inventory-full
+{
+	width: 100%;
+	height: 100%;
+	padding: 24px;
+
+	                                  
+}
+
+.store-panel-inventory-full.hidden
+{
+	visibility: collapse;
+}
+
+.store-panel-inventory-full__text
+{
+	color: white;
+	font-weight: lighter;
+	font-size: 18px;
+	width: 470px;
+	padding: 12px;
+	height: fit-children;
+	border-radius: 5px;
+
+	horizontal-align: left;
+
+	vertical-align: top;
+	margin-top: 20px;
+
+	background-color: #0000005e;
+
+}
+
+.store-panel-inventory-full__button
 {
 	margin-top: 10px;
-	horizontal-align: right;
+	horizontal-align: left;
 	vertical-align: bottom;
-	margin-right: 20px;
-	margin-bottom: 20px;
+	margin-left: 20px;
+	margin-bottom: 0px;
+
+
 }
 
 #StoreNaveBarWalletBalance
