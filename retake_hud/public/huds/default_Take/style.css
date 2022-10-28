@@ -104,6 +104,39 @@ sub {
     }
 }
 
+.giveaway {
+    position: absolute;
+    right: 30px;
+    top: 231px;
+    width: 281px;
+    height: 281px;
+    z-index: 450;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.giveaway>.background {
+    position: absolute;
+    right: 2%;
+    top: 2%;
+    width: 96%;
+    height: 96%;
+    background-image: url("https://pewpew.pt/gfx/prodigy/GIVEAWAY");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 445 ;
+}
+
+.giveaway>.glow {
+    position: absolute;
+    right: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    z-index: 440;
+}
+
 .Top_Bar {
     position: absolute;
     left: 410px;
@@ -4201,6 +4234,26 @@ sub {
     opacity: 0 !important;
     transition: all 0.8s ease 0s !important;
     transform: translate(0px, -50px) !important;
+}
+
+.show_giveaway {
+    transition: all 0.5s ease 0s !important;
+    opacity: 1 !important;
+    transform: translate(0px, 0px) !important;
+    -webkit-transform: translate(0px, 0px) !important;
+    -moz-transform: translate(0px, 0px) !important;
+    -ms-transform: translate(0px, 0px) !important;
+    -o-transform: translate(0px, 0px) !important;
+}
+
+.hide_giveaway {
+    transition: all 0.5s ease 0s !important;
+    opacity: 0 !important;
+    transform: translate(100px, 0px) !important;
+    -webkit-transform: translate(100px, 0px) !important;
+    -moz-transform: translate(100px, 0px) !important;
+    -ms-transform: translate(100px, 0px) !important;
+    -o-transform: translate(100px, 0px) !important;
 }
 
 .show_spam {

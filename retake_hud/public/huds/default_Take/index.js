@@ -1204,7 +1204,7 @@ function updatePage(data) {
     $(".Loss_Bonus_A>.Loss_Bonus_BG>.Bottom_Loss>.Box_2").css("border", "solid 2px rgb(" + left_color + ")");
     $(".Loss_Bonus_A>.Loss_Bonus_BG>.Bottom_Loss>.Box_3").css("border", "solid 2px rgb(" + left_color + ")");
     $(".Loss_Bonus_A>.Loss_Bonus_BG>.Bottom_Loss>.Box_4").css("border", "solid 2px rgb(" + left_color + ")");
-
+    // console.log((round_now % 3));
 
     if (loss_bonus_left == 0) {
         $(".Loss_Bonus_A>.Loss_Bonus_BG>.Bottom_Loss>.Box_1").css("background", "rgba(255,255,255,0)");
@@ -1651,6 +1651,7 @@ function updatePage(data) {
         }
     }
 
+    $(".giveaway>.glow").css("background", "rgb("+ right_color+")");
 
     $(".Top_Bar>.Timer_BG>.BO5_1").css("background-color", "rgb(" + left_color + ")");
     // $(".Top_Bar>.Team_A>.BO5_A>.Game_1_Team_A").css("background-color", "rgb(" + left_color + ")");
@@ -2194,6 +2195,8 @@ function updatePage(data) {
                 showFirePower();
                 hideGiveaway();
             } else {
+                if ((total%2) == 0)
+                    showGiveaway();
                 showSpam();
                 hideBonus();
                 showTeamName();
@@ -2203,9 +2206,6 @@ function updatePage(data) {
                     hidePickem_1();
                     hidePickem_2();
                     hidePickem();
-                }
-                if ((round_now % 3) == 0) {
-                    showGiveaway();
                 }
                 hideFirePower();
             }
@@ -2333,6 +2333,9 @@ function updatePage(data) {
 
             } else if (phase.phase == "paused" || phase.phase == "timeout_ct" || phase.phase == "timeout_t") {
                 stopAnimationWinner();
+                showGiveaway();
+                showSpam();
+                hideBonus();
                 if (phase.phase == "timeout_ct" || phase.phase == "timeout_t") {
                     if (phase.phase == "timeout_ct") {
                         if (teams.left.side == "ct") {
@@ -2354,7 +2357,7 @@ function updatePage(data) {
                     stopAnimationWinner();
                     //hideFirePower();
                     hideBonus();
-                    // showGiveaway();
+                    showGiveaway();
                 }
             } else {
                 stopAnimationPause();
