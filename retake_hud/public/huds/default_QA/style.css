@@ -3804,6 +3804,265 @@ sub {
     z-index: 442;
 } */
 
+.MapPick_BG {
+    position: absolute;
+    opacity: 0;
+    right: 30px;
+    top: 113px;
+    width: 366px;
+    height: 125px;
+    z-index: 451;
+}
+
+.MapPick_BG>.Map1 {
+    background-color: rgb(255, 77, 64);
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 122px;
+    height: 125px;
+    z-index: 452;
+}
+
+.MapPick_BG>.Map2 {
+    background-color: rgb(99, 64, 243);
+    position: absolute;
+    left: 122px;
+    top: 0px;
+    width: 122px;
+    height: 125px;
+    z-index: 452;
+}
+
+.MapPick_BG>.Map3 {
+    background-color: rgb(44, 43, 48);
+    position: absolute;
+    left: 244px;
+    top: 0px;
+    width: 122px;
+    height: 125px;
+    z-index: 452;
+}
+
+.MapPick_BG>.Map1>.Team_Name {
+    font-size: 18px;
+    font-family: "Anybody Condensed";
+    font-weight: 600;
+    color: rgb(236, 236, 236);
+    line-height: 1.75;
+    letter-spacing: 1;
+    text-align: center;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 122px;
+    height: 28px;
+    z-index: 466;
+    text-transform: uppercase;
+}
+
+.MapPick_BG>.Map1>.Map {
+    background-color: rgb(0, 71, 155);
+    background-size: cover;
+    position: absolute;
+    background-position: center;
+    left: 4px;
+    top: 27px;
+    width: 114px;
+    height: 94px;
+    z-index: 454;
+}
+
+.MapPick_BG>.Map1>.Map_Shade {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    left: 4px;
+    top: 27px;
+    width: 114px;
+    height: 94px;
+    z-index: 455;
+}
+
+.MapPick_BG>.Map1>.Map_Name {
+    font-size: 40px;
+    font-family: "Anybody UltraCondensed";
+    color: rgb(236, 236, 236);
+    font-weight: 600;
+    letter-spacing: 1;
+    line-height: 1;
+    text-align: center;
+    position: absolute;
+    left: 4px;
+    top: 57px;
+    width: 114px;
+    height: 33px;
+    z-index: 466;
+    text-transform: uppercase;
+}
+
+.MapPick_BG>.Map1>.Map_Result {
+    font-size: 18px;
+    font-family: "Anybody Condensed";
+    font-weight: 600;
+    color: rgb(236, 236, 236);
+    line-height: 1;
+    letter-spacing: 1;
+    text-align: center;
+    position: absolute;
+    left: 4px;
+    bottom: 10px;
+    width: 114px;
+    height: 12px;
+    z-index: 466;
+    text-transform: uppercase;
+}
+
+.MapPick_BG>.Map2>.Team_Name {
+    font-size: 18px;
+    font-family: "Anybody Condensed";
+    font-weight: 600;
+    color: rgb(236, 236, 236);
+    line-height: 1.75;
+    letter-spacing: 1;
+    text-align: center;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 122px;
+    height: 28px;
+    z-index: 466;
+    text-transform: uppercase;
+}
+
+.MapPick_BG>.Map2>.Map {
+    background-color: rgb(0, 71, 155);
+    background-size: cover;
+    position: absolute;
+    background-position: center;
+    left: 4px;
+    top: 27px;
+    width: 114px;
+    height: 94px;
+    z-index: 454;
+}
+
+.MapPick_BG>.Map2>.Map_Shade {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    left: 4px;
+    top: 27px;
+    width: 114px;
+    height: 94px;
+    z-index: 455;
+}
+
+.MapPick_BG>.Map2>.Map_Name {
+    font-size: 40px;
+    font-family: "Anybody UltraCondensed";
+    color: rgb(236, 236, 236);
+    font-weight: 600;
+    letter-spacing: 1;
+    line-height: 1;
+    text-align: center;
+    position: absolute;
+    left: 4px;
+    top: 57px;
+    width: 114px;
+    height: 33px;
+    z-index: 466;
+    text-transform: uppercase;
+}
+
+.MapPick_BG>.Map2>.Map_Result {
+    font-size: 18px;
+    font-family: "Anybody Condensed";
+    font-weight: 600;
+    color: rgb(236, 236, 236);
+    line-height: 1;
+    letter-spacing: 1;
+    text-align: center;
+    position: absolute;
+    left: 4px;
+    bottom: 10px;
+    width: 114px;
+    height: 12px;
+    z-index: 466;
+    text-transform: uppercase;
+}
+
+.MapPick_BG>.Map3>.Team_Name {
+    font-size: 18px;
+    font-family: "Anybody Condensed";
+    font-weight: 600;
+    color: rgb(236, 236, 236);
+    line-height: 1.75;
+    letter-spacing: 1;
+    text-align: center;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 122px;
+    height: 28px;
+    z-index: 466;
+    text-transform: uppercase;
+}
+
+.MapPick_BG>.Map3>.Map {
+    background-color: rgb(0, 71, 155);
+    background-size: cover;
+    position: absolute;
+    background-position: center;
+    left: 4px;
+    top: 27px;
+    width: 114px;
+    height: 94px;
+    z-index: 454;
+}
+
+.MapPick_BG>.Map3>.Map_Shade {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    left: 4px;
+    top: 27px;
+    width: 114px;
+    height: 94px;
+    z-index: 455;
+}
+
+.MapPick_BG>.Map3>.Map_Name {
+    font-size: 40px;
+    font-family: "Anybody UltraCondensed";
+    color: rgb(236, 236, 236);
+    font-weight: 600;
+    letter-spacing: 1;
+    line-height: 1;
+    text-align: center;
+    position: absolute;
+    left: 4px;
+    top: 57px;
+    width: 114px;
+    height: 33px;
+    z-index: 466;
+    text-transform: uppercase;
+}
+
+.MapPick_BG>.Map3>.Map_Result {
+    font-size: 18px;
+    font-family: "Anybody Condensed";
+    font-weight: 600;
+    color: rgb(236, 236, 236);
+    line-height: 1;
+    letter-spacing: 1;
+    text-align: center;
+    position: absolute;
+    left: 4px;
+    bottom: 10px;
+    width: 114px;
+    height: 12px;
+    z-index: 466;
+    text-transform: uppercase;
+}
+
 .observed_tr {
     transform: translate(0, 0px);
     transition: transform 300ms ease 0s;
@@ -4000,4 +4259,78 @@ sub {
     -moz-transition: all 1s ease 0s !important;
     -ms-transition: all 1s ease 0s !important;
     -o-transition: all 1s ease 0s !important;
+}
+
+.show_pickem {
+    transition: all 0.5s ease 0s !important;
+    opacity: 1 !important;
+    transform: translate(0px, 0px) !important;
+    -webkit-transition: all 0.5s ease 0s !important;
+    -moz-transition: all 0.5s ease 0s !important;
+    -ms-transition: all 0.5s ease 0s !important;
+    -o-transition: all 0.5s ease 0s !important;
+}
+
+.hide_pickem {
+    transition: all 1.375s ease 0.875s !important;
+    transform: translate(250px, 0px) !important;
+    -webkit-transform: translate(250px, 0px) !important;
+    -moz-transform: translate(250px, 0px) !important;
+    -ms-transform: translate(250px, 0px) !important;
+    -o-transform: translate(250px, 0px) !important;
+    -webkit-transition: all 1.375s ease 0.875s !important;
+    -moz-transition: all 1.375s ease 0.875s !important;
+    -ms-transition: all 1.375s ease 0.875s !important;
+    -o-transition: all 1.375s ease 0.875s !important;
+    opacity: 0 !important;
+}
+
+.show_pickem_1 {
+    transition: all 1.4s ease 0.4s !important;
+    opacity: 1 !important;
+    transform: translate(0px, 0px) !important;
+    -webkit-transition: all 1.4s ease 0.4s !important;
+    -moz-transition: all 1.4s ease 0.4s !important;
+    -ms-transition: all 1.4s ease 0.4s !important;
+    -o-transition: all 1.4s ease 0.4s !important;
+    -webkit-transform: translate(0px, 0px) !important;
+    -moz-transform: translate(0px, 0px) !important;
+    -ms-transform: translate(0px, 0px) !important;
+    -o-transform: translate(0px, 0px) !important;
+}
+
+.hide_pickem_1 {
+    transition: all 1s ease 0s !important;
+    transform: translate(244px, 0px) !important;
+    -webkit-transform: translate(244px, 0px) !important;
+    -moz-transform: translate(244px, 0px) !important;
+    -ms-transform: translate(244px, 0px) !important;
+    -o-transform: translate(244px, 0px) !important;
+    -webkit-transition: all 1s ease 0s !important;
+    -moz-transition: all 1s ease 0s !important;
+    -ms-transition: all 1s ease 0s !important;
+    -o-transition: all 1s ease 0s !important;
+}
+
+.show_pickem_2 {
+    transition: all 1.15s ease 0.575s !important;
+    opacity: 1 !important;
+    transform: translate(0px, 0px) !important;
+    -webkit-transition: all 1.15s ease 0.575s !important;
+    -moz-transition: all 1.15s ease 0.575s !important;
+    -ms-transition: all 1.15s ease 0.575s !important;
+    -o-transition: all 1.15s ease 0.575s !important;
+}
+
+.hide_pickem_2 {
+    transition: all 0.875s ease 0.125s !important;
+    transform: translate(122px, 0px) !important;
+    -webkit-transform: translate(122px, 0px) !important;
+    -moz-transform: translate(122px, 0px) !important;
+    -ms-transform: translate(122px, 0px) !important;
+    -o-transform: translate(122px, 0px) !important;
+    -webkit-transition: all 0.875s ease 0.125s !important;
+    -moz-transition: all 0.875s ease 0.125s !important;
+    -ms-transition: all 0.875s ease 0.125s !important;
+    -o-transition: all 0.875s ease 0.125s !important;
 }
